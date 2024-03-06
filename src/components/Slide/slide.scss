@@ -1,0 +1,21 @@
+.slide-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-bottom: 50px;
+  p {
+    margin-left: 70px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  img {
+    width: 220px;
+    height: 300px;
+    border-radius: 10px;
+    margin-left: 70px;
+  }
+  .mySwiper {
+    padding-right: 90px;
+  }
+}
