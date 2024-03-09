@@ -16,11 +16,13 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 
 const Slide = ({ title }) => {
+    var windowWidth = window.innerWidth / 260;
+    console.log(windowWidth / 260)
     return (
         <div className='slide-container'>
             <p>{title}</p>
             <Swiper
-                slidesPerView={5}
+                slidesPerView={windowWidth}
                 spaceBetween={30}
                 freeMode={true}
 

@@ -1,14 +1,14 @@
-import './thumbnail.css'
+import './film.css'
 import React from 'react'
-import thumb_pic from '../../assets/images/thumbnail.jpg'
-import N from '../../assets/images/N-logo.png'
-import top10 from '../../assets/images/top10.png'
+import thumb_pic from '../../../assets/images/thumbnail.jpg'
+import N from '../../../assets/images/N-logo.png'
+import top10 from '../../../assets/images/top10.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
-const Thumbnail = () => {
+
+const Film = () => {
     return (
         <div className='thumbnail-container'>
-            <div className='image-overlay'></div>
             <img
                 src={thumb_pic}
                 alt="thumb-pic"
@@ -51,4 +51,4 @@ const Thumbnail = () => {
     );
 }
 
-export default Thumbnail;
+export default Film;

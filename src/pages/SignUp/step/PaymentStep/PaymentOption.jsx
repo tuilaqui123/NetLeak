@@ -5,8 +5,7 @@ import OptionContent from './OptionContent';
 const PaymentOption = ({ bg, name, opt, isClick }) => {
 
     const bgStyle = {
-        background: bg.bg1,
-        background: bg.bg2
+        background: bg.bg1
     }
 
     return (

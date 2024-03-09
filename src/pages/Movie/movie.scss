@@ -1,4 +1,4 @@
-.home-container {
+.movie-container {
   width: 100%;
   height: auto;
   display: flex;
@@ -7,9 +7,4 @@
   background-color: #232323;
   position: relative;
   backdrop-filter: blur(100px);
-  .movies-slide {
-    z-index: 3;
-    width: 100%;
-    margin-top: -100px;
-  }
 }
