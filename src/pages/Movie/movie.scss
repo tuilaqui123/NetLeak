@@ -7,4 +7,24 @@
   background-color: #232323;
   position: relative;
   backdrop-filter: blur(100px);
+  .info-navbar {
+    width: 80%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    top: -50px;
+    z-index: 4;
+    li {
+      font-size: 20px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      &:hover {
+        border-bottom: 2px solid white;
+      }
+    }
+  }
 }

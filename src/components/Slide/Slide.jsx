@@ -1,6 +1,7 @@
 import './slide.css'
 import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 import m1 from '../../assets/movies/1.jpg'
 import m2 from '../../assets/movies/2.jpg'
 import m3 from '../../assets/movies/3.jpg'
@@ -14,10 +15,15 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
+import HoverSlide from './HoverSlide/HoverSlide';
 
 const Slide = ({ title }) => {
     var windowWidth = window.innerWidth / 260;
-    console.log(windowWidth / 260)
+
+    const linkStyle = {
+        textDecoration: "none",
+    };
+
     return (
         <div className='slide-container'>
             <p>{title}</p>
@@ -30,26 +36,14 @@ const Slide = ({ title }) => {
                 className="mySwiper"
             >
                 <SwiperSlide>
+                    {/* <Link to="/movie/:id" style={linkStyle}>
+                        <img
+                            src={m1}
+                            alt='movie'
+                        />
+                    </Link> */}
                     <img
                         src={m1}
-                        alt='movie'
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m2}
-                        alt='movie'
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m3}
-                        alt='movie'
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m4}
                         alt='movie'
                     />
                 </SwiperSlide>
@@ -61,19 +55,13 @@ const Slide = ({ title }) => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <img
-                        src={m2}
+                        src={m1}
                         alt='movie'
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <img
-                        src={m3}
-                        alt='movie'
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m4}
+                        src={m1}
                         alt='movie'
                     />
                 </SwiperSlide>

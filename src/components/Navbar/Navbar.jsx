@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import './navbar.css'
 import React, { useState } from 'react'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +14,12 @@ const Navbar = () => {
     function toogleNoti() {
         setNoti(!noti)
     }
+
+    const linkStyle = {
+        textDecoration: "none",
+    };
+
+
     return (
         <div className='navbar-container'>
             <ul>
@@ -20,10 +27,14 @@ const Navbar = () => {
                     <h2>NETFLIX</h2>
                 </li>
                 <li>
-                    <p>Trang chủ</p>
+                    <Link to="/" style={linkStyle}><Link />
+                        <p>Trang chủ</p>
+                    </Link>
                 </li>
                 <li>
-                    <p>TV Shows</p>
+                    <Link to="/tab/ok" style={linkStyle}><Link />
+                        <p>TV Shows</p>
+                    </Link>
                 </li>
                 <li>
                     <p>Phim</p>
@@ -66,6 +77,7 @@ const Navbar = () => {
                     </div>
                 )}
             </div>
+
         </div>
     );
 }

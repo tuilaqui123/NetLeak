@@ -1,7 +1,6 @@
 .slide-container {
   width: 100%;
   height: auto;
-  position: relative;
   margin-bottom: 50px;
   p {
     margin-left: 70px;
@@ -9,11 +8,13 @@
     font-size: 20px;
     font-weight: 700;
   }
+  .ok2 {
+    margin-left: 100px;
+  }
   img {
     width: 95%;
     height: 95%;
     border-radius: 10px;
-    margin-left: 70px;
     cursor: pointer;
     transition: 0.3s;
     filter: brightness(95%);
@@ -22,6 +23,7 @@
     }
   }
   .mySwiper {
-    padding-right: 90px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }

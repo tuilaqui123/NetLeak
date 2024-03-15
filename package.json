@@ -16,9 +16,16 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "swiper": "^11.0.7"
+    "react-player": "^2.15.1",
+    "react-router-dom": "^6.22.3",
+    "redux": "^5.0.1",
+    "sort-by": "^1.2.0",
+    "swiper": "^11.0.7",
+    "video-react": "^0.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

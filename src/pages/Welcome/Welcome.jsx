@@ -1,4 +1,5 @@
 import ContentSection from './ContentSection';
+import { Link } from 'react-router-dom';
 import './welcome.css';
 import React from 'react';
 import Section_Img1 from '../../assets/images/section1.jpg';
@@ -11,6 +12,10 @@ import Footer from './Footer';
 
 
 const Welcome = () => {
+    const linkStyle = {
+        textDecoration: "none",
+    };
+
     return (
         <div className='welcome-container'>
             <div className='container'>
@@ -30,7 +35,9 @@ const Welcome = () => {
                             <input type='text' />
                         </div>
                         <button>
-                            <p>Bắt đầu</p>
+                            <Link to="/" style={linkStyle}><Link />
+                                <p>Bắt đầu</p>
+                            </Link>
                         </button>
                     </div>
                 </div>
