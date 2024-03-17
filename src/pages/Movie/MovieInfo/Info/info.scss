@@ -55,47 +55,88 @@
       }
     }
   }
+  // .direct-container {
+  //   list-style-type: none;
+  //   padding: 0;
+  //   width: 90%;
+  //   height: 100%;
+  //   gap: 40px;
+  //   display: grid;
+  //   grid-template-columns: auto auto auto auto;
+  //   align-items: center;
+  //   p {
+  //     margin: 0;
+  //     color: white;
+  //     margin-bottom: 20px;
+  //     margin-left: 10px;
+  //   }
+  //   li {
+  //     border: 1px solid gray;
+  //     cursor: pointer;
+  //     transition: 0.2s;
+  //     &:hover {
+  //       background-color: #333333;
+  //       img {
+  //         filter: brightness(110%);
+  //       }
+  //     }
+  //     p {
+  //       margin: 0;
+  //       color: white;
+  //       margin-bottom: 20px;
+  //       margin-left: 10px;
+  //     }
+  //     img {
+  //       width: 100%;
+  //       height: auto;
+  //     }
+  //     .direct-name {
+  //       font-size: 18px;
+  //       font-weight: 700;
+  //       white-space: nowrap;
+  //       overflow: hidden;
+  //       text-overflow: ellipsis;
+  //     }
+  //   }
+  // }
   .direct-container {
     list-style-type: none;
     padding: 0;
-    width: 90%;
+    width: 95%;
     height: 100%;
-    gap: 40px;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     align-items: center;
-    p {
-      margin: 0;
-      color: white;
-      margin-bottom: 20px;
-      margin-left: 10px;
+    gap: 20px;
+    .infobox {
+      background-color: #333333;
     }
-    li {
-      border: 1px solid gray;
-      cursor: pointer;
+    .actor-movie {
+      border-top: 1px solid gray;
+      padding-top: 20px;
+    }
+    .actor {
       transition: 0.2s;
       &:hover {
-        background-color: #333333;
-        img {
-          filter: brightness(110%);
-        }
+        background-color: #555454;
+        filter: brightness(110%);
       }
+    }
+    .actor-avt {
+      width: 30%;
+    }
+    .movie-recomment {
+      cursor: pointer;
+      transition: 0.2s;
       p {
-        margin: 0;
-        color: white;
-        margin-bottom: 20px;
-        margin-left: 10px;
+        color: rgb(180, 180, 180);
       }
-      img {
-        width: 100%;
-        height: auto;
-      }
-      .direct-name {
-        font-size: 18px;
-        font-weight: 700;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      &:hover {
+        transform: scale(1.03);
+        filter: brightness(110%);
+        p {
+          color: white;
+        }
       }
     }
   }
