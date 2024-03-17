@@ -36,16 +36,12 @@ const Slide = ({ title }) => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    {/* <Link to="/movie/:id" style={linkStyle}>
+                    <Link to="/movie/:id" style={linkStyle}>
                         <img
                             src={m1}
                             alt='movie'
                         />
-                    </Link> */}
-                    <img
-                        src={m1}
-                        alt='movie'
-                    />
+                    </Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img

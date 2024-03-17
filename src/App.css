@@ -39,10 +39,12 @@
 .read-the-docs {
   color: #888;
 } */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .app-container {
   display: flex;
-  flex-direction: clolumn;
-  justify-content: center;
+  flex-direction: column;
   background-color: #232323;
   width: 100%;
   min-height: 100vh;
