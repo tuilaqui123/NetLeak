@@ -1,20 +1,32 @@
 import Slide from '../../components/Slide/Slide';
-import Thumbnail from '../../components/Thumbnail/Thumbnail';
-import './TabPage.css'
+import TabPageThumbnail from '../../components/TabPageThumbnail/TabPageThumbnail';
+import Navbar from '../../components/Navbar/Navbar';
+import './TabPage.scss'
 import React from 'react'
+import TabPageSlide from '../../components/TabPageSlide/TabPageSlide';
+import TopSlide from '../../components/TabPageSlide/TopSlide';
 
 const TabPage = () => {
     return (
         <div className='tabpage-container'>
-            <p className='tab-title'>Phim</p>
-            {/* <Thumbnail /> */}
+            
+            <Navbar/>
+            
+            <TabPageThumbnail/>
+
+            
             <div className='movies-slide'>
-                <Slide title={'Thịnh hành'} />
-                <Slide title={'Anime'} />
-                <Slide title={'TV Shows'} />
-                <Slide title={'Giật gân'} />
-                <Slide title={'Hành động'} />
-                <Slide title={'Hài hước'} />
+                <TopSlide/>
+                <TabPageSlide title={'Anime'} />
+                <TabPageSlide title={'Horror'} />
+                <TabPageSlide title={'Shoujo'} />
+                <TabPageSlide title={'Shounen'} />
+                <TabPageSlide title={'Hài hước'} />
+                <TabPageSlide title={'Slice of Life'} />
+                <TabPageSlide title={'Josei'} />
+                <TabPageSlide title={'Isekai'} />
+                <TabPageSlide title={'Romane'}/>
+                <TabPageSlide title={'Fantasy'}/>
             </div>
         </div>
     );
