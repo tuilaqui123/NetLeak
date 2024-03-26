@@ -1,22 +1,14 @@
 .tabpage-container {
+  background-color: #232323;
   width: 100%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #232323;
   position: relative;
-  backdrop-filter: blur(100px);
+  padding-top: 100px;
   .tab-title {
     margin: 0;
     margin-left: 70px;
     font-size: 30px;
     font-weight: 900;
     color: white;
-  }
-  .movies-slide {
-    z-index: 3;
-    width: 100%;
-    margin-top: -100px;
   }
 }

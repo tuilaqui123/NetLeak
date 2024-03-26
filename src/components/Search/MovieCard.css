@@ -1,0 +1,22 @@
+.cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10rem;
+    margin-top: 10rem;
+    z-index: -2;
+}
+
+.card{
+    margin:20px;
+    padding: 20px;
+    cursor: pointer;
+}
+.cardImg{
+    width: 20rem;
+    margin-bottom: 1rem;
+}
+.cardName{
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #fff;
+}

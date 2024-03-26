@@ -1,4 +1,3 @@
-import { Slide } from 'react-toastify'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
@@ -11,6 +10,7 @@ import Video from './pages/Video/Video'
 import Welcome from './pages/Welcome/Welcome'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Search from './components/Search/Search'
 function App() {
 
   return (
@@ -18,12 +18,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
-            {/* <Route path="/" element={<Welcome />} /> */}
-            <Route path="/" element={<Video />} />
+            <Route path="/" element={<Home />} />
             <Route path="/movie/:id" element={<Movie />} />
             <Route path="/tab/:id" element={<TabPage />} />
             <Route path="/video/:id" element={<Video />} />
             <Route path="/welcome" element={<Welcome />} />
+            
+            <Route path="/search" element={<Search />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faUser } from '@fortawesome/free-regular-svg-icons';
 import image from '../../assets/movies/1.jpg'
 import Noti from './Noti';
-
+import Search from '../Search/Search'
 const Navbar = () => {
 
     const [noti, setNoti] = useState(false)
@@ -14,6 +14,9 @@ const Navbar = () => {
     function toogleNoti() {
         setNoti(!noti)
     }
+
+
+
 
     const linkStyle = {
         textDecoration: "none",
@@ -51,7 +54,10 @@ const Navbar = () => {
             </ul>
             <div className='access'>
                 <div className='icon-button'>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' />
+                    
+                    <Link to="/search">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className='icon'  />
+                    </Link>
                     <FontAwesomeIcon icon={faBell} className='icon' onClick={toogleNoti} />
                     <FontAwesomeIcon icon={faUser} className='icon' />
                 </div>
@@ -76,6 +82,7 @@ const Navbar = () => {
                         <Noti />
                     </div>
                 )}
+
             </div>
 
         </div>
