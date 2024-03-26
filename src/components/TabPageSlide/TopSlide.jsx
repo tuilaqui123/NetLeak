@@ -20,7 +20,7 @@ export default function TopSlide() {
 
   return (
     <div className="slide-container">
-      <p>Thịnh hành</p>
+      <p className="topslide-title">Thịnh hành</p>
 
       <Swiper
         slidesPerView={6}

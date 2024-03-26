@@ -5,7 +5,11 @@ import N from '../../assets/images/N-logo.png'
 import top10 from '../../assets/images/top10.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-const TabPageThumbnail = () => {
+const TabPageThumbnail = ({Genre, setGenre}) => {
+
+    const handleChange  =(e)=>{
+        setGenre(e.target.value);
+    }
     return (
         <div className='thumbnail-container'>
             <div className='image-overlay'></div>
@@ -20,17 +24,17 @@ const TabPageThumbnail = () => {
                 
                 <div className='tab-title-container'>
                      <p className='tab-title'>Anime</p>
-                    <select className='genre-selector'>
+                    <select className='genre-selector' value={Genre} onChange={handleChange}>
                         <option value="">Thể loại</option>
-                        <option value="">Hài hước</option>
-                        <option value="">Shounen</option>
-                        <option value="">Shoujo</option>
-                        <option value="">Josei</option>
-                        <option value="">Isekai</option>
-                        <option value="">Slice of Life</option>
-                        <option value="">Fantasy</option>
-                        <option value="">Romance</option>
-                        <option value="">Horror</option>
+                        <option value="Comedy">Hài hước</option>
+                        <option value="Shounen">Shounen</option>
+                        <option value="Shoujo">Shoujo</option>
+                        <option value="Josei">Josei</option>
+                        <option value="Isekai">Isekai</option>
+                        <option value="SoLife">Slice of Life</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Horror">Horror</option>
                     </select>
                     
                 </div>

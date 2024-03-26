@@ -10,7 +10,7 @@ import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 
 export default function TabPageSlide({title}) {
 
-    // var windowWidth = window.innerWidth / 260;
+    var windowWidth = document.documentElement.clientWidth / 260;
 
     const linkStyle = {
         textDecoration: "none",
@@ -20,7 +20,7 @@ export default function TabPageSlide({title}) {
         <div className='slide-container'>
             <p>{title}</p>
             <Swiper
-                slidesPerView={6}
+                slidesPerView={windowWidth}
                 spaceBetween={30}
                 freeMode={true}
                 modules={[FreeMode, Pagination]}
