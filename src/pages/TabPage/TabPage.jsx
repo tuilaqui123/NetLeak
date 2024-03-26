@@ -1,20 +1,26 @@
 import Slide from '../../components/Slide/Slide';
-import Thumbnail from '../../components/Thumbnail/Thumbnail';
-import './TabPage.css'
-import React from 'react'
+import TabPageThumbnail from '../../components/TabPageThumbnail/TabPageThumbnail';
+import Navbar from '../../components/Navbar/Navbar';
+import './TabPage.scss'
+import React, { useState } from 'react'
+import TabPageSlide from '../../components/TabPageSlide/TabPageSlide';
+import TopSlide from '../../components/TabPageSlide/TopSlide';
+import Genre from './Genre/Genre';
 
 const TabPage = () => {
+    const [genre, setGenre]= useState ('');
+
     return (
         <div className='tabpage-container'>
-            <p className='tab-title'>Phim</p>
-            {/* <Thumbnail /> */}
+            
+            <Navbar/>
+            
+            <TabPageThumbnail Genre={genre} setGenre={setGenre}/>
+
+            
             <div className='movies-slide'>
-                <Slide title={'Thịnh hành'} />
-                <Slide title={'Anime'} />
-                <Slide title={'TV Shows'} />
-                <Slide title={'Giật gân'} />
-                <Slide title={'Hành động'} />
-                <Slide title={'Hài hước'} />
+                <Genre Genre={genre}/>
+               
             </div>
         </div>
     );
