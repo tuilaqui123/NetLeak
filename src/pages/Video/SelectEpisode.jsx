@@ -23,9 +23,9 @@ function SelectEpisode({ currentFilm, heightVideo }) {
             <div className='flex '>
                 <div className='flex flex-1 '>
                     <div className={`${pickBtn == 1 ? 'bg-[#2d2f34]/[1]' : 'bg-[#2d2f34]/[.4]'}  h-10 flex-1`}>
-                        <p onClick={() => { setPickBtn(1) }} className={`${pickBtn == 1 ? 'text-[#FF0000] font-bold' : ''}
+                        <p onClick={() => { setPickBtn(1) }} className={`${pickBtn == 1 ? 'text-[#ff1e00] font-bold' : 'text-white'}
                          hover:text-[#FF0000] hover:transition-colors hover:cursor-pointer leading-10 text-center text-[16px]
-                          opacity-70 text-white`}>Chọn tập</p>
+                          opacity-70`}>Chọn tập</p>
                     </div>
 
                     <div className={`${pickBtn == 1 ? 'border-b-[#2d2f34]/[1]' : 'border-b-[#2d2f34]/[.4]'}
@@ -39,9 +39,9 @@ function SelectEpisode({ currentFilm, heightVideo }) {
                     </div>
 
                     <div className={`${pickBtn == 2 ? 'bg-[#2d2f34]/[1]' : 'bg-[#2d2f34]/[.4]'}  flex-1 h-10`}>
-                        <p onClick={() => { setPickBtn(2) }} className={`${pickBtn == 2 ? 'text-[#ff1e00] font-bold' : ''} 
+                        <p onClick={() => { setPickBtn(2) }} className={`${pickBtn == 2 ? 'text-[#ff1e00] font-bold' : 'text-white'} 
                         hover:text-[#FF0000] hover:transition-colors hover:cursor-pointer 
-                        leading-10 text-center text-[16px] opacity-70 text-white`}
+                        leading-10 text-center text-[16px] opacity-70`}
                         >
                             Nội dung đặc sắc
                         </p>
@@ -86,7 +86,7 @@ function SelectEpisode({ currentFilm, heightVideo }) {
                 {pickFilmLists == 2 && <div className='pl-2 mt-2'>
                     {currentFilm.episodes.map((episode, index) => (
                         <div key={index} className='flex items-center mt-4 mb-4 hover:bg-[#2d2f34] hover:cursor-pointer'>
-                            <img src={currentFilm.imageFilm} className='w-full h-[60px] rounded-[7px] flex-[2] mr-3 object-cover' alt="Ảnh phim" />
+                            <img loading='lazy' src={currentFilm.imageFilm} className='w-full h-[60px] rounded-[7px] flex-[2] mr-3 object-cover' alt="Ảnh phim" />
 
                             <p className='text-white text-[13px] flex-[3] mr-6'>{episode.name}</p>
                         </div>

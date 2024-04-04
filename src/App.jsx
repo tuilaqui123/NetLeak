@@ -18,8 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
-            {/* <Route path="/" element={<Welcome />} /> */}
-            <Route path="/" element={<Video />} />
+            <Route path="/" element={<Home />} />
             <Route path="/movie/:id" element={<Movie />} />
             <Route path="/tab/:id" element={<TabPage />} />
             <Route path="/video/:id" element={<Video />} />

@@ -16,10 +16,6 @@ import FilmInfor from './FilmInfor'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faAngleUp, faAngleDown, faBookmark, faShareNodes, faPlay } from '@fortawesome/free-solid-svg-icons';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { Navigation } from 'swiper/modules'
-import 'swiper/css/navigation';
 
 const MAX_HEIGHT_VIDEO = '600px'
 
@@ -96,6 +92,11 @@ const Video = () => {
             }
 
         });
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize)
+            window.removeEventListener('scroll', handleWindowScroll)
+        }
     }, [])
 
 
@@ -155,7 +156,7 @@ const Video = () => {
             <Navbar />
 
             <div ref={watchContainerElement} className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
-                <div ref={videoContainer} className={` `}>
+                <div ref={videoContainer} className='mr-4'>
                     <div className='w-full'>
                         <video
                             ref={video}
@@ -264,7 +265,7 @@ const Video = () => {
                             behavior: 'smooth'
                         });
                     }}
-                    className='hover:cursor-pointer justify-center items-center 
+                    className='hover:cursor-pointer hover:brightness-[1.25] transition-all justify-center items-center 
                     fixed bottom-[100px] right-[100px] bg-[#24262B] 
                     rounded-[50%] w-[50px] h-[50px] hidden lg:flex'>
                     <FontAwesomeIcon icon={faAngleUp} size='xl' className=' text-[#FF4500]' />
