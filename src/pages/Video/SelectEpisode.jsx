@@ -1,26 +1,49 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, forwardRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faTableCells } from '@fortawesome/free-solid-svg-icons';
 
-function SelectEpisode({ currentFilm, heightVideo }) {
+function SelectEpisode({ currentFilm }, ref) {
     const [pickBtn, setPickBtn] = useState(1)
     const [pickFilmLists, setFilmLists] = useState(1)
     const [typeFilmLists, setTypeFilmLists] = useState(true)
 
     //render
-    const selectEpisode = useRef()
     const episodeContainer = useRef()
 
-    useEffect(() => {
-        selectEpisode.current.style.height = `calc(100% - ${heightVideo}px)`
+    const typeChoseEpisodeContainer = useRef()
+    const typeSelectEpisodeContainer = useRef()
+    const typeSpecialContentContainer = useRef()
 
-        episodeContainer.current.style.height = `calc(100% - (${episodeContainer.current.offsetTop}px - ${selectEpisode.current.offsetTop}px) - 20px)`
-    }, [heightVideo])
+    useEffect(() => {
+        if (pickBtn == 1) {
+            typeSelectEpisodeContainer.current.style.height = `calc(100% - (${typeSelectEpisodeContainer.current.offsetTop}px - ${typeChoseEpisodeContainer.current.offsetTop}px))`
+
+            episodeContainer.current.style.height = `calc(100% - (${episodeContainer.current.offsetTop}px - ${typeChoseEpisodeContainer.current.offsetTop}px - ${typeChoseEpisodeContainer.current.offsetHeight}px))`
+        }
+
+    }, [pickBtn])
     //
 
+    useEffect(() => {
+        const handleWindowResize = () => {
+            if (pickBtn == 1) {
+                typeSelectEpisodeContainer.current.style.height = `calc(100% - (${typeSelectEpisodeContainer.current.offsetTop}px - ${typeChoseEpisodeContainer.current.offsetTop}px))`
+    
+                episodeContainer.current.style.height = `calc(100% - (${episodeContainer.current.offsetTop}px - ${typeChoseEpisodeContainer.current.offsetTop}px - ${typeChoseEpisodeContainer.current.offsetHeight}px))`
+            }
+        }
+
+        window.addEventListener('resize', handleWindowResize)
+
+        return () =>{
+            window.removeEventListener('resize', handleWindowResize)
+        }
+    },[])
+
     return (
-        <div ref={selectEpisode} className=' w-full bg-[#1A1C22]'>
-            <div className='flex '>
+        <div ref={ref} className=' w-full bg-[#1A1C22] h-full lg:h-auto'>
+            {/* <div ref={selectEpisode} className=' w-full bg-[#1A1C22]'> */}
+            <div className='flex' ref={typeChoseEpisodeContainer}>
                 <div className='flex flex-1 '>
                     <div className={`${pickBtn == 1 ? 'bg-[#2d2f34]/[1]' : 'bg-[#2d2f34]/[.4]'}  h-10 flex-1`}>
                         <p onClick={() => { setPickBtn(1) }} className={`${pickBtn == 1 ? 'text-[#ff1e00] font-bold' : 'text-white'}
@@ -49,52 +72,61 @@ function SelectEpisode({ currentFilm, heightVideo }) {
                 </div>
             </div>
 
-            <div className='flex justify-between px-4 mb-6 mt-4'>
-                <p className='text-[13px] text-white'>Chọn tập {currentFilm.episodes[0].number} - {currentFilm.episodes.length}</p>
+            {pickBtn == 1 &&
+                <div ref={typeSelectEpisodeContainer}>
+                    <div className='flex justify-between px-4 mb-6 mt-4'>
+                        <p className='text-[13px] text-white'>Chọn tập {currentFilm.episodes[0].number} - {currentFilm.episodes.length}</p>
 
-                {typeFilmLists ?    
-                    <FontAwesomeIcon
-                        onClick={() => {
-                            setTypeFilmLists(!typeFilmLists)
-                            setFilmLists(2)
-                        }}
-                        className=' hover:cursor-pointer opacity-60 text-white' icon={faList} size="lg"
-                    />
-                    :
-                    <FontAwesomeIcon
-                        onClick={() => {
-                            setTypeFilmLists(!typeFilmLists)
-                            setFilmLists(1)
-                        }}
-                        icon={faTableCells}
-                        className=' hover:cursor-pointer opacity-60 text-white' size="lg"
-                    />
-                }
-            </div>
+                        {typeFilmLists ?
+                            <FontAwesomeIcon
+                                onClick={() => {
+                                    setTypeFilmLists(!typeFilmLists)
+                                    setFilmLists(2)
+                                }}
+                                className=' hover:cursor-pointer opacity-60 text-white' icon={faList} size="lg"
+                            />
+                            :
+                            <FontAwesomeIcon
+                                onClick={() => {
+                                    setTypeFilmLists(!typeFilmLists)
+                                    setFilmLists(1)
+                                }}
+                                icon={faTableCells}
+                                className=' hover:cursor-pointer opacity-60 text-white' size="lg"
+                            />
+                        }
+                    </div>
 
-            <div ref={episodeContainer} className='overflow-y-scroll'>
-                <p className='text-[13px] opacity-55 px-4 text-white'>Thành viên VIP xem toàn tập</p>
 
-                {pickFilmLists == 1 && <div className=' grid grid-cols-10 md:grid-cols-12 lg:grid-cols-5 mt-3 gap-y-4 pl-2'>
-                    {currentFilm.episodes.map((episode, index) => (
-                        <button className='text-white bg-[#2d2f34] w-9 h-9 lg:w-10 lg:h-10 rounded-md hover:text-[red] hover:transition-colors' key={index}>{index + 1}</button>
-                    ))}
+                    <div ref={episodeContainer} className='overflow-y-scroll'>
+                        <p className='text-[13px] opacity-55 px-4 text-white'>Thành viên VIP xem toàn tập</p>
 
-                </div>
-                }
+                        {pickFilmLists == 1 && <div className=' grid grid-cols-10 md:grid-cols-12 lg:grid-cols-5 mt-3 gap-y-4 pl-2'>
+                            {currentFilm.episodes.map((episode, index) => (
+                                <button className='hover:brightness-[1.5] hover:text-[#A52A2A] text-white bg-[#2d2f34] w-9 h-9 lg:w-10 lg:h-10 rounded-md hover:transition-colors font-bold' key={index}>{index + 1}</button>
+                            ))}
 
-                {pickFilmLists == 2 && <div className='pl-2 mt-2'>
-                    {currentFilm.episodes.map((episode, index) => (
-                        <div key={index} className='flex items-center mt-4 mb-4 hover:bg-[#2d2f34] hover:cursor-pointer'>
-                            <img loading='lazy' src={currentFilm.imageFilm} className='w-full h-[60px] rounded-[7px] flex-[2] mr-3 object-cover' alt="Ảnh phim" />
-
-                            <p className='text-white text-[13px] flex-[3] mr-6'>{episode.name}</p>
                         </div>
-                    ))}
+                        }
+
+                        {pickFilmLists == 2 && <div className='pl-2 mt-2'>
+                            {currentFilm.episodes.map((episode, index) => (
+                                <div key={index} className='flex items-center mt-4 mb-4 hover:bg-[#2d2f34] hover:cursor-pointer'>
+                                    <img loading='lazy' src={currentFilm.imageFilm} className='w-full h-[60px] rounded-[7px] flex-[2] mr-3 object-cover' alt="Ảnh phim" />
+
+                                    <p className='text-white text-[13px] flex-[3] mr-6'>{episode.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                        }
+                    </div>
                 </div>
-                }
-            </div>
+            }
+
+            {pickBtn == 2 && <div>
+                <p className=' text-white text-center'>Anh Phát chúa mõm khing người</p>
+            </div>}
         </div>
     )
 }
-export default SelectEpisode
+export default forwardRef(SelectEpisode)

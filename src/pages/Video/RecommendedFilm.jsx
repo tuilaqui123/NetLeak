@@ -5,34 +5,102 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faPlay, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 function RecommendedFilm({ otherFilms, currentFilm }) {
-    const [swiperElementPC, setSwiperElementPC] = useState({})
-    const [swiperElementTablet, setSwiperElementTablet] = useState({})
-    const [swiperElementMobile, setSwiperElementMobile] = useState({})
+    const [swiperElementPC, setSwiperElementPC] = useState(null)
+    const [swiperElementTablet, setSwiperElementTablet] = useState(null)
+    const [swiperElementMobile, setSwiperElementMobile] = useState(null)
+
+    const [showNextSlideBtnPC, setShowNextSlideBtnPC] = useState(null)
+    const [showPrevSlideBtnPC, setShowPrevSlideBtnPC] = useState(null)
+
+    const [showNextSlideBtnTablet, setShowNextSlideBtnTablet] = useState(null)
+    const [showPrevSlideBtnTablet, setShowPrevSlideBtnTablet] = useState(null)
+
+    const [showNextSlideBtnMobile, setShowNextSlideBtnMobile] = useState(null)
+    const [showPrevSlideBtnMobile, setShowPrevSlideBtnMobile] = useState(null)
+
+    //khoi tao 2 cai nut
+    useEffect(() => {
+        if (swiperElementPC && swiperElementTablet && swiperElementMobile) {
+            setShowNextSlideBtnPC(!swiperElementPC.isEnd)
+            setShowPrevSlideBtnPC(!swiperElementPC.isBeginning)
+
+            setShowNextSlideBtnTablet(!swiperElementTablet.isEnd)
+            setShowPrevSlideBtnTablet(!swiperElementTablet.isBeginning)
+
+            setShowNextSlideBtnMobile(!swiperElementMobile.isEnd)
+            setShowPrevSlideBtnMobile(!swiperElementMobile.isBeginning)
+        }
+    }, [swiperElementPC, swiperElementTablet, swiperElementMobile])
 
     useEffect(() => {
         const handleWindowResize = () => {
             swiperElementPC.slideTo(0)
             swiperElementTablet.slideTo(0)
             swiperElementMobile.slideTo(0)
+    
+            setShowNextSlideBtnPC(!swiperElementPC.isEnd)
+            setShowPrevSlideBtnPC(!swiperElementPC.isBeginning)
+            setShowNextSlideBtnTablet(!swiperElementTablet.isEnd)
+            setShowPrevSlideBtnTablet(!swiperElementTablet.isBeginning)
+            setShowNextSlideBtnMobile(!swiperElementMobile.isEnd)
+            setShowPrevSlideBtnMobile(!swiperElementMobile.isBeginning)
         }
 
-        window.addEventListener('resize', handleWindowResize)
+        if (swiperElementPC && swiperElementTablet && swiperElementMobile) {
+            window.addEventListener('resize', handleWindowResize)
+        }
 
         return () => {
             window.removeEventListener('resize', handleWindowResize)
         }
-    })
+    }, [swiperElementPC, swiperElementTablet, swiperElementMobile])
 
     const handleSlideNext = () => {
         swiperElementPC.slideNext()
         swiperElementTablet.slideNext()
         swiperElementMobile.slideNext()
+
+        if (swiperElementPC.isEnd)
+            setShowNextSlideBtnPC(false)
+
+        if (!swiperElementPC.isBeginning)
+            setShowPrevSlideBtnPC(true)
+
+        if (swiperElementTablet.isEnd)
+            setShowNextSlideBtnTablet(false)
+
+        if (!swiperElementTablet.isBeginning)
+            setShowPrevSlideBtnTablet(true)
+
+        if (swiperElementMobile.isEnd)
+            setShowNextSlideBtnMobile(false)
+
+        if (!swiperElementMobile.isBeginning)
+            setShowPrevSlideBtnMobile(true)
     }
 
     const handleSlidePrev = () => {
         swiperElementPC.slidePrev()
         swiperElementTablet.slidePrev()
         swiperElementMobile.slidePrev()
+
+        if (swiperElementPC.isBeginning)
+            setShowPrevSlideBtnPC(false)
+
+        if (!swiperElementPC.isEnd)
+            setShowNextSlideBtnPC(true)
+
+        if (swiperElementTablet.isBeginning)
+            setShowPrevSlideBtnTablet(false)
+
+        if (!swiperElementTablet.isEnd)
+            setShowNextSlideBtnTablet(true)
+
+        if (swiperElementMobile.isBeginning)
+            setShowPrevSlideBtnMobile(false)
+
+        if (!swiperElementMobile.isEnd)
+            setShowNextSlideBtnMobile(true)
     }
 
     return (
@@ -83,18 +151,20 @@ function RecommendedFilm({ otherFilms, currentFilm }) {
                         ))}
                     </Swiper>
 
-                    <FontAwesomeIcon
+                    {showPrevSlideBtnPC && <FontAwesomeIcon
                         onClick={handleSlidePrev}
                         icon={faChevronLeft}
                         size='2x'
                         className={`text-[#B22222] z-10 absolute left-[0] top-[35%] bottom-[50%] hover:cursor-pointer p-1`}
                     />
-                    <FontAwesomeIcon
+                    }
+                    {showNextSlideBtnPC && <FontAwesomeIcon
                         onClick={handleSlideNext}
                         icon={faChevronRight}
                         size='2x'
                         className={`text-[#B22222] z-10 absolute right-[0] top-[35%] bottom-[50%] hover:cursor-pointer p-1`}
                     />
+                    }
                 </div>
 
                 {/* tablet */}
@@ -139,18 +209,20 @@ function RecommendedFilm({ otherFilms, currentFilm }) {
                         ))}
                     </Swiper>
 
-                    <FontAwesomeIcon
+                    {showPrevSlideBtnTablet && <FontAwesomeIcon
                         onClick={handleSlidePrev}
                         icon={faChevronLeft}
                         size='3x'
                         className='text-[#B22222] z-10 absolute left-[0] top-[30%] bottom-[50%] hover:cursor-pointer p-1'
                     />
-                    <FontAwesomeIcon
+                    }
+                    {showNextSlideBtnTablet && <FontAwesomeIcon
                         onClick={handleSlideNext}
                         icon={faChevronRight}
                         size='3x'
                         className='text-[#B22222] z-10 absolute right-[0] top-[30%] bottom-[50%] hover:cursor-pointer p-1'
                     />
+                    }
                 </div>
 
                 {/* moblie */}
@@ -180,7 +252,7 @@ function RecommendedFilm({ otherFilms, currentFilm }) {
                                             </div>
 
                                             <div className=' flex md:hidden group-hover:flex absolute bottom-[15px] left-[10px] right-[10px] justify-between items-center'>
-                                                <p>{currentFilm.episodes.length} tập</p>
+                                                <p className='text-[13px] font-bold'>{currentFilm.episodes.length} tập</p>
 
                                                 <div className='opacity-90 hover:opacity-100 bg-[white] rounded-[50%] w-8 h-8 flex items-center justify-center'>
                                                     <FontAwesomeIcon icon={faBookmark} size='sm' className=' text-[red]' />
@@ -195,18 +267,20 @@ function RecommendedFilm({ otherFilms, currentFilm }) {
                         ))}
                     </Swiper>
 
-                    <FontAwesomeIcon
+                    {showPrevSlideBtnMobile && <FontAwesomeIcon
                         onClick={handleSlidePrev}
                         icon={faChevronLeft}
                         size='3x'
                         className='text-[#B22222] z-10 absolute left-[0] top-[25%] bottom-[50%] hover:cursor-pointer p-1'
                     />
-                    <FontAwesomeIcon
+                    }
+                    {showNextSlideBtnMobile && <FontAwesomeIcon
                         onClick={handleSlideNext}
                         icon={faChevronRight}
                         size='3x'
                         className='text-[#B22222] z-10 absolute right-[0] top-[25%] bottom-[50%] hover:cursor-pointer p-1'
                     />
+                    }
                 </div>
 
             </div>
