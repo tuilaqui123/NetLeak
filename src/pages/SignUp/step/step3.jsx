@@ -10,11 +10,11 @@ const Step3 = () => {
             <b>An toàn để an tâm.</b>
             <b>Hủy trực tuyến dễ dàng.</b>
             <div className='step3-button-container'>
-                <button className='step3-button'>
-                    <p>Thẻ ghi nợ hoặc thẻ tín dụng</p>
+                <button className='w-full border border-gray-400 h-14 rounded-lg px-3 hover:border-black mb-5'>
+                    <p className='text-left'>Thẻ ghi nợ hoặc thẻ tín dụng</p>
                 </button>
-                <button className='step3-button'>
-                    <p>Ví điện tử</p>
+                <button className='w-full border border-gray-400 h-14 rounded-lg px-3 hover:border-black'>
+                    <p className='text-left'>Thanh toán trực tuyến</p>
                 </button>
             </div>
         </div>
