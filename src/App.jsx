@@ -22,6 +22,7 @@ function App() {
             <Route path="/tab/:id" element={<TabPage />} />
             <Route path="/video/:id" element={<Video />} />
             <Route path="/welcome" element={<Welcome />} />
+            <Route path="/user" element={<User />} />
           </Route>
         </Routes>
       </BrowserRouter>
