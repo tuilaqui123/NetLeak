@@ -156,7 +156,33 @@ const User = () => {
           </div>
         </div>
       </div>
-      <Modal isVisible={showModal} onClose={()=>setShowModal(false)} />
+      <Modal isVisible={showModal} onClose={()=>setShowModal(false)}>
+        <div className="py-6 px-6 lg:px-8 text-left">
+          <h3 className="mb-4 text-xl font-medium text-gray-900">
+            Chỉnh sửa thông tin cá nhân
+          </h3>
+          <form className="space-y-6" action="#">
+            <div>
+              <label
+              for="email"
+              className="block mb-2 text-s font-medium text-gray-900"
+              >Họ và tên</label>
+              <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Ngô Võ Quang Minh"
+              className="bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              />
+              <button
+              type="submit"
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 rounded-lg p-2.5 mt-4 focus:ring-blue-500 focus:border-blue-500"
+              >Gửi</button>
+            </div>
+          </form>
+
+        </div>
+      </Modal>
     </div>
   );
 };
