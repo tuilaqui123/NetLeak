@@ -11,9 +11,16 @@ import {
   CaretDownOutlined,
   ArrowLeftOutlined,
 } from "@ant-design/icons";
+import { Link, NavLink } from 'react-router-dom';
+import Modal from "./Modal";
 
 const User = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userDropdown, setUserDropdown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  function toogleUserDropdown() {
+    setUserDropdown(!userDropdown)
+};
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -35,11 +42,13 @@ const User = () => {
         <MenuOutlined classID="px-2 rounded-md" />
         </span> */}
         <div className="sidebar ${isSidebarOpen ? 'left-[0px]' : 'left-[-300px]'} relative  h-screen lg:left-0 p-2  w-[300px] overflow-y-auto text-center">
-          
-        <div className="p-2.5 mt-1 flex items-center cursor-pointer pt-5">
+
+        <Link to="/" style={{textDecoration: "none"}}><Link />  
+        <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
             <ArrowLeftOutlined />
               <span className="ml-4 text-[14px] font-semibold">Quay về trang chủ</span>
             </div>
+            </Link>
 
           <div className="text-black text-xl">
             <div className="p-2.5 mt-4 flex items-center cursor-pointer">
@@ -53,15 +62,15 @@ const User = () => {
                 onClick={() => toggleSidebar()}
               />
             </div>
-            <hr className="my-2  my-5" />
+            <hr className="  my-5" />
           </div>
 
           
 
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
+          <NavLink className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-[#bbbbbb] hover:bg-[#bbbbbb] text-black">
             <UserOutlined />
             <span className="text-[15px] ml-4 font-semibold">Tài Khoản</span>
-          </div>
+          </NavLink>
 
           <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
             <HistoryOutlined />
@@ -82,7 +91,7 @@ const User = () => {
             </span>
           </div>
 
-          <hr className="my-2  my-5" />
+          <hr className=" my-5" />
 
           <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
             <LogoutOutlined />
@@ -111,7 +120,7 @@ const User = () => {
                     <span className="font-semibold">123456789</span>
                   </div>
                 </div>
-                <span className="font-semibold cursor-pointer">Chỉnh sửa</span>
+                <span className="font-semibold cursor-pointer" onClick={()=>setShowModal(true)}>Chỉnh sửa</span>
               </div>
               <div className="py-3 pl-7 font-semibold text-[20px] mt-3 ">
                 Tài khoản và bảo mật
@@ -147,6 +156,7 @@ const User = () => {
           </div>
         </div>
       </div>
+      <Modal isVisible={showModal} onClose={()=>setShowModal(false)} />
     </div>
   );
 };

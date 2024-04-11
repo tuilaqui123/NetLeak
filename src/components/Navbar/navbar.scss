@@ -131,5 +131,33 @@
         }
       }
     }
+    .userDropdown-container{
+      position: absolute;
+      width: 150%;
+      left: -50%;
+      top: 30px;
+      background-color: #232323;
+      border-radius: 5px;
+      max-height: 500px;
+      overflow-y: scroll;
+      padding: 10px;
+      .userDropdown-access {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        padding-top: 10px;
+        padding-left: 0px;
+        margin-bottom: 15px;
+        padding-right: 0px;
+        h3 {
+          color: white;
+          margin: 0;
+          margin-bottom: 10px;
+          font-weight: 900;
+        }
+      }
+      
+    }
   }
 }
