@@ -19,7 +19,7 @@ const TabPage = () => {
 
             
             <div className='movies-slide'>
-                <Genre Genre={genre}/>
+                <Genre Genre={genre} setGenre={setGenre}/>
                
             </div>
         </div>
