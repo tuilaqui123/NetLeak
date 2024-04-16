@@ -37,6 +37,9 @@ function IWantEvaluate({ }) {
                                     onMouseLeave={() => {
                                         setNumberStar(0)
                                     }}
+                                    onClick={() =>{
+                                        setInvisibleEvaluateBlock(true)
+                                    }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
 
@@ -51,6 +54,9 @@ function IWantEvaluate({ }) {
 
                                     onMouseLeave={() => {
                                         setNumberStar(0)
+                                    }}
+                                    onClick={() =>{
+                                        setInvisibleEvaluateBlock(true)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -67,6 +73,9 @@ function IWantEvaluate({ }) {
                                     onMouseLeave={() => {
                                         setNumberStar(0)
                                     }}
+                                    onClick={() =>{
+                                        setInvisibleEvaluateBlock(true)
+                                    }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
 
@@ -82,6 +91,9 @@ function IWantEvaluate({ }) {
                                     onMouseLeave={() => {
                                         setNumberStar(0)
                                     }}
+                                    onClick={() =>{
+                                        setInvisibleEvaluateBlock(true)
+                                    }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
 
@@ -96,6 +108,9 @@ function IWantEvaluate({ }) {
 
                                     onMouseLeave={() => {
                                         setNumberStar(0)
+                                    }}
+                                    onClick={() =>{
+                                        setInvisibleEvaluateBlock(true)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-[red]' : 'text-[#999999]'} `}
@@ -125,7 +140,7 @@ function IWantEvaluate({ }) {
             </div>
 
             {/*mobile, tablet*/}
-            <div className='relative lg:hidden isParentEvent'>
+            <div className='relative lg:hidden'>
                 <p
                     onClick={() => { setInvisibleEvaluateBlock(false) }}
                     className=' text-[13px] md:text-[15px] lg:text-[15px] ml-3 text-[#FF4500] hover:cursor-pointer '

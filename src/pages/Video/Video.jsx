@@ -96,6 +96,11 @@ const Video = () => {
                 { actorName: 'Trần Nhựt Phát', image: m1 },
                 { actorName: 'Trần Tuấn Minh', image: m1 },
                 { actorName: 'Nguyễn Thị Thu Hương', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
             ]
 
         }
