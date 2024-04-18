@@ -1,0 +1,94 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* tự động điều chỉnh số cột */
+  grid-gap: 10px;
+  /* khoảng cách giữa các ô */
+  position: relative;
+
+  p {
+    margin-left: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+
+  }
+}
+
+.card {
+  position: relative;
+
+  /* Đặt vị trí tương đối cho card */
+  .film-title {
+    transform: translateY(100px);
+  }
+
+  .film-description {
+    opacity: 0;
+  }
+}
+
+.card img {
+  width: 95%;
+  /* ảnh chiếm toàn bộ kích thước của ô */
+  height: auto;
+  cursor: pointer;
+  transition: 0.3s;
+  filter: brightness(95%);
+  transform: translateY(100px);
+
+
+
+}
+
+.card.hovered img {
+  transform: translateY(0);
+  // transform: scale(1.1);
+  // transition: 0.3s;
+  border-radius: 10px;
+
+
+  width: 150%;
+  z-index: 1;
+
+  &:hover {
+    transform: scale(1.0);
+    filter: brightness(110%);
+
+
+  }
+}
+
+.card.hovered {
+  z-index: 2;
+  width: 150%;
+  background-color: black;
+  border-radius: 10px;
+  transform: translateX(-15%);
+
+  .film-title {
+    opacity: 0;
+  }
+
+  .flim-description {
+    z-index: 1;
+    background-color: aliceblue;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-color: red;
+    border-width: 1px;
+
+    p {
+      color: black;
+    }
+  }
+}
+
+.genre-title {
+  font-size: 30px !important;
+  margin-left: 10px;
+  color: white;
+
+  font-weight: 700;
+
+}
