@@ -31,7 +31,7 @@ function SideBar() {
     </div>
     {/* ${isSidebarOpen ? 'left-[0px]' : 'left-[-300px]'} */}
     {isSidebarOpen && (
-    <div className={`sidebar  relative  h-screen lg:left-0 p-2  w-[300px] overflow-y-auto text-center`}>
+    <div className={`sidebar absolute bg-[#fafafa]  lg:relative  h-screen lg:left-0 p-2  w-[300px] overflow-y-auto text-center`}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Link />
             <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
