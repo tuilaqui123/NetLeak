@@ -1,3 +1,4 @@
+import { Slide } from 'react-toastify'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
@@ -9,6 +10,7 @@ import User from './pages/User/User'
 import Video from './pages/Video/Video'
 import Welcome from './pages/Welcome/Welcome'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import History from './pages/User/History'
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
             <Route path="/tab/:id" element={<TabPage />} />
             <Route path="/video/:id" element={<Video />} />
             <Route path="/welcome" element={<Welcome />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/history" element={<History />} />
           </Route>
         </Routes>
       </BrowserRouter>

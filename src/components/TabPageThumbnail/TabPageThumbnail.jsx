@@ -1,3 +1,4 @@
+
 import "./TabPageThumbnail.scss";
 import React, { useEffect, useState } from "react";
 import thumb_vid from "../../assets/video/Violet_trailer.mp4";
@@ -43,6 +44,7 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
         Your browser does not support the video tag.
       </video> */}
 
+
       <ReactPlayer
         url="https://www.youtube.com/watch?v=mLW35YMzELE" // đổi thumb-video tại đây
         className="thumb-pic"
@@ -57,6 +59,7 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
           },
         }}
       />
+
 
       <div className="thumbnail-content">
         <div className="tab-title-container">
@@ -92,7 +95,6 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
               <img src={top10} alt="top10" />
               <p>#1 DANH SÁCH THỊNH HÀNH</p>
             </div>
-
             <div className="access">
               <button className="play">
                 <FontAwesomeIcon icon={faPlay} className="icon" />

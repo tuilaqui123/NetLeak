@@ -1,4 +1,6 @@
-[
+import React from "react";
+
+const OPT = [
     {
         "background": {
             "bg1": "rgb(200,0,0)",
@@ -144,3 +146,5 @@
         ]
     }
 ]
+
+export default OPT;

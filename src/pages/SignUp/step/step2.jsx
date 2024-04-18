@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import './step.css'
 import React from 'react'
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -20,9 +21,9 @@ const Step2 = () => {
                 <FontAwesomeIcon icon={faCheck} className='icon' />
                 <p>Không quảng cáo, không phụ phí. Luôn luôn như vậy.</p>
             </div>
-            <button className='step2-button'>
+            <Link to="/login/payment" className='btn'>
                 <p>Tiếp theo</p>
-            </button>
+            </Link>
         </div>
     );
 }
