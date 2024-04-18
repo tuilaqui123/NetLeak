@@ -49,7 +49,7 @@ export default function TopSlide() {
             <img src={n1} className="number"></img>
           </SwiperSlide>
           <SwiperSlide className="swiper-Slide">
-            <Link to="/movie/:id" style={linkStyle}>
+            <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
               <img src={m1} alt="movie" />
             </Link>
             <p className="film-name">Violet Evergarden</p>
@@ -59,7 +59,7 @@ export default function TopSlide() {
           </SwiperSlide>
 
           <SwiperSlide className="swiper-Slide">
-            <Link to="/movie/:id" style={linkStyle}>
+            <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
               <img src={m1} alt="movie" />
             </Link>
             <p className="film-name">Violet Evergarden</p>
@@ -68,20 +68,20 @@ export default function TopSlide() {
             <img src={n3} alt="movie" className="number " />
           </SwiperSlide>
           <SwiperSlide className="swiper-Slide">
-          <Link to="/movie/:id" style={linkStyle}>
+          <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
             <img src={m1} alt="movie" />
             <p className="film-name">Violet Evergarden</p>
             </Link>
           </SwiperSlide>
 
         <SwiperSlide className="swiper-Slide">
-        <Link to="/movie/:id" style={linkStyle}>
+        <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
           <img src={m1} alt="movie" />
           <p className="film-name">Violet Evergarden</p>
           </Link>
         </SwiperSlide>
         <SwiperSlide className="swiper-Slide">
-        <Link to="/movie/:id" style={linkStyle}>
+        <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
           <img src={m1} alt="movie" />
           <p className="film-name">Violet Evergarden</p>
           </Link>

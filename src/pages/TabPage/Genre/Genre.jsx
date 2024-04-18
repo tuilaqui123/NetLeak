@@ -10,7 +10,7 @@ export default function Genre({Genre, setGenre}) {
 
         <div>
            <TopSlide/>
-                <TabPageSlide title={'Anime'} setGenre={setGenre}/>
+                <TabPageSlide key = {1} title={'Anime'} setGenre={setGenre}/>
                 <TabPageSlide title={'Horror'} setGenre={setGenre}/>
                 <TabPageSlide title={'Shoujo'} setGenre={setGenre}/>
                 <TabPageSlide title={'Shounen'} setGenre={setGenre}/>
@@ -24,7 +24,7 @@ export default function Genre({Genre, setGenre}) {
       )}
 
       {
-        Genre!= "" &&   <GenreSlide Genre={Genre} /> // Khi chọn thể loại, sẽ hiện thành phần này
+        Genre!= "" &&   <GenreSlide Genre={Genre} setGerne={setGenre} /> // Khi chọn thể loại, sẽ hiện thành phần này
       }
     
     </div>
