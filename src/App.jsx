@@ -1,4 +1,3 @@
-import { Slide } from 'react-toastify'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
@@ -11,6 +10,7 @@ import Video from './pages/Video/Video'
 import Welcome from './pages/Welcome/Welcome'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Search from './components/Search/Search'
 function App() {
 
   return (
@@ -24,6 +24,12 @@ function App() {
             <Route path="/video/:id" element={<Video />} />
             <Route path="/welcome" element={<Welcome />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+            
+            <Route path="/search" element={<Search />} />
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
             <Route path="/user" element={<User />} />
             <Route path="/history" element={<History />} />
 =======

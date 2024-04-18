@@ -1,5 +1,41 @@
 import './Video.css'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+import React, { useEffect } from 'react'
+import { Player } from 'video-react'
+import ReactPlayer from 'react-player'
+import video1 from '../../assets/video/video.mp4'
+
+const Video = () => {
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var elem = document.getElementById("myvideo");
+
+    /* Function to open fullscreen mode */
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+            console.log(elem.requestFullscreen)
+
+            elem.requestFullscreen();
+        }
+        console.log(elem.requestFullscreen)
+    }
+    return (
+        <div className='video-container'>
+            <button onClick={openFullscreen}>Open Video in Fullscreen Mode</button>
+            <video
+                width="100%"
+                height="100%"
+                controls
+                id='myvideo'
+            >
+                <source src={video1} type='video/mp4' />
+                <source src={video1} type='video/mp4' />
+            </video>
+
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
 import React, { useEffect, useRef, useState } from 'react'
 
 import video1 from '../../assets/video/video.mp4'
@@ -249,6 +285,7 @@ const Video = () => {
                     <FontAwesomeIcon icon={faAngleUp} size='xl' className=' text-[#FF4500]' />
                 </div>
             }
+<<<<<<< HEAD
 =======
 import React, { useEffect } from 'react'
 import { Player } from 'video-react'
@@ -282,6 +319,9 @@ const Video = () => {
                 <source src={video1} type='video/mp4' />
             </video>
 >>>>>>> parent of 91b2ac3 (Merge branch 'main' into TMinh-Search)
+=======
+
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
         </div>
     );
 }

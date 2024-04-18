@@ -1,12 +1,9 @@
 .tabpage-container {
+  background-color: #232323;
   width: 100%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #232323;
   position: relative;
-  backdrop-filter: blur(100px);
+  padding-top: 100px;
   .tab-title {
     margin: 0;
     margin-left: 70px;
@@ -15,6 +12,10 @@
     color: white;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
   .movies-slide {
     z-index: 3;
     margin-left: 10%;
@@ -24,6 +25,10 @@
     width: 100%;
     margin-top: -100px;
   }
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 91b2ac3 (Merge branch 'main' into TMinh-Search)
+=======
+
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
 }

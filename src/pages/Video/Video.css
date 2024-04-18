@@ -1,4 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+.video-container{width:100%;height:100vh;background-color:#fff;overflow:hidden}
+
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
 ::-webkit-scrollbar {
     width: 6px;
   }
@@ -24,6 +30,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+<<<<<<< HEAD
 =======
 .video-container{width:100%;height:100vh;background-color:#fff;overflow:hidden}
 >>>>>>> parent of 91b2ac3 (Merge branch 'main' into TMinh-Search)
+=======
+
+>>>>>>> parent of caf478b (Revert "Merge pull request #5 from tuilaqui123/TMinh-Search")
