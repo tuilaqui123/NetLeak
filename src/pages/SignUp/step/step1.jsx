@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import './step.css'
 import React from 'react'
 
 const Step1 = () => {
+
     return (
         <div className='step-container'>
             <p className='steps'>BƯỚC 1/3</p>
@@ -14,9 +16,9 @@ const Step1 = () => {
                 placeholder='Nhập mật khẩu'
             />
             <p className='forgot'>Bạn quên mật khẩu?</p>
-            <button>
+            <Link to="/login/step2" className='btn'>
                 <p>Tiếp theo</p>
-            </button>
+            </Link>
         </div>
     );
 }
