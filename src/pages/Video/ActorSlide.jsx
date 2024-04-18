@@ -1,104 +1,82 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import './Video.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { Navigation } from 'swiper/modules'
 
 function ActorSlide({ currentFilm }) {
-    const [swiperElement, setSwiperElement] = useState(null)
-
-    const [showNextSlideBtn, setShowNextSlideBtn] = useState(null)
-    const [showPrevSlideBtn, setShowPrevSlideBtn] = useState(null)
-
-    useEffect(() => {
-        if (swiperElement) {
-            setShowNextSlideBtn(!swiperElement.isEnd)
-            setShowPrevSlideBtn(!swiperElement.isBeginning)
-        }
-    }, [swiperElement])
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            swiperElement.slideTo(0)
-            setShowNextSlideBtn(!swiperElement.isEnd)
-            setShowPrevSlideBtn(!swiperElement.isBeginning)
-        }
-
-        if (swiperElement) {
-            window.addEventListener('resize', handleWindowResize)
-        }
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize)
-        }
-    }, [swiperElement])
-
-    const handleSlideNext = () => {
-        swiperElement.slideNext()
-
-        if (swiperElement.isEnd)
-            setShowNextSlideBtn(false)
-
-        if (!swiperElement.isBeginning)
-            setShowPrevSlideBtn(true)
-    }
-
-    const handleSlidePrev = () => {
-        swiperElement.slidePrev()
-
-        if (swiperElement.isBeginning)
-            setShowPrevSlideBtn(false)
-
-        if (!swiperElement.isEnd)
-            setShowNextSlideBtn(true)
-    }
-
     return (
         <div className='mt-5'>
             <p className=' text-white text-[17px] lg:text-[24px] font-bold'>Các diễn viên tham gia:</p>
 
-            <div className=' mt-4 mb-11 w-[95%] relative px-10 md:px-11 lg:px-11'>
-                <Swiper
-                    className=' text-white h-full !px-1'
-                    spaceBetween={10}
-                    slidesPerView={3}
-                    slidesPerGroup={3}
-                    onInit={(ev) => {
-                        setSwiperElement(ev)
-                    }}
-                    breakpoints={{
-                        768: {
-                            slidesPerView: 5,
-                            slidesPerGroup: 5,
-                        },
-                        1024: {
-                            slidesPerView: 6,
-                            slidesPerGroup: 6,
-                        },
-                    }}
-                >
-                    {currentFilm.actors.map((actor, index) => (
-                        <SwiperSlide key={index} className=' text-white '>
-                            <div className='group hover:cursor-pointer hover:scale-[1.09] mt-2 mb-2 transition-transform flex flex-col items-center justify-start  '>
-                                <img loading='lazy' className=' group-hover:border-[4px] group-hover:border-[#B22222] w-32 h-32 rounded-[50%] object-cover mb-2' src={actor.image} alt="Ảnh diễn viên" />
+            <div className=' mt-4 mb-11 w-[95%]'>
+                <div className=' hidden md:hidden lg:block'>
+                    <Swiper
+                        modules={[Navigation]}
+                        className=' text-white h-full'
+                        spaceBetween={10}
+                        slidesPerView={6}
+                        slidesPerGroup={6}
+                        // onSlideChange={() => console.log('slide change')}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                        navigation
+                    >
+                        {currentFilm.actors.map((actor, index) => (
+                            <SwiperSlide key={index} className=' text-white '>
+                                <div className='group hover:cursor-pointer hover:scale-[1.09] mt-2 mb-2 transition-transform flex flex-col items-center justify-start  '>
+                                    <img className=' group-hover:border-[4px] group-hover:border-[#B22222] w-32 h-32 rounded-[50%] object-cover mb-2' src={actor.image} alt="Ảnh diễn viên" />
 
-                                <p className=' text-white text-[14px] expandText1Row'>{actor.actorName}</p>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                                    <p className=' text-white text-[14px] expandText1Row'>{actor.actorName}</p>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
 
-                {showPrevSlideBtn && <FontAwesomeIcon
-                    onClick={handleSlidePrev}
-                    icon={faChevronLeft}
-                    className={` size-11 lg:size-9 text-[#B22222] z-10 absolute left-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}//25
-                />
-                }
-                {showNextSlideBtn && <FontAwesomeIcon
-                    onClick={handleSlideNext}
-                    icon={faChevronRight}
-                    className={` size-11 lg:size-9 text-[#B22222] z-10 absolute right-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}
-                />
-                }
+                <div className='hidden md:block lg:hidden'>
+                    <Swiper
+                        modules={[Navigation]}
+                        className=' text-white h-full '
+                        spaceBetween={5}
+                        slidesPerView={5}
+                        slidesPerGroup={5}
+                        // onSlideChange={() => console.log('slide change')}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                        navigation
+                    >
+                        {currentFilm.actors.map((actor, index) => (
+                            <SwiperSlide key={index} className=' text-white '>
+                                <div className='group hover:cursor-pointer hover:scale-[1.09] mt-2 mb-2 transition-transform flex flex-col items-center justify-start  '>
+                                    <img className=' group-hover:border-[4px] group-hover:border-[#B22222] w-32 h-32 rounded-[50%] object-cover mb-2' src={actor.image} alt="Ảnh diễn viên" />
+
+                                    <p className=' text-white text-[14px] expandText1Row'>{actor.actorName}</p>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+
+                <div className='md:hidden'>
+                    <Swiper
+                        modules={[Navigation]}
+                        className=' text-white h-full '
+                        spaceBetween={5}
+                        slidesPerView={4}
+                        slidesPerGroup={4}
+                        // onSlideChange={() => console.log('slide change')}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                        navigation
+                    >
+                        {currentFilm.actors.map((actor, index) => (
+                            <SwiperSlide key={index} className=' text-white '>
+                                <div className='group hover:cursor-pointer hover:scale-[1.09] mt-2 mb-2 transition-transform flex flex-col items-center justify-start  '>
+                                    <img className=' group-hover:border-[4px] group-hover:border-[#B22222] w-32 h-32 rounded-[50%] object-cover mb-2' src={actor.image} alt="Ảnh diễn viên" />
+
+                                    <p className=' text-white text-[14px] expandText1Row'>{actor.actorName}</p>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </div>
         </div>
     )

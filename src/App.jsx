@@ -10,7 +10,6 @@ import User from './pages/User/User'
 import Video from './pages/Video/Video'
 import Welcome from './pages/Welcome/Welcome'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import History from './pages/User/History'
 
 function App() {
 
@@ -24,8 +23,13 @@ function App() {
             <Route path="/tab/:id" element={<TabPage />} />
             <Route path="/video/:id" element={<Video />} />
             <Route path="/welcome" element={<Welcome />} />
+<<<<<<< HEAD
             <Route path="/user" element={<User />} />
             <Route path="/history" element={<History />} />
+=======
+            
+            <Route path="/search" element={<Search />} />
+>>>>>>> parent of 91b2ac3 (Merge branch 'main' into TMinh-Search)
           </Route>
         </Routes>
       </BrowserRouter>
