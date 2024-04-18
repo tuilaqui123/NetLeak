@@ -1,101 +1,75 @@
 import './Video.css'
-import React, { useEffect, useRef, useLayoutEffect, useState } from 'react'
-
-import { Player } from 'video-react'
-import ReactPlayer from 'react-player'
+import React, { useEffect, useRef, useState } from 'react'
 
 import video1 from '../../assets/video/video.mp4'
 import m1 from '../../assets/movies/1.jpg'
 
 import Navbar from '../../components/Navbar/Navbar'
-import SelectEpisode from './SelectEpisode'
 import Footer from './Footer'
-import RecommendedFilm from './RecommendedFilm'
+import SelectEpisode from './SelectEpisode'
 import ActorSlide from './ActorSlide'
+import RecommendedFilm from './RecommendedFilm'
 import FilmInfor from './FilmInfor'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faAngleUp, faAngleDown, faBookmark, faShareNodes, faPlay } from '@fortawesome/free-solid-svg-icons';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import {faAngleUp, faBookmark, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 
-import { Navigation } from 'swiper/modules'
-import 'swiper/css/navigation';
-
-const MAX_HEIGHT_VIDEO = '600px'
+const SELECT_EPISODE_WIDTH = '300px'
 
 const Video = () => {
-    const [textHeaderSelectEpisodeHeight, setTextHeaderSelectEpisodeHeight] = useState(0)
-
     const [invisibleBackToHeadPage, setInvisibleBackToHeadPage] = useState(true)
 
     //render 
-    const watchContainerElement = useRef(null)
-
     const videoContainer = useRef(null)
-    const widthSelectEpisode = useRef(null)
-
-    const filmInforContainer = useRef(null)
-    const widthRankingBoard = useRef(null)
+    const SelectEpisodeContainer = useRef(null)
 
     const video = useRef(null)
-    const belowVideo = useRef(null)
 
     const textHeaderSelectEpisode = useRef(null)
 
+    const selectEpisode = useRef(null)
 
     useEffect(() => {
-        if (widthSelectEpisode.current != null) {
-            let widthSelectEpisodeTemp = widthSelectEpisode.current.clientWidth
-            videoContainer.current.style.width = `calc(100% - ${widthSelectEpisodeTemp}px)`
+        if (SelectEpisodeContainer.current != null) {
+            let SelectEpisodeContainerTemp = SelectEpisodeContainer.current.clientWidth
+            videoContainer.current.style.width = `calc(100% - ${SelectEpisodeContainerTemp}px)`
         }
 
-        // if (widthRankingBoard.current != null) {
-        //     //console.log([widthRankingBoard.current])
-        //     // let widthRankingBoardTemp = widthRankingBoard.current.clientWidth
-        //     let widthRankingBoardTemp = widthRankingBoard.current.style.width
-        //     filmInforContainer.current.style.width = `calc(100% - ${320}px)`
-        // }
-
-        if (textHeaderSelectEpisode.current != null) {
-            let belowVideoHeightTemp = belowVideo.current.clientHeight
-            video.current.style.height = `calc(100% - ${belowVideoHeightTemp}px)`
-            setTextHeaderSelectEpisodeHeight(textHeaderSelectEpisode.current.clientHeight)
-        }
-
+        selectEpisode.current.style.height = `calc(100% - ${textHeaderSelectEpisode.current.clientHeight}px)`
     }, [])
     //
 
-    const handleWindowResize = () => {
-        // if (widthSelectEpisode.current != null){
-        setTextHeaderSelectEpisodeHeight(textHeaderSelectEpisode.current.clientHeight)
-        widthSelectEpisode.current.style.height = `${videoContainer.current.clientHeight}px`
-        // }
-
-        if (widthSelectEpisode.current != null) {
-            let widthSelectEpisodeTemp = widthSelectEpisode.current.clientWidth
-            videoContainer.current.style.width = `calc(100% - ${widthSelectEpisodeTemp}px)`
+    
+    useEffect(() => {
+        const handleWindowResize = () => {
+            selectEpisode.current.style.height = `calc(100% - ${textHeaderSelectEpisode.current.clientHeight}px)`
+    
+            SelectEpisodeContainer.current.style.height = `${videoContainer.current.clientHeight}px`
+    
+            if (SelectEpisodeContainer.current != null) {
+                let SelectEpisodeContainerTemp = SelectEpisodeContainer.current.clientWidth
+                videoContainer.current.style.width = `calc(100% - ${SelectEpisodeContainerTemp}px)`
+            }
+        }
+    
+        const handleWindowScroll = () => {
+            window.scrollY <= 700 ? setInvisibleBackToHeadPage(true) : setInvisibleBackToHeadPage(false)
         }
 
-        // if (widthRankingBoard.current != null) {
-        //     let widthRankingBoardTemp = widthRankingBoard.current.clientWidth
-        //     filmInforContainer.current.style.width = `calc(100% - ${widthRankingBoardTemp}px)`
-        // }
-    }
-
-    const handleWindowScroll = () => {
-        window.scrollY <= 700 ? setInvisibleBackToHeadPage(true) : setInvisibleBackToHeadPage(false)
-    }
-
-    useEffect(() => {
         window.addEventListener('resize', handleWindowResize)
         window.addEventListener('scroll', handleWindowScroll)
 
         video.current.addEventListener('loadeddata', (e) => {
             if (video.current.readyState >= 3) {
-                widthSelectEpisode.current.style.height = `${videoContainer.current.clientHeight}px`
+                SelectEpisodeContainer.current.style.height = `${videoContainer.current.clientHeight}px`
             }
 
         });
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize)
+            window.removeEventListener('scroll', handleWindowScroll)
+        }
     }, [])
 
 
@@ -103,7 +77,7 @@ const Video = () => {
     const [currentFilm, setCurrentFilm] = useState(() => {
         let temp = {
             imageFilm: m1,
-            name: "Tôi muốn đi ngược chiều gió",
+            name: "Anh Phát muốn đi ngược chiều gió",
             episodes: [],
             rating: {
                 quantity: 856000,
@@ -122,6 +96,11 @@ const Video = () => {
                 { actorName: 'Trần Nhựt Phát', image: m1 },
                 { actorName: 'Trần Tuấn Minh', image: m1 },
                 { actorName: 'Nguyễn Thị Thu Hương', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
+                { actorName: 'Nguyễn Võ Hoàng Huy', image: m1 },
             ]
 
         }
@@ -129,7 +108,7 @@ const Video = () => {
         for (let i = 1; i < 90; i++) {
             temp.episodes.push({
                 number: i,
-                name: "Tôi muốn đi ngược chiều gió tập " + i
+                name: "Anh Phát muốn đi ngược chiều gió tập " + i
             })
         }
 
@@ -149,13 +128,12 @@ const Video = () => {
         { name: 'Người phiên dịch của chúng tôi', episodeQuantity: 35, image: m1 },
     ])
     /////////
-
     return (
         <div className='w-full flex flex-col items-center bg-[#111319] relative px-[15px] lg:px-16'>
             <Navbar />
 
-            <div ref={watchContainerElement} className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
-                <div ref={videoContainer} className={` `}>
+            <div className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
+                <div ref={videoContainer}>
                     <div className='w-full'>
                         <video
                             ref={video}
@@ -169,7 +147,7 @@ const Video = () => {
                         </video>
                     </div>
 
-                    <div ref={belowVideo} className=' h-11 items-center mx-8 text-white/[.7] flex' >
+                    <div className=' h-11 items-center mx-8 text-white/[.7] flex' >
                         <div className='group flex items-center mr-5'>
                             <FontAwesomeIcon icon={faBookmark} size="lg" className='hidden lg:block group-hover:text-[red] group-hover:brightness-[1.2] group-hover:cursor-pointer group-hover:transition-all opacity-60 mr-3' />
                             <FontAwesomeIcon icon={faBookmark} size="sm" className='lg:hidden group-hover:text-[red] group-hover:brightness-[1.2] group-hover:cursor-pointer group-hover:transition-all opacity-60 mr-3' />
@@ -186,7 +164,7 @@ const Video = () => {
                     </div>
                 </div>
 
-                <div ref={widthSelectEpisode} className=" text-white bg-[#1A1C22] w-[300px] h-full hidden lg:block">
+                <div ref={SelectEpisodeContainer} className={`ml-3 text-white bg-[#1A1C22] w-[300px] h-full hidden lg:block`}>
                     <button ref={textHeaderSelectEpisode}
                         className='hover:text-[red] hover:transition-all text-start w-full 
                     inline-block text-xl font-bold capitalize p-4'
@@ -194,12 +172,12 @@ const Video = () => {
                         {currentFilm.name}
                     </button>
 
-                    <SelectEpisode currentFilm={currentFilm} heightVideo={textHeaderSelectEpisodeHeight} />
+                    <SelectEpisode ref={selectEpisode} currentFilm={currentFilm}/>
                 </div>
             </div>
 
             <div className='lg:flex mt-6 w-full md:w-[92%] lg:w-full md:mx-4 lg:mx-0'>
-                <div ref={filmInforContainer} className=' lg:mr-5 w-full lg:w-[calc(100%-300px)]'>
+                <div className={`lg:mr-5 w-full lg:w-[calc(100%-300px)]`}>
                     <button className=' text-white text-start text-[20px] md:text-[25px] lg:text-[28px] font-bold capitalize hover:text-[red]'>{currentFilm.name} {'>'}</button>
                     <span className='text-white/[.7] text-start text-[20px] md:text-[25px] lg:text-[28px] font-bold'>   Tập {currentFilm.episodes[0].number}</span>
 
@@ -208,7 +186,7 @@ const Video = () => {
                     <ActorSlide currentFilm={currentFilm} />
 
                     <div className='lg:hidden mb-[20px] h-[400px]'>
-                        <SelectEpisode currentFilm={currentFilm} heightVideo={textHeaderSelectEpisodeHeight} />
+                        <SelectEpisode currentFilm={currentFilm} />
                     </div>
 
                     <div className=' w-full h-[1px] bg-white/[.2] hidden lg:block'></div>
@@ -217,7 +195,7 @@ const Video = () => {
 
                 </div>
 
-                <div ref={widthRankingBoard} className='w-[100%]  mb-5 lg:hidden'>
+                <div className='w-[100%] mb-5 lg:hidden'>
                     <p className=' ml-8 text-white text-[18px] lg:text-[24px] font-bold capitalize mb-4'>Bảng xếp hạng</p>
 
                     {otherFilms.map((film, index) => (
@@ -231,8 +209,8 @@ const Video = () => {
                         </div>
                     ))}
                 </div>
-                {/* responsive */}
-                <div ref={widthRankingBoard} className='w-[300px] mb-5 hidden lg:block'>
+                {/* responsive PC */}
+                <div className={`w-[300px] mb-5 hidden lg:block`}>
                     <p className=' ml-8 text-white text-[24px] font-bold capitalize mb-4'>Bảng xếp hạng</p>
 
                     {otherFilms.map((film, index) => (
@@ -264,7 +242,7 @@ const Video = () => {
                             behavior: 'smooth'
                         });
                     }}
-                    className='hover:cursor-pointer justify-center items-center 
+                    className='hover:cursor-pointer hover:brightness-[1.25] transition-all justify-center items-center 
                     fixed bottom-[100px] right-[100px] bg-[#24262B] 
                     rounded-[50%] w-[50px] h-[50px] hidden lg:flex'>
                     <FontAwesomeIcon icon={faAngleUp} size='xl' className=' text-[#FF4500]' />
