@@ -1,5 +1,5 @@
 import './slide.css'
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import m1 from '../../assets/movies/1.jpg'
@@ -18,7 +18,12 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import HoverSlide from './HoverSlide/HoverSlide';
 
 const Slide = ({ title }) => {
-    var windowWidth = window.innerWidth / 260;
+
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth / 260)
+    })
 
     const linkStyle = {
         textDecoration: "none",

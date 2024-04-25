@@ -15,7 +15,7 @@ import History from './pages/User/History'
 function App() {
 
   return (
-    <div className='app-container'>
+    <div className='w-full h-auto m-0 p-0 relative'>
       <BrowserRouter>
         <Routes>
           <Route>
