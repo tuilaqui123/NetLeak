@@ -65,72 +65,12 @@ const User = () => {
               src="src\assets\images\actor.jpg"
               className="rounded-full w-10 h-10 border-2"
             />
-            <CaretDownOutlined className="ml-1" />
+            <CaretDownOutlined className="ml-2" />
           </div>
           <DropDown ref={menuRef} isVisible={userDropdown} object={Menu} />
         </div>
       </div>
       <div className="flex-row flex">
-        {/* <span className="relative text-black text-4xl  cursor-pointer" onClick={()=>{toggleSidebar()}}>
-        <MenuOutlined classID="px-2 rounded-md" />
-        </span> */}
-        {/* <div className="sidebar ${isSidebarOpen ? 'left-[0px]' : 'left-[-300px]'} relative  h-screen lg:left-0 p-2  w-[300px] overflow-y-auto text-center">
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Link />
-            <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
-              <ArrowLeftOutlined />
-              <span className="ml-4 text-[14px] font-semibold">
-                Quay về trang chủ
-              </span>
-            </div>
-          </Link>
-
-          <div className="text-black text-xl">
-            <div className="p-2.5 mt-4 flex items-center cursor-pointer">
-              <img
-                src="src\assets\images\actor.jpg"
-                className=" w-12 h-12 border-2"
-              />
-              <h1 className="font-semibold text-[15px] ml-3">Quang Minh</h1>
-              <CloseOutlined
-                className="ml-20 cursor-pointer lg:hidden"
-                onClick={() => toggleSidebar()}
-              />
-            </div>
-            <hr className="  my-5" />
-          </div>
-
-          <NavLink className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-[#bbbbbb] hover:bg-[#bbbbbb] text-black">
-            <UserOutlined />
-            <span className="text-[15px] ml-4 font-semibold">Tài Khoản</span>
-          </NavLink>
-
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
-            <HistoryOutlined />
-            <span className="text-[15px] ml-4 font-semibold">Lịch sử xem</span>
-          </div>
-
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
-            <WalletOutlined />
-            <span className="text-[15px] ml-4 font-semibold">
-              Phương thức thanh toán
-            </span>
-          </div>
-
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
-            <CalendarOutlined />
-            <span className="text-[15px] ml-4 font-semibold">
-              Gia hạn dịch vụ
-            </span>
-          </div>
-
-          <hr className=" my-5" />
-
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
-            <LogoutOutlined />
-            <span className="text-[15px] ml-4 font-semibold">Đăng xuất</span>
-          </div>
-        </div> */}
         <SideBar/>
         <div className="w-full">
           <div className="flex-col ">
@@ -144,7 +84,8 @@ const User = () => {
                   <span className="font-semibold text-[18px]">
                     Ngô Võ Quang Minh
                   </span>
-                  <div className="flex-row mt-5 items-center ">
+                  {/* lg:block lg:flex-row lg:items-center */}
+                  <div className="flex flex-col mt-5  md:block md:flex-row md:items-center ">
                     <span>Giới tính: </span>
                     <span className="font-semibold">Nam</span>
                     <span className="border-l border-gray-200 pl-10 ml-10 "></span>
