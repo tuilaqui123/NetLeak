@@ -11,11 +11,12 @@ import Video from './pages/Video/Video'
 import Welcome from './pages/Welcome/Welcome'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import History from './pages/User/History'
+import Search from './components/Search/Search'
 
 function App() {
 
   return (
-    <div className='w-full h-auto m-0 p-0 relative'>
+    <div className='app-container'>
       <BrowserRouter>
         <Routes>
           <Route>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/user" element={<User />} />
             <Route path="/history" element={<History />} />
+            <Route path="/search" element={<Search />} />
           </Route>
         </Routes>
       </BrowserRouter>
