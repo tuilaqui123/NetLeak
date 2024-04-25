@@ -9,7 +9,7 @@ const Home = () => {
         <div className='home-container'>
             <Navbar />
             <Thumbnail />
-            <div className='movies-slide'>
+            <div className='w-full mt-10'>
                 <Slide title={'Thịnh hành'} />
                 <Slide title={'Anime'} />
                 <Slide title={'TV Shows'} />

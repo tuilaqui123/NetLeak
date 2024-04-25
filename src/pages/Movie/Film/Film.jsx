@@ -6,8 +6,8 @@ import { faPlay, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Film = () => {
     return (
-        <div className='w-full h-3/4 relative flex flex-row mt-20 '>
-            <div className='movie-detail w-1/2 pl-10 pr-5 pt-8 relative'>
+        <div className='w-full h-3/4 relative flex flex-col-reverse lg:flex-row mt-20 '>
+            <div className='movie-detail w-full lg:w-1/2 pl-10 pr-5 pt-8 relative'>
                 <p className='font-black text-white text-4xl mb-2 '>Violet Evergarden </p>
                 <ul className='flex flex-row mb-10 rating-container'>
                     <li className='text-white font-medium'>18+</li>
@@ -45,8 +45,8 @@ const Film = () => {
                     </button>
                 </div>
             </div>
-            <div className='w-3/4 h-full flex justify-start items-end flex-col absolute right-0 z-0'>
-                <div className='w-5/6 flex flex-col relative '>
+            <div className='w-full lg:w-3/4 flex justify-start items-end flex-col lg:absolute right-0 z-0'>
+                <div className='w-full lg:w-5/6 flex flex-col relative '>
                     <div className='image-overlay1'></div>
                     <div className='image-overlay2'></div>
                     <div className='image-overlay3'></div>

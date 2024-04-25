@@ -7,7 +7,7 @@ import InfoBox from './InfoBox';
 const DirectInfo = () => {
     return (
         <div className='info-container'>
-            <div className='direct-container'>
+            <div className='w-[90%] h-full grid grid-cols-2 lg:grid-cols-3 gap-5 direct-container'>
                 <InfoBox />
                 <InfoBox />
                 <InfoBox />
