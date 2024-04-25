@@ -10,7 +10,6 @@
      
         font-size: 15px;
         font-weight: 500;
-       
     }
     p {
       margin-left: 70px;
@@ -36,7 +35,6 @@
       }
     }
     
-    
     .mySwiper {
       padding-right: 20px;
       padding-left: 20px;
@@ -46,34 +44,20 @@
         align-items: center;
         width: 120%;
          height: 120%;
-         cursor: auto;
-         &:hover{
-          transform: none !important;
-         }
       }
      
     }
     
-    .swiper-Slide {
+    .swiper-slide {
         transition: transform 0.3s ease; 
         position: relative; /* Thêm hiệu ứng chuyển động */
         // display: flex;
         align-items: center;
         justify-content: center;
-        &:hover{
-          .film-name{
-            color: rgb(34, 197, 94);
-          }
-          .number{
-            filter: brightness(95%);
-          }
-        }
       }
     
-     
+      .swiper-slide:hover {
+        transform: scale(1.1); /* Tăng kích thước lên 110% khi hover */
+      }
       
-}
-.no-hover-effect:hover {
-  transform: none !important;
-  filter: brightness(95%) !important; /* Đảm bảo màu sắc không thay đổi khi hover */
 }

@@ -8,12 +8,12 @@
         font-size: 15px;
         font-weight: 500;
     }
-    // p {
-    //   margin-left: 70px;
-    //   color: white;
-    //   // font-size: 20px;
-    //   font-weight: 700;
-    // }
+    p {
+      margin-left: 70px;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+    }
     .ok2 {
       margin-left: 100px;
     }
@@ -40,7 +40,9 @@
         transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
       }
     
-   
+      .swiper-slide:hover {
+        transform: scale(1.1); /* Tăng kích thước lên 110% khi hover */
+      }
     
   }
   

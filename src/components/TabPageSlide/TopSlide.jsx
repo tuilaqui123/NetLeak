@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./TopSlide.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
@@ -14,22 +14,6 @@ import "swiper/css/pagination";
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
 
 export default function TopSlide() {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup để tránh leak memory
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-
   const linkStyle = {
     textDecoration: "none",
   };
@@ -39,52 +23,50 @@ export default function TopSlide() {
       <p className="topslide-title">Thịnh hành</p>
 
       <Swiper
-        slidesPerView={width/ 300}
+        slidesPerView={6}
         spaceBetween={30}
         freeMode={true}
         modules={[FreeMode, Pagination]}
         className="mySwiper"
       >
-          <SwiperSlide className="swiper-Slide">
-            <img src={n1} className="number"></img>
-          </SwiperSlide>
-          <SwiperSlide className="swiper-Slide">
-            <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
-              <img src={m1} alt="movie" />
-            </Link>
-            <p className="film-name">Violet Evergarden</p>
-          </SwiperSlide>
-          <SwiperSlide className="swiper-Slide">
-            <img src={n2} alt="movie" className="number" />
-          </SwiperSlide>
-
-          <SwiperSlide className="swiper-Slide">
-            <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
-              <img src={m1} alt="movie" />
-            </Link>
-            <p className="film-name">Violet Evergarden</p>
-          </SwiperSlide>
-          <SwiperSlide className="swiper-Slide">
-            <img src={n3} alt="movie" className="number " />
-          </SwiperSlide>
-          <SwiperSlide className="swiper-Slide">
-          <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
-            <img src={m1} alt="movie" />
-            <p className="film-name">Violet Evergarden</p>
-            </Link>
-          </SwiperSlide>
-
-        <SwiperSlide className="swiper-Slide">
-        <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
-          <img src={m1} alt="movie" />
-          <p className="film-name">Violet Evergarden</p>
-          </Link>
+        
+        <SwiperSlide>
+          <img src={n1} className="number"></img>
         </SwiperSlide>
-        <SwiperSlide className="swiper-Slide">
-        <Link to="/movie/:id" style={linkStyle}  onClick={() => window.scrollTo(0, 0)}>
+        <SwiperSlide>
+          <Link to="/movie/:id" style={linkStyle}>
+            <img src={m1} alt="movie" />
+          </Link>
+          <p className="film-name">Violet Evergarden</p>
+        </SwiperSlide>
+        <SwiperSlide>
+         
+            <img src={n2} alt="movie" />
+      
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Link to="/movie/:id" style={linkStyle}>
+            <img src={m1} alt="movie" />
+          </Link>
+          <p className="film-name">Violet Evergarden</p>
+        </SwiperSlide>
+        <SwiperSlide>
+          
+            <img src={n3} alt="movie" />
+         
+        </SwiperSlide>
+        <SwiperSlide>
           <img src={m1} alt="movie" />
           <p className="film-name">Violet Evergarden</p>
-          </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={m1} alt="movie" />
+          <p className="film-name">Violet Evergarden</p>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={m1} alt="movie" />
+          <p className="film-name">Violet Evergarden</p>
         </SwiperSlide>
       </Swiper>
     </div>

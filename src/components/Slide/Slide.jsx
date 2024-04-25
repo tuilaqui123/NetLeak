@@ -25,7 +25,7 @@ const Slide = ({ title }) => {
     };
 
     return (
-        <div className='slide-containerr'>
+        <div className='slide-container'>
             <p>{title}</p>
             <Swiper
                 slidesPerView={windowWidth}
