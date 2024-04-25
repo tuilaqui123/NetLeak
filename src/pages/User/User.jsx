@@ -84,16 +84,21 @@ const User = () => {
                   <span className="font-semibold text-[18px]">
                     Ngô Võ Quang Minh
                   </span>
-                  {/* lg:block lg:flex-row lg:items-center */}
-                  <div className="flex flex-col mt-5  md:block md:flex-row md:items-center ">
-                    <span>Giới tính: </span>
-                    <span className="font-semibold">Nam</span>
-                    <span className="border-l border-gray-200 pl-10 ml-10 "></span>
+                  {/* md:block */}
+                  <div className="flex flex-col mt-5  md:flex-row md:items-center">
+                    <div>
+                      <span>Giới tính: </span>
+                      <span className="font-semibold">Nam</span>
+                    </div>
+                    {/* <div className="text-gray-300 ml-10 mr-10">|</div> */}
+                    <div className="hidden md:block ml-10 pl-10 border-l border-gray-300 h-[20px]"></div>
                     {/* <span>Ngày Sinh: </span>
                     <span className="font-semibold">03/01/2003</span>
                     <span className="border-l border-gray-200 pl-10 ml-10 "></span> */}
-                    <span>UID: </span>
-                    <span className="font-semibold">123456789</span>
+                    <div className="mt-2 md:mt-0">
+                      <span>UID: </span>
+                      <span className="font-semibold">123456789</span>
+                    </div>
                   </div>
                 </div>
                 <span

@@ -29,7 +29,7 @@ function SideBar() {
     <div className={`lg:left-[-300px] left-[16px] absolute text-xl top-[7px] `}>
         <MenuOutlined onClick={() => toggleSidebar()} />
     </div>
-    <div className={`${isSidebarOpen ? 'block' : 'hidden'} lg:hidden fixed top-[50px] inset-0 bg-gray-600 bg-opacity-50`}></div>
+    <div className={`${isSidebarOpen ? 'block' : 'hidden'} lg:hidden fixed top-[50px] h-screen inset-0 bg-gray-600 bg-opacity-50`}></div>
     <div className={`sidebar absolute bg-[#fafafa] ${isSidebarOpen ?'left-[0px]' : 'left-[-300px]'}  lg:relative  h-screen lg:left-0  p-2  w-[300px] overflow-y-auto text-center border-r lg:border-0`}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Link />
