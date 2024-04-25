@@ -26,12 +26,11 @@ function SideBar() {
     isActive ? `${active} ${inActive}` : `${active} ${hover}`;
   return (
     <div>
-    <div className={`${!isSidebarOpen ? 'left-[0px]' : 'left-[-300px]'} absolute text-xl top-[7px] left-6`}>
+    <div className={`lg:left-[-300px] left-[16px] absolute text-xl top-[7px] `}>
         <MenuOutlined onClick={() => toggleSidebar()} />
     </div>
-    {/* ${isSidebarOpen ? 'left-[0px]' : 'left-[-300px]'} */}
-    {isSidebarOpen && (
-    <div className={`sidebar absolute bg-[#fafafa]  lg:relative  h-screen lg:left-0 p-2  w-[300px] overflow-y-auto text-center`}>
+    <div className={`${isSidebarOpen ? 'block' : 'hidden'} lg:hidden fixed top-[50px] inset-0 bg-gray-600 bg-opacity-50`}></div>
+    <div className={`sidebar absolute bg-[#fafafa] ${isSidebarOpen ?'left-[0px]' : 'left-[-300px]'}  lg:relative  h-screen lg:left-0  p-2  w-[300px] overflow-y-auto text-center border-r lg:border-0`}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Link />
             <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
@@ -49,10 +48,10 @@ function SideBar() {
                 className=" w-12 h-12 border-2"
               />
               <h1 className="font-semibold text-[15px] ml-3">Quang Minh</h1>
-              <CloseOutlined
+              {/* <CloseOutlined
                 className="ml-20 cursor-pointer lg:hidden"
                 onClick={() => toggleSidebar()}
-              />
+              /> */}
             </div>
             <hr className="  my-5" />
           </div>
@@ -87,7 +86,8 @@ function SideBar() {
             <LogoutOutlined />
             <span className="text-[15px] ml-4 font-semibold">Đăng xuất</span>
           </div>
-        </div>)}
+        </div>
+      
         </div>
   )
 }
