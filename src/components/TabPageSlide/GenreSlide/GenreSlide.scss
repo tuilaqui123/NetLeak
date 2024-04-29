@@ -3,7 +3,6 @@
   grid-gap: 10px;
   position: relative;
   grid-auto-rows: minmax(auto, max-content);
- 
 }
 
 p {
@@ -12,7 +11,6 @@ p {
   font-size: 15px;
   font-weight: 500;
 }
-
 
 @media screen and (min-width: 768px) {
   .grid-container {
@@ -26,7 +24,6 @@ p {
     grid-template-columns: repeat(2, minmax(150px, 175px));
     align-items: center;
     justify-content: center;
-
   }
 }
 
@@ -35,13 +32,13 @@ p {
   margin: 5px;
 
   /* Đặt vị trí tương đối cho card */
-  .film-title{
+  .film-title {
     margin-left: 10px;
   }
-  &:hover{
-  .film-title {
-    // transform: translateY(100px);
-     margin-left: 10px;
+  &:hover {
+    .film-title {
+      // transform: translateY(100px);
+      margin-left: 10px;
       color: rgb(34, 197, 94);
     }
   }
@@ -61,13 +58,9 @@ p {
   filter: brightness(95%);
 
   &:hover {
-    transform: scale(1.0);
+    transform: scale(1);
     filter: brightness(110%);
-
-
   }
-
-
 }
 
 .card.hovered img {
@@ -77,21 +70,14 @@ p {
   z-index: 1;
   cursor: auto;
   width: 150%;
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(35, 35, 35, 0.9) 70%);
-
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(35, 35, 35, 0.9) 70%
+  );
 }
 
-;
-
-
-
-
-
-
 .card.hovered {
-
   z-index: 3;
   width: 170%;
   height: auto;
@@ -104,7 +90,6 @@ p {
   // transition: left ;
   padding-bottom: 5px;
 
-
   .film-title {
     opacity: 0;
   }
@@ -112,10 +97,8 @@ p {
   .flim-description {
     position: absolute;
     z-index: 3;
-   
+
     margin-top: -20%;
-
-
   }
 
   .image-overlay {
@@ -129,9 +112,11 @@ p {
     width: 100%;
     height: 30%;
     /* Adjust the height of the overlay as needed */
-    background: linear-gradient(to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(35, 35, 35, 0.9) 70%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(35, 35, 35, 0.9) 70%
+    );
   }
 }
 
@@ -145,27 +130,25 @@ p {
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 20px;
-  border-bottom-width: 5px ; /* Thêm gạch chân */
-  border-bottom-color:  #de6262; /* Chỉnh màu cho gạch chân */
+  border-bottom-width: 5px; /* Thêm gạch chân */
+  border-bottom-color: #de6262; /* Chỉnh màu cho gạch chân */
 }
-
-
 
 .image-container {
   position: relative;
   overflow: hidden;
 }
-.cancel-icon{
+.cancel-icon {
   z-index: 2;
   width: 20px;
   height: 20px;
   position: absolute;
   top: 0;
-  color:white;
+  color: white;
   right: 0;
   padding: 5px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     color: red;
   }
 }

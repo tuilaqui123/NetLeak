@@ -13,9 +13,9 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 
 
 
-export default function TabPageSlide({key, title, setGenre }) {
+export default function TabPageSlide({ key, title, setGenre }) {
   const [width, setWidth] = useState(window.innerWidth);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -41,13 +41,13 @@ export default function TabPageSlide({key, title, setGenre }) {
       >
         {title}
       </p>
-      
+
       <Swiper
         slidesPerView={width / 260}
         spaceBetween={30}
         freeMode={true}
         modules={[Navigation, Pagination, FreeMode]}
-       
+
         navigation={true}
         className="mySwiper"
       >

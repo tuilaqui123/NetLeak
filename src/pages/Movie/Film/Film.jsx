@@ -3,8 +3,12 @@ import thumb_pic from '../../../assets/images/thumbnail.jpg'
 import './film.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Film = () => {
+
+    const navigate = useNavigate()
+
     return (
         <div className='w-full h-3/4 relative flex flex-col-reverse lg:flex-row mt-20 '>
             <div className='movie-detail w-full lg:w-1/2 pl-10 pr-5 pt-8 relative'>
@@ -35,7 +39,7 @@ const Film = () => {
                     Bị trúng lời nguyền chết chóc, vị hoàng tử lên đường tìm cách hóa giải, để rồi rơi vào cuộc chiến giữa một thị trấn khai thác mỏ và các loài động vật trong rừng.
                 </p>
                 <div className='access mb-12'>
-                    <button className='play'>
+                    <button className='play' onClick={() => navigate(`/video/video`)}>
                         <FontAwesomeIcon icon={faPlay} className='icon' />
                         <p>Phát</p>
                     </button>

@@ -34,39 +34,39 @@ const Search = () => {
     ];
 
     const rating = [
-        
-            {id: 'ASC', label: 'Tăng dần'},
-            {id: 'DESC', label : 'Giảm dần'},
-        
+
+        { id: 'ASC', label: 'Tăng dần' },
+        { id: 'DESC', label: 'Giảm dần' },
+
     ]
 
     return (
-        <div className="bg-[#3e3e3e] w-full h-auto flex justify-center pb-[10vh]">
+        <div className="bg-[#3e3e3e] w-full h-auto flex justify-center pb-[20vh] overflow-hidden">
             <div className='w-11/12'>
 
                 <nav className=" flex lg:flex-row md:flex-col p-3 text-center border-bottom">
                     <div className="flex md:w-full lg:w-1/6 col-lg justify-center items-center">
-                        <p className="text-3xl font-bold text-red-500 cursor-pointer">
+                        <p className="text-3xl font-bold text-[#ff0000] cursor-pointer">
                             NETFLIX
                         </p>
                     </div>
 
-                    <div className="lg:w-1/2 md:w-full md:mt-3 flex flex-row justify-center shadow-md rounded-lg ">
+                    <div className="lg:w-1/2 md:w-full md:mt-3 flex flex-row justify-center shadow-md rounded-lg gap-5 ">
 
                         <form className='lg:w-11/12 md:w-3/5'>
 
-                            <input className='lg:pl-3 md:p-2 w-full h-full outline-none rounded-md italic text-white bg-neutral-700'
+                            <input className='lg:pl-3 md:p-2 w-full h-full outline-none rounded-md italic text-white bg-white'
                                 type="text"
                                 placeholder='Tìm kiếm'
                             />
                         </form>
 
-                        <button className='w-1/12 bg-red-500 rounded-md '>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' />
+                        <button className='w-1/12 bg-[#ff0000] rounded-md '>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className='icon text-white' />
                         </button>
 
                     </div>
-                    <div className='lg:ml-5 lg:w-2/5 md:w-full md:ml-0 md:mt-2 flex flex-row relative items-center'>
+                    <div className='lg:ml-5 lg:w-2/5 md:w-full md:ml-0 md:mt-2 flex flex-row relative items-center hidden'>
                         <ul className='w-full flex md:flex-row text-white justify-between md:item-center'>
                             <li>
                                 <a href="#" className='cursor-pointer hover:text-red-500 '>TV Shows</a>
@@ -99,10 +99,10 @@ const Search = () => {
                     </div>
                 </nav>
 
-                <div className='flex flex-col h-full '>
-                    <div className='w-3/4 flex flex-row pl-10 h-1/6 '>
+                <div className='flex flex-col h-full'>
+                    <div className='w-3/4 flex flex-row pl-10 h-1/6'>
                         <div className='w-5/6 content-center'>
-                        <p className='text-white text-lg'>Kết quả tìm kiếm cho:</p>
+                            <p className='text-white text-lg'>Kết quả tìm kiếm cho:</p>
                         </div>
                         {/* <SortByRating dropdownName={"Sắp xếp theo đánh giá"} options={rating}/> */}
                         <div>
@@ -112,8 +112,7 @@ const Search = () => {
                     </div>
                     <div className='w-full flex flex-row gap-3'>
                         <div className='w-3/4 flex flex-col'>
-                            <div className='w-full h-screen grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 md:gap-2 sm:grid-cols-1 gap-10 overflow-y-scroll scrollable-div'>
-
+                            <div className='w-full h-screen grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 md:gap-2 sm:grid-cols-1 gap-10 pb-10 overflow-y-scroll scrollable-div'>
                                 <MovieCard />
                                 <MovieCard />
                                 <MovieCard />
@@ -148,27 +147,25 @@ const Search = () => {
                                 <MovieCard />
                             </div>
                         </div>
-                        <div className='flex flex-col items-center w-1/4 justify-stretch content-center'>
-                            <div>
-                                <label className='text-red-500 font-medium text-xl'>
+                        <div className='flex flex-col items-center w-1/4  content-center px-7 gap-5'>
+                            <div className='border-b-2 pb-2'>
+                                <p className='text-red-500 font-bold text-xl text-center'>
                                     Bộ lọc phim
-                                </label>
+                                </p>
                             </div>
                             <DropdownCheckbox dropdownName="Thể loại" options={genreList} />
                             <DropdownRadio dropdownName="Loại" options={type} />
-                            
-                            <div className='pl-3 pt-3 w-[50%]'>
-                                <button className="w-full rounded-md border border-gray-500 bg-rose-400 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-zinc-400">
-                                    Xóa bộ lọc
-                                </button>
-                            </div>
+
+                            <button className="w-3/4 rounded-md bg-[#c5c5c5] border group border-[#ff0000] px-3 py-3 text-sm font-medium text-gray-700 hover:bg-[#ff0000]">
+                                <p className="group-hover:text-white text-black">Xoá bộ lọc</p>
+                            </button>
 
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 };
 export default Search;

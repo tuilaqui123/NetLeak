@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import React, { useState } from "react";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -8,23 +8,44 @@ import image from "../../assets/movies/1.jpg";
 import Noti from "./Noti";
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import ResponsiveNav from "./ResponsiveNav";
+import clsx from "clsx";
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
   const [noti, setNoti] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
   const [showNav, setShowNav] = useState(false)
+  const [isSearch, setIsSearch] = useState(false)
 
   function toogleNoti() {
-    setNoti(!noti);
+    setNoti(!noti)
+    setIsSearch(false)
+    setUserDropdown(false)
+
   }
 
   function toogleUserDropdown() {
-    setUserDropdown(!userDropdown);
+    setUserDropdown(!userDropdown)
+    setIsSearch(false)
+    setNoti(false)
+  }
+
+  function toggleSearch() {
+    setIsSearch(!isSearch)
+    setUserDropdown(false)
+    setNoti(false)
   }
 
   const linkStyle = {
     textDecoration: "none",
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      navigate("/search")
+    }
+  }
 
   return (
     <div className="relative md:absolute w-full px-5">
@@ -64,17 +85,35 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div className="relative w-1/5 md:w-[15%] lg:w-[10%] ">
-          <div className="icon-button">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
+        <div className="relative w-auto ">
+          <div className="w-auto flex flex-row items-center  justify-between gap-10">
+            <div className=" relative w-auto flex flex-row items-center justify-end">
+              <FontAwesomeIcon icon={faMagnifyingGlass}
+                onClick={toggleSearch}
+                // className="absolute text-[#ff0000] text-2xl cursor-pointer mr-3"
+                className={clsx({
+                  "absolute text-[#ff0000] text-2xl cursor-pointer mr-3": isSearch,
+                  "text-white text-2xl cursor-pointer": !isSearch
+                })}
+              />
+              {isSearch && (
+                <div>
+                  <input
+                    type="text"
+                    className="w-[250px] h-[35px] focus:ring-[#ff0000] focus:outline-[#ff0000] rounded-md pl-2 pr-10"
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+              )}
+            </div>
             <FontAwesomeIcon
               icon={faBell}
-              className="icon"
+              className="text-white text-2xl cursor-pointer"
               onClick={toogleNoti}
             />
             <FontAwesomeIcon
               icon={faUser}
-              className="icon"
+              className="text-white text-2xl cursor-pointer"
               onClick={toogleUserDropdown}
             />
           </div>

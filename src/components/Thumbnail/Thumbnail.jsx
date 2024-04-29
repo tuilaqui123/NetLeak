@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
 const Thumbnail = () => {
     return (
-        <div className='w-full h-screen relative'>
+        <div className='w-full h-screen relative md:block hidden'>
             <div className='w-full h-auto absolute'>
                 <img
                     src={thumb_pic}

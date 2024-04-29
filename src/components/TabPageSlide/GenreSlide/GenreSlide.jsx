@@ -77,14 +77,13 @@ export default function GenreSlide({ Genre, setGerne }) {
               ) : (
                 ""
               )}
-              <div className="image-overlay"></div>
               <img
                 key={index}
                 src={index === hoveredIndex ? m2 : m1}
                 alt={`Ảnh ${index + 1}`}
               />
             </div>
-            <p className="film-title">Violet Evergarden</p>
+            <p className="film-title text-center pt-2">Violet Evergarden</p>
             {index === hoveredIndex ? <HoverSlide setGenre={setGerne} /> : ""}
           </div>
         ))}

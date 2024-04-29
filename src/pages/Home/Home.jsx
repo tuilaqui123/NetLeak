@@ -1,21 +1,21 @@
 import Navbar from '../../components/Navbar/Navbar';
 import Slide from '../../components/Slide/Slide';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
+import ThumbnailRes from '../../components/Thumbnail/thumbnailResponsive';
 import './home.css'
 import React from 'react'
 
 const Home = () => {
     return (
-        <div className='home-container'>
+        <div className='w-full bg-[#3e3e3e]'>
             <Navbar />
             <Thumbnail />
-            <div className='w-full mt-10'>
+            <ThumbnailRes />
+            <div className='w-full relative flex flex-col gap-5'>
                 <Slide title={'Thịnh hành'} />
-                <Slide title={'Anime'} />
-                <Slide title={'TV Shows'} />
-                <Slide title={'Giật gân'} />
-                <Slide title={'Hành động'} />
-                <Slide title={'Hài hước'} />
+                <Slide title={'Thịnh hành'} />
+                <Slide title={'Thịnh hành'} />
+                <Slide title={'Thịnh hành'} />
             </div>
         </div>
     );
