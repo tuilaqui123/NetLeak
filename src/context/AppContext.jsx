@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
     const [casts, setCasts] = useState([])
     const [directors, setDirectors] = useState([])
     const [movies, setMovies] = useState([])
+    const [genres, setGenres] = useState([]);
 
     const fetchUser = () => {
         axios.get("http://localhost:8081/v1/api/admin/users")
@@ -38,10 +39,21 @@ export const AppProvider = ({ children }) => {
                 console.log(err)
             })
     }
+
+    const fetchGenre = () => {
+        axios
+            .get("http://localhost:8081/v1/api/admin/genres")
+            .then((res) => {
+                setGenres(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     const fetchMovie = () => {
         axios.get("http://localhost:8081/v1/api/admin/films")
             .then((res) => {
-                console.log("fetch film: ", res.data)
                 setMovies(res.data)
             })
             .catch((err) => {
@@ -53,10 +65,8 @@ export const AppProvider = ({ children }) => {
         fetchCast()
         fetchDirector()
         fetchMovie()
+        fetchGenre()
     }, [])
-    console.log("user", users)
-    console.log("cast", casts)
-    console.log("director", directors)
     console.log("movie", movies)
 
     return <AppContext.Provider value={{
