@@ -56,7 +56,9 @@ export default function GenreSlide({ movies, title }) {
 
   return (
     <div>
+      {title == ""? "" :
       <p className="genre-title capitalize "> {title}</p>
+      }
 
       <div className="grid-container">
         {/* <div className="image-container"> */}

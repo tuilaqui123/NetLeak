@@ -1,73 +1,109 @@
 
-import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState, useEffect, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MovieCard from './MovieCard.jsx';
-
+import { AppContext } from '../../context/AppContext.jsx';
 import DropdownCheckbox from './DropDown.jsx';
-import DropdownRadio from './DropDownRadio.jsx';
+
 import { faBell, faUser } from '@fortawesome/free-regular-svg-icons';
 // import SortByRating from './SortByRating.jsx';
 import "../../hideScrollbar.css"
 // import required modules
-
+import MyListSlide from '../MyListSlide/MyListSlide.jsx'
 
 
 const Search = () => {
 
-    const genreList = [
-        { id: 'Comedy', label: 'Hài hước' },
-        { id: 'Shounen', label: 'Shounen' },
-        { id: 'Shoujo', label: 'Shoujo' },
-        { id: 'Josei', label: 'Josei' },
-        { id: 'Isekai', label: 'Chuyển sinh' },
-        { id: 'Slice of life', label: 'Đời thường' },
-        { id: 'Fantasy', label: 'Kỳ ảo' },
-        { id: 'Romance', label: 'Lãng mạn' },
-        { id: 'Horror', label: 'Kinh dị' }
-    ];
+    const location = useLocation();
+    const [dataTest, setDataTest] = useState(location.state);
+    const { movies, genres } = useContext(AppContext);
+    const [searchMovie, setSearchMovie] = useState([])
+    const [query, setQuery] = useState(dataTest)
+    const [genresOptions, setGenresOptions] = useState([])
+    
 
-    const type = [
-        { id: 'Series', label: 'Series' },
-        { id: 'Movie', label: 'Movie' },
-    ];
+    const [searchMovie2, setSearchMovie2] = useState([]);
 
-    const rating = [
+    useEffect(() => {
+        let temp = [];
+        for (let i = 0; i < movies.length; i++) {
+            const searchQuery = query.trim().toLowerCase()
+            const movieName = movies[i].title.toLowerCase()
+            const isMatch = (movieName.includes(searchQuery))
+            if (isMatch) temp.push(movies[i])
+        }
+        setSearchMovie(temp);
+        setSearchMovie2(temp);
+    }, [query]);
+    
+    useEffect(() => {
+        let temp = [];
+        setSearchMovie(searchMovie2)
+        for (let i = 0; i <searchMovie2.length; i++)
+        {
+            let count = 0;
+            for (let j = 0; j < genresOptions.length; j++)
+            {
+                for (let k = 0; k<searchMovie2[i].genres.length; k++)
+                if (searchMovie2[i].genres[k]._id == genresOptions[j]._id)
+                {
+                    count+=1;
+                    
+                }
+            }
+           if(count == genresOptions.length) temp.push(searchMovie2[i])
 
-        { id: 'ASC', label: 'Tăng dần' },
-        { id: 'DESC', label: 'Giảm dần' },
+        }
+        setSearchMovie(temp)
+    }, [genresOptions, searchMovie2]);
 
-    ]
+    const handleInputChange = (event) => {
+        setDataTest("")
+        setQuery(event.target.value)
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            setQuery(event.target.value)
+        }
+      }
+
 
     return (
-        <div className="bg-[#3e3e3e] w-full h-auto flex justify-center pb-[20vh] overflow-hidden">
+        <div className="bg-[#3e3e3e] w-full h-auto flex justify-center pb-[10vh]">
             <div className='w-11/12'>
 
-                <nav className=" flex lg:flex-row md:flex-col p-3 text-center border-bottom">
+                <nav className=" place-items-center flex flex-col xl:flex-row lg:flex-row md:flex-col sm:flex-col p-3 text-center border-bottom">
                     <div className="flex md:w-full lg:w-1/6 col-lg justify-center items-center">
-                        <p className="text-3xl font-bold text-[#ff0000] cursor-pointer">
+
+                        <Link to="/home">
+                        <p className="hover:text-white text-3xl font-bold text-red-500 cursor-pointer">
                             NETFLIX
                         </p>
+                </Link>
                     </div>
 
-                    <div className="lg:w-1/2 md:w-full md:mt-3 flex flex-row justify-center shadow-md rounded-lg gap-5 ">
+                    <div className=" w-full lg:w-3/4 md:w-full md:mt-3 sm:w-4/6 sm:mt-3 lg:ml-6 flex flex-row justify-center ">
 
-                        <form className='lg:w-11/12 md:w-3/5'>
+                        <form onSubmit={e => { e.preventDefault() }} className='lg:w-11/12 md:w-3/5 sm:w-full w-5/6'>
 
-                            <input className='lg:pl-3 md:p-2 w-full h-full outline-none rounded-md italic text-white bg-white'
+                            <input className='p-3 lg:pl-3 md:p-2 w-full h-full outline-none rounded-md italic text-white bg-neutral-900'
                                 type="text"
                                 placeholder='Tìm kiếm'
+                                onChange={handleInputChange}
+                                onKeyDown={handleKeyDown}
+                                
                             />
                         </form>
 
-                        <button className='w-1/12 bg-[#ff0000] rounded-md '>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className='icon text-white' />
+                        <button className='w-1/12 bg-red-500 rounded-md '>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' />
                         </button>
 
                     </div>
-                    <div className='lg:ml-5 lg:w-2/5 md:w-full md:ml-0 md:mt-2 flex flex-row relative items-center hidden'>
-                        <ul className='w-full flex md:flex-row text-white justify-between md:item-center'>
+                    <div className='lg:ml-5 lg:w-2/5 md:w-full md:ml-0 md:mt-2 flex flex-row relative items-center'>
+                        <ul className='w-full flex md:flex-row text-white justify-between md:item-center hidden'>
                             <li>
                                 <a href="#" className='cursor-pointer hover:text-red-500 '>TV Shows</a>
                             </li>
@@ -99,10 +135,10 @@ const Search = () => {
                     </div>
                 </nav>
 
-                <div className='flex flex-col h-full'>
-                    <div className='w-3/4 flex flex-row pl-10 h-1/6'>
-                        <div className='w-5/6 content-center'>
-                            <p className='text-white text-lg'>Kết quả tìm kiếm cho:</p>
+                <div className='flex flex-col h-full '>
+                    <div className='w-5/6 flex flex-row pl-10 h-1/6 '>
+                        <div className='w-full content-center'>
+                            <p className='text-[12px] w-full text-white text-lg truncate'>Kết quả tìm kiếm cho: {query}</p>
                         </div>
                         {/* <SortByRating dropdownName={"Sắp xếp theo đánh giá"} options={rating}/> */}
                         <div>
@@ -111,61 +147,41 @@ const Search = () => {
 
                     </div>
                     <div className='w-full flex flex-row gap-3'>
-                        <div className='w-3/4 flex flex-col'>
-                            <div className='w-full h-screen grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 md:gap-2 sm:grid-cols-1 gap-10 pb-10 overflow-y-scroll scrollable-div'>
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                                <MovieCard />
-                            </div>
-                        </div>
-                        <div className='flex flex-col items-center w-1/4  content-center px-7 gap-5'>
-                            <div className='border-b-2 pb-2'>
-                                <p className='text-red-500 font-bold text-xl text-center'>
-                                    Bộ lọc phim
-                                </p>
-                            </div>
-                            <DropdownCheckbox dropdownName="Thể loại" options={genreList} />
-                            <DropdownRadio dropdownName="Loại" options={type} />
+                        <div className='md:w-4/5 w-full  flex flex-col'>
+                            {searchMovie != 0?
+                            (
+                            <MyListSlide movies ={searchMovie}
+                            title = ""/>
+                        ) : (
+                            <div>
+                            <img src='https://cei.org/wp-content/uploads/2020/09/GettyImages-1207750534.jpg'/>
+                            </div>             
+                        )
+                            }
 
-                            <button className="w-3/4 rounded-md bg-[#c5c5c5] border group border-[#ff0000] px-3 py-3 text-sm font-medium text-gray-700 hover:bg-[#ff0000]">
-                                <p className="group-hover:text-white text-black">Xoá bộ lọc</p>
-                            </button>
+
+                        </div>
+                        <div className='hidden md:flex flex-col items-center w-1/4 justify-stretch content-center'>
+                            <div>
+                                <label className=' text-red-500 font-medium text-xl'>
+                                    Bộ lọc phim
+                                </label>
+                            </div>
+                            <DropdownCheckbox  dropdownName="Thể loại" options={genres} selectedOptions={genresOptions} setSelectedOptions={setGenresOptions}/>
+                            {/* <DropdownRadio dropdownName="Loại" options={type} /> */}
+
+                            <div className='pl-3 pt-3 w-[50%]'>
+                                <button className="hidden w-full rounded-md border border-gray-500 bg-rose-400 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-zinc-400">
+                                    Xóa bộ lọc
+                                </button>
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div >
+        </div>
     )
 };
 export default Search;
