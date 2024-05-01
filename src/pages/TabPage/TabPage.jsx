@@ -11,7 +11,7 @@ import axios from "axios";
 const TabPage = () => {
   const [genre, setGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
-  useEffect(() =>{
+  useEffect(() => {
     setGenre("");
     setSelectedGenre("");
   }, []);
@@ -24,7 +24,7 @@ const TabPage = () => {
         setGenre={setGenre}
         selectedGenre={selectedGenre}
         setSelectedGenre={setSelectedGenre}
-        
+
       />
 
       <div className="movies-slide">
@@ -32,7 +32,7 @@ const TabPage = () => {
           Genre={genre}
           setGenre={setGenre}
           setSelectedGenre={setSelectedGenre}
-          
+
         />
       </div>
     </div>

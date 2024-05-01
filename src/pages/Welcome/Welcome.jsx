@@ -4,11 +4,11 @@ import './welcome.css';
 import React from 'react';
 import Section_Img1 from '../../assets/images/section1.jpg';
 import Section_Img3 from '../../assets/images/tv.png';
-import Section_Img4 from '../../assets/images/kid.png';
+import Section_Img4 from '../../assets/images/content.jpg';
 import ContentVideo from './ContentVideo';
 import video1 from '../../assets/images/video-tv-0819.mp4'
 import video2 from '../../assets/images/video-devices-vn.mp4'
-import Footer from './Footer';
+
 
 
 const Welcome = () => {
@@ -17,23 +17,19 @@ const Welcome = () => {
     };
 
     return (
-        <div className='welcome-container'>
-            <div className='container'>
+        <div className='welcome-container flex flex-col gap-5 mb-5'>
+            <div className='container1 '>
                 <div className='header'>
                     <h1>NETFLIX</h1>
-                    <button>
+                    <button className='px-2'>
                         <p>Đăng nhập</p>
                     </button>
                 </div>
                 <div className='main'>
                     <h1>Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác</h1>
-                    <p>Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>
-                    <p>Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.</p>
+                    <p className='mt-2'>Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>
+                    <p className='mt-2'>Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.</p>
                     <div className='user-start'>
-                        <div className='input-box'>
-                            <label>Địa chỉ email</label>
-                            <input type='text' />
-                        </div>
                         <button>
                             <Link to="/" style={linkStyle}><Link />
                                 <p>Bắt đầu</p>
@@ -43,28 +39,28 @@ const Welcome = () => {
                 </div>
             </div>
             <ContentVideo
-                title={"Thưởng thức trên TV của bạn"}
+                title={"Nơi mà câu chuyện bắt đầu cùng với mỗi cú click"}
                 mediavideo={video1}
-                content={"Xem trên TV thông minh, Playstation, Xbox, Chromecast, Apple TV, đầu phát Blu-ray và nhiều thiết bị khác."}
+                content={" Tận hưởng những phút giây đắm chìm trong thế giới tưởng tượng của anime ngay tại đây!"}
                 image={Section_Img3}
             />
             <ContentSection
-                title={"Tải xuống nội dung để xem ngoại tuyến"}
-                content={"Lưu lại những nội dung yêu thích một cách dễ dàng và luôn có thứ để xem."}
+                title={"Khám phá thế giới anime, từ kinh điển đến mới lạ."}
+                content={"Dẫn bước bạn qua các tác phẩm anime kinh điển và những bộ phim mới ra mắt."}
                 image={Section_Img1}
             />
             <ContentVideo
-                title={"Xem ở mọi nơi"}
+                title={"Anime đến từ mọi nơi, chỉ trong một nơi."}
                 mediavideo={video2}
-                content={"Phát trực tuyến không giới hạn phim và chương trình truyền hình trên điện thoại, máy tính bảng, máy tính xách tay và TV."}
+                content={"Với hàng ngàn bộ anime từ mọi thể loại và nơi trên thế giới dành cho mọi lứa tuổi."}
                 image={Section_Img3}
             />
             <ContentSection
-                title={"Tạo hồ sơ cho trẻ em"}
-                content={"Đưa các em vào những cuộc phiêu lưu với nhân vật được yêu thích trong một không gian riêng. Tính năng này đi kèm miễn phí với tư cách thành viên của bạn."}
+                title={"Thế giới ANIME không bao giờ ngừng mở rộng"}
+                content={"Đưa bạn vào kho phim được cập nhật hàng ngày"}
                 image={Section_Img4}
             />
-            <Footer />
+
         </div>
     );
 }

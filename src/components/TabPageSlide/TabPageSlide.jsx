@@ -13,12 +13,12 @@ import { FreeMode, Pagination, Navigation } from "swiper/modules";
 
 export default function TabPageSlide({ genre, title, setGenre, setSelectedGenre }) {
   const [width, setWidth] = useState(window.innerWidth);
-  
-  const Movies= genre.movies;
-  useEffect(()=>{
-   
-   
-  
+
+  const Movies = genre.movies;
+  useEffect(() => {
+
+
+
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
@@ -34,10 +34,10 @@ export default function TabPageSlide({ genre, title, setGenre, setSelectedGenre 
   const linkStyle = {
     textDecoration: "none",
   };
-  const handleGenre = () =>{
-    scrollTo(0,0)
+  const handleGenre = () => {
+    scrollTo(0, 0)
     setSelectedGenre(genre._id)
-  setGenre(genre)
+    setGenre(genre)
   }
   return (
     <div className="slide-container">
@@ -55,28 +55,27 @@ export default function TabPageSlide({ genre, title, setGenre, setSelectedGenre 
         modules={[Navigation, Pagination, FreeMode]}
 
         navigation={true}
-        className="mySwiper"
       >
         {
-          Movies.map((movie, index) =>{
-            if(index <10)
-            return (
-              <SwiperSlide key={movie._id+ genre._id}>
-              <Link
-                to={`/movie/${movie._id}`}
-                style={linkStyle}
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                <img src={movie.image.poster} alt="movie" />
-              </Link>
-              <p className="film-name text-center pt-2 line-clamp-2">{movie.title}</p>
-            </SwiperSlide>
-            )
-         
+          Movies.map((movie, index) => {
+            if (index < 10)
+              return (
+                <SwiperSlide key={movie._id + genre._id}>
+                  <Link
+                    to={`/movie/${movie._id}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="cursor-pointer"
+                  >
+                    <img src={movie.image.poster} alt="movie" />
+                    <p className="film-name text-center pt-2 line-clamp-2">{movie.title}</p>
+                  </Link>
+                </SwiperSlide>
+              )
+
           })
         }
-        
-      
+
+
       </Swiper>
     </div>
   );

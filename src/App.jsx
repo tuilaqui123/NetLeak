@@ -14,6 +14,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import History from './pages/User/History'
 import Search from './components/Search/Search'
 import { AppProvider } from './context/AppContext'
+import Footer from './pages/Video/Footer'
 
 function App() {
 
@@ -28,14 +29,16 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/movie/:id" element={<Movie />} />
               <Route path='/mylist' element={<MyList />} />
-              <Route path="/tab/:id" element={<TabPage />} />
-              <Route path="/video/:id" element={<Video />} />
+              <Route path="/genre" element={<TabPage />} />
+              <Route path="/genre/:id" element={<TabPage />} />
+              <Route path="/video/:id/:chapter" element={<Video />} />
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/user" element={<User />} />
               <Route path="/history" element={<History />} />
               <Route path="/search" element={<Search />} />
             </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AppProvider>
     </div>

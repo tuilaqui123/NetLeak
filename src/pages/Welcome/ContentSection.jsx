@@ -8,7 +8,7 @@ const ContentSection = ({ title, content, image }) => {
     };
 
     return (
-        <div className='content-section' style={positionStyle}>
+        <div className='content-section overflow-hidden' style={positionStyle}>
             <div className='content'>
                 <h1>{title}</h1>
                 <p>{content}</p>
