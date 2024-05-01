@@ -5,17 +5,23 @@ import Suggest from './Info/Suggest';
 import './MovieInfo.css'
 import React from 'react'
 
-const MovieInfo = ({ info }) => {
+const MovieInfo = ({ info, film }) => {
+
     return (
         <div className='movieinfo-container'>
             {info == 1 && (
-                <EpList />
+                <EpList
+                />
             )}
             {info == 2 && (
-                <DirectInfo />
+                <DirectInfo
+                    data={film.cast}
+                />
             )}
             {info == 3 && (
-                <DirectInfo />
+                <DirectInfo
+                    data={film.directors}
+                />
             )}
             {info == 4 && (
                 <Suggest />

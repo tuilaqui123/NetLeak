@@ -67,13 +67,13 @@ export const AppProvider = ({ children }) => {
         fetchMovie()
         fetchGenre()
     }, [])
-    console.log("movie", movies)
 
     return <AppContext.Provider value={{
         users, setUsers,
         casts, setCasts,
         directors, setDirectors,
-        movies, setMovies
+        movies, setMovies,
+        genres, setGenres
     }}>
         {children}
     </AppContext.Provider>

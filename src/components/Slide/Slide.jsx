@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import m1 from '../../assets/movies/1.jpg'
@@ -13,11 +13,11 @@ import 'swiper/css/pagination';
 
 
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+import { FreeMode, Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import HoverSlide from './HoverSlide/HoverSlide';
 import PrevButton from './PrevButton,';
 
-const Slide = ({ title }) => {
+const Slide = ({ title, movies }) => {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth / 260)
 
@@ -43,91 +43,25 @@ const Slide = ({ title }) => {
             <Swiper
                 slidesPerView={windowWidth}
                 spaceBetween={30}
+                autoplay={{
+                    delay: 3000,
+                }}
                 freeMode={true}
-                modules={[FreeMode, Pagination]}
-                className='relative'
+                modules={[FreeMode, EffectFade, Autoplay, Navigation, Pagination]}
+                className='relative px-1'
             >
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Link to="/movie/:id">
-                        <img
-                            src={m1}
-                            alt='movie'
-                            className='w-full h-full rounded-xl hover:brightness-110 duration-200'
-                        />
-                        <p className='text-center w-full truncate text-lg pt-3'>Violte Evergarden</p>
-                    </Link>
-                </SwiperSlide>
-
+                {movies.map((value, index) =>
+                    <SwiperSlide key={index}>
+                        <Link to={`/movie/${value._id}`}>
+                            <img
+                                src={value.image.poster}
+                                alt='movie'
+                                className='w-full h-[300px] rounded-xl hover:brightness-110 duration-200'
+                            />
+                            <p className='text-center w-full truncate text-lg pt-3'>{value.title}</p>
+                        </Link>
+                    </SwiperSlide>
+                )}
             </Swiper>
         </div>
     );

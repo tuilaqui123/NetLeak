@@ -64,23 +64,20 @@ const Navbar = () => {
           <div className="hidden md:block ml-5">
             <ul>
               <li>
-                <Link to="/" style={linkStyle}>
+                <Link to="/home" style={linkStyle}>
                   <p>Trang chủ</p>
                 </Link>
               </li>
               <li>
                 <Link to="/tab/ok" style={linkStyle}>
-                  <p>TV Shows</p>
+                  <p>Thể loại</p>
                 </Link>
               </li>
+              
               <li>
-                <p>Phim</p>
-              </li>
-              <li>
-                <p>Thể loại</p>
-              </li>
-              <li>
+                <Link to="/mylist" style={linkStyle}>
                 <p>Danh sách</p>
+                </Link>
               </li>
             </ul>
           </div>
