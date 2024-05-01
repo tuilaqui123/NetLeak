@@ -7,7 +7,7 @@ import video1 from '../../assets/video/video.mp4'
 import m1 from '../../assets/movies/1.jpg'
 
 import Navbar from '../../components/Navbar/Navbar'
-import Footer from './Footer'
+
 import SelectEpisode from './SelectEpisode'
 import ActorSlide from './ActorSlide'
 import RecommendedFilm from './RecommendedFilm'
@@ -571,7 +571,7 @@ const Video = () => {
 
                         <div className=' w-full h-[1px] bg-white/[.2]'></div>
 
-                        <Footer />
+                 
 
                         {invisibleBackToHeadPage == false &&
                             <div

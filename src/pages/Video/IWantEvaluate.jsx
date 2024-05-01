@@ -13,7 +13,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
             <div className='relative hidden lg:block'
                 onMouseLeave={() => { setInvisibleEvaluateBlock(true) }}
             >
-                <p className=' text-[13px] md:text-[15px] lg:text-[15px] ml-3 text-[#FF4500] hover:cursor-pointer '
+                <p className=' text-[13px] md:text-[15px] lg:text-[15px] ml-3 text-green-500 hover:cursor-pointer '
                     onMouseEnter={() => { setInvisibleEvaluateBlock(false) }}
                 >
                     Tôi muốn đánh giá
@@ -43,7 +43,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -63,7 +63,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -83,7 +83,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -103,7 +103,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -123,7 +123,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-[red]' : 'text-[#999999]'} `}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-green-500' : 'text-[#999999]'} `}
 
                                     />
                                 </div>
@@ -153,7 +153,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
             <div className='relative lg:hidden'>
                 <p
                     onClick={() => { setInvisibleEvaluateBlock(false) }}
-                    className=' text-[13px] md:text-[15px] lg:text-[15px] ml-3 text-[#FF4500] hover:cursor-pointer '
+                    className=' text-[13px] md:text-[15px] lg:text-[15px] ml-3 text-green-500 hover:cursor-pointer '
                 >
                     Tôi muốn đánh giá
                 </p>
@@ -168,7 +168,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                         <div>
                             <FontAwesomeIcon
                                 onClick={() =>{setInvisibleEvaluateBlock(true)}}
-                                icon={faXmark} size='lg' className=' absolute top-0 right-0 text-[#B22222] p-[8px] hover:cursor-pointer'
+                                icon={faXmark} size='lg' className=' absolute top-0 right-0 text-green-500 p-[8px] hover:cursor-pointer'
                             />
                         </div>
 
@@ -183,7 +183,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId,1*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -197,7 +197,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId,2*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -211,7 +211,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId,3*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -225,7 +225,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId,4*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-green-500' : 'text-[#999999]'} transition-colors`}
 
                                     />
                                 </div>
@@ -239,7 +239,7 @@ function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, fi
                                         handleAddRating(filmId,5*2)
                                     }}
                                 >
-                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-[red]' : 'text-[#999999]'} `}
+                                    <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-green-500' : 'text-[#999999]'} `}
 
                                     />
                                 </div>

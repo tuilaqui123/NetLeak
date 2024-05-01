@@ -79,7 +79,7 @@ function ActorSlide({ filmCast }) {
                     {filmCast.map((cast, index) => (
                         <SwiperSlide key={index} className=' text-white '>
                             <div className='group hover:cursor-pointer hover:scale-[1.09] mt-2 mb-2 transition-transform flex flex-col items-center justify-start  '>
-                                <img loading='lazy' className=' group-hover:border-[4px] group-hover:border-[#B22222] w-32 h-32 rounded-[50%] object-cover mb-2' src={cast.avatar} alt="Ảnh diễn viên" />
+                                <img loading='lazy' className='  w-32 h-32 rounded-[50%] object-cover mb-2' src={cast.avatar} alt="Ảnh diễn viên" />
 
                                 <p className=' text-white text-[14px] expandText1Row'>{cast.name}</p>
                             </div>
@@ -90,13 +90,13 @@ function ActorSlide({ filmCast }) {
                 {showPrevSlideBtn && <FontAwesomeIcon
                     onClick={handleSlidePrev}
                     icon={faChevronLeft}
-                    className={` size-11 lg:size-9 text-[#B22222] z-10 absolute left-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}//25
+                    className={` size-11 lg:size-9 text- z-10 absolute left-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}//25
                 />
                 }
                 {showNextSlideBtn && <FontAwesomeIcon
                     onClick={handleSlideNext}
                     icon={faChevronRight}
-                    className={` size-11 lg:size-9 text-[#B22222] z-10 absolute right-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}
+                    className={` size-11 lg:size-9 text- z-10 absolute right-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}
                 />
                 }
             </div>
