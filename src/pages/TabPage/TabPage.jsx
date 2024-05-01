@@ -9,9 +9,11 @@ import Genre from './Genre/Genre';
 
 const TabPage = () => {
     const [genre, setGenre]= useState ('');
+    const [selectedGenre, setSelectedGenre]= useState ('');
 
     useEffect(()=>{
         setGenre('');
+        setSelectedGenre('');
 
     }, []);
     return (
@@ -19,11 +21,11 @@ const TabPage = () => {
             
             <Navbar/>
             
-            <TabPageThumbnail Genre={genre} setGenre={setGenre}/>
+            <TabPageThumbnail Genre={genre} setGenre={setGenre} selectedGenre= {selectedGenre} setSelectedGenre= {setSelectedGenre}/>
 
             
             <div className='movies-slide'>
-                <Genre Genre={genre} setGenre={setGenre}/>
+                <Genre Genre={genre} setGenre={setGenre} setSelectedGenre={setSelectedGenre} />
                
             </div>
         </div>

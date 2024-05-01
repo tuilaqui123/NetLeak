@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-key */
-import React, { useState } from "react";
-import m1 from "../../../assets/movies/1.jpg";
-import m2 from "../../../assets/images/thumbnail.jpg";
+import React, { useEffect, useState } from "react";
 import "./GenreSlide.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import HoverSlide from "./HoverSlide";
 export default function GenreSlide({ Genre, setGerne }) {
-  const times = new Array(23).fill(null);
+
+  const movies= Genre.movies;
+
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   let hoverTimeout;
 
@@ -45,11 +45,11 @@ export default function GenreSlide({ Genre, setGerne }) {
 
   document.addEventListener("click", (e) => {
     if (hoveredIndex != -1) {
-      console.log("click", e.target);
+    
       const hoveredCard = document.querySelector(".card.hovered");
 
       if (!hoveredCard.contains(e.target)) {
-        console.log("hovered");
+       
         e.stopPropagation();
         handleMouseLeave();
       }
@@ -58,11 +58,14 @@ export default function GenreSlide({ Genre, setGerne }) {
 
   return (
     <div>
-      <p className="genre-title "> {Genre}</p>
+      <p className="genre-title capitalize "> {Genre.title}</p>
 
       <div className="grid-container">
         {/* <div className="image-container"> */}
-        {times.map((_, index) => (
+        {movies.map(( movie, index) => {
+          
+
+          return(
           <div
             className={`card ${index === hoveredIndex ? "hovered" : ""}`}
             onClick={() => handleMouseEnter(index)}
@@ -77,16 +80,22 @@ export default function GenreSlide({ Genre, setGerne }) {
               ) : (
                 ""
               )}
-              <img
+             
+              {index !== hoveredIndex ? <img
                 key={index}
-                src={index === hoveredIndex ? m2 : m1}
+                src={ movie.image.poster}
                 alt={`Ảnh ${index + 1}`}
-              />
+              /> : <img
+              key={index}
+              src={movie.image.banner}
+              alt={`Ảnh ${index + 1}`}
+            />}
+              
             </div>
-            <p className="film-title text-center pt-2">Violet Evergarden</p>
-            {index === hoveredIndex ? <HoverSlide setGenre={setGerne} /> : ""}
+            <p className="film-title text-center pt-2 line-clamp-2"> {movie.title}</p>
+            {index === hoveredIndex ? <HoverSlide setGenre={setGerne} movie={movie} /> : ""}
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );

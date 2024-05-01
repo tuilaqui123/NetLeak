@@ -73,7 +73,8 @@ export const AppProvider = ({ children }) => {
         users, setUsers,
         casts, setCasts,
         directors, setDirectors,
-        movies, setMovies
+        movies, setMovies,
+        genres, setGenres
     }}>
         {children}
     </AppContext.Provider>

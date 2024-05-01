@@ -7,16 +7,18 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 
 
 
-export default function TabPageSlide({ key, title, setGenre }) {
+
+export default function TabPageSlide({ genre, title, setGenre, setSelectedGenre }) {
   const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
+  
+  const Movies= genre.movies;
+  useEffect(()=>{
+   
+   
+  
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
@@ -32,12 +34,16 @@ export default function TabPageSlide({ key, title, setGenre }) {
   const linkStyle = {
     textDecoration: "none",
   };
-
+  const handleGenre = () =>{
+    scrollTo(0,0)
+    setSelectedGenre(genre._id)
+  setGenre(genre)
+  }
   return (
     <div className="slide-container">
       <p
-        className=" Genre-title font-bold text-white text-l mb-2 ml-2 hover:text-green-500 cursor-pointer display: inline-block border-b-4 border-[#de6262] "
-        onClick={() => setGenre(title)}
+        className=" Genre-title font-bold text-white text-l mb-2 ml-2 hover:text-green-500 cursor-pointer display: inline-block border-b-4 border-[#de6262] capitalize "
+        onClick={handleGenre}
       >
         {title}
       </p>
@@ -51,87 +57,26 @@ export default function TabPageSlide({ key, title, setGenre }) {
         navigation={true}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link
-            to="/movie/:id"
-            style={linkStyle}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <img src={m1} alt="movie" />
-          </Link>
-          <p className="film-name">Violet Evergarden</p>
-        </SwiperSlide>
+        {
+          Movies.map((movie, index) =>{
+            if(index <10)
+            return (
+              <SwiperSlide key={movie._id+ genre._id}>
+              <Link
+                to="/movie/:id"
+                style={linkStyle}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <img src={movie.image.poster} alt="movie" />
+              </Link>
+              <p className="film-name text-center pt-2 line-clamp-2">{movie.title}</p>
+            </SwiperSlide>
+            )
+         
+          })
+        }
+        
+      
       </Swiper>
     </div>
   );

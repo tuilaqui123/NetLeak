@@ -51,16 +51,16 @@ p {
 .card img {
   width: 95%;
   /* ảnh chiếm toàn bộ kích thước của ô */
-  height: auto;
+  height: 142.5%; /* Thay đổi chiều cao thành 150% của chiều rộng */
   cursor: pointer;
   border-radius: 10px;
 
   filter: brightness(95%);
-
   &:hover {
     transform: scale(1);
     filter: brightness(110%);
   }
+
 }
 
 .card.hovered img {
@@ -85,7 +85,7 @@ p {
   border-radius: 10px;
   transform: translateY(-15%);
   left: -40%;
-  transition-duration: 0.45s;
+  transition-duration: 1s;
 
   // transition: left ;
   padding-bottom: 5px;
