@@ -118,7 +118,7 @@ function SelectEpisode({ videoList, currentEpisode, filmName, idFilm }, ref) {
                                     className={`flex items-center justify-center hover:brightness-[1.5] hover:text-[#A52A2A] text-white bg-[#2d2f34] w-9 h-9 lg:w-10 lg:h-10 rounded-md hover:transition-colors font-bold ${currentEpisode == index + 1 ? 'brightness-[1.5]' : ''}`}
                                     key={index}
                                 >
-                                        {index + 1}
+                                    {index + 1}
                                 </a>
                             ))}
                         </div>
@@ -138,11 +138,11 @@ function SelectEpisode({ videoList, currentEpisode, filmName, idFilm }, ref) {
             }
 
             {pickBtn == 2 && <div ref={typeExpandContainer} className=' overflow-y-scroll'>
-                
+
                 {videoList.map((episode, index) => (
                     <a
                         href={`/video/${idFilm}/${episode.chapter}`}
-                        key={index} 
+                        key={index}
                         className={`flex items-center mt-4 mb-4 hover:bg-[#2d2f34] hover:cursor-pointer ${currentEpisode == index + 1 ? 'bg-[#2d2f34]' : ''}`}
                     >
                         <img loading='lazy' src={`https://i.ytimg.com/vi/${episode.videoLink}/maxresdefault.jpg`} className='w-full h-[60px] rounded-[7px] flex-[2] mr-3 object-cover' alt="Ảnh phim" />

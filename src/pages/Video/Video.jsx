@@ -60,7 +60,7 @@ const Video = () => {
     }
 
     const handleAddHistoty = () => {
-        fetch('http://localhost:8081/v1/api/user/history',{
+        fetch('http://localhost:8081/v1/api/user/history', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -74,10 +74,10 @@ const Video = () => {
     }
 
     useEffect(() => {
-        setTimeout(()=>{
+        setTimeout(() => {
             handleAddHistoty()
         }, 30000)
-    },[])
+    }, [])
 
     const handleAddRating = (filmId, rate) => {
         fetch(`http://localhost:8081/v1/api/user/rating`, {
@@ -160,7 +160,7 @@ const Video = () => {
             })
     }
 
-    const getAllRatingFilm = () =>{
+    const getAllRatingFilm = () => {
         // setIsLoadingAllRatingFilm(true)
         fetch(`http://localhost:8081/v1/api/user/ratings`, {
             method: 'GET',
@@ -171,7 +171,7 @@ const Video = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                setAllRatingFilms(data)                    
+                setAllRatingFilms(data)
             })
             .catch((e) => {
                 console.log(e)
@@ -179,7 +179,7 @@ const Video = () => {
             .finally(() => {
                 // setIsLoadingAllRatingFilm(false)
             })
-    } 
+    }
 
     const getRankingFilms = () => {
         setIsLoadingRankingFilm(true)
@@ -333,8 +333,8 @@ const Video = () => {
     useEffect(() => {
         const handleIsLoanding = () => {
             if (isLoadingFilmInfo || isLoadingFilmInfo || isLoadingAllGenres
-                || isLoadingAllFilms || isLoadingRecommendFilm || isLoadingAllFavoriteFilm 
-                || isLoadingRankingFilm ||isLoadingAllRatingFilm) {
+                || isLoadingAllFilms || isLoadingRecommendFilm || isLoadingAllFavoriteFilm
+                || isLoadingRankingFilm || isLoadingAllRatingFilm) {
                 setIsLoading(true)
             } else {
                 setIsLoading(false)
@@ -419,10 +419,10 @@ const Video = () => {
                         <div className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
                             <div ref={videoContainer} className=' w-full'>
                                 <div className='w-full relative'
-                                    // onClick={(e) => {
-                                    //     e.stopPropagation()
-                                    //     console.log('phat van mau')
-                                    // }}
+                                // onClick={(e) => {
+                                //     e.stopPropagation()
+                                //     console.log('phat van mau')
+                                // }}
                                 >
                                     <iframe
                                         ref={video}
@@ -571,7 +571,6 @@ const Video = () => {
 
                         <div className=' w-full h-[1px] bg-white/[.2]'></div>
 
-                        <Footer />
 
                         {invisibleBackToHeadPage == false &&
                             <div

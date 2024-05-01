@@ -17,11 +17,11 @@ const Welcome = () => {
     };
 
     return (
-        <div className='welcome-container'>
+        <div className='welcome-container flex flex-col gap-5 mb-5'>
             <div className='container1 '>
                 <div className='header'>
                     <h1>NETFLIX</h1>
-                    <button>
+                    <button className='px-2'>
                         <p>Đăng nhập</p>
                     </button>
                 </div>
@@ -30,7 +30,7 @@ const Welcome = () => {
                     <p className='mt-2'>Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>
                     <p className='mt-2'>Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.</p>
                     <div className='user-start'>
-                                                <button>
+                        <button>
                             <Link to="/" style={linkStyle}><Link />
                                 <p>Bắt đầu</p>
                             </Link>
@@ -56,11 +56,11 @@ const Welcome = () => {
                 image={Section_Img3}
             />
             <ContentSection
-                title={"Thế giới anime không bao giờ ngừng mở rộng"}
+                title={"Thế giới ANIME không bao giờ ngừng mở rộng"}
                 content={"Đưa bạn vào kho phim được cập nhật hàng ngày"}
                 image={Section_Img4}
             />
-            
+
         </div>
     );
 }
