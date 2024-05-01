@@ -69,14 +69,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/tab/ok" style={linkStyle}>
+                <Link to="/genre" style={linkStyle}>
                   <p>Thể loại</p>
                 </Link>
               </li>
-              
+
               <li>
                 <Link to="/mylist" style={linkStyle}>
-                <p>Danh sách</p>
+                  <p>Danh sách</p>
                 </Link>
               </li>
             </ul>
