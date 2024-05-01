@@ -71,15 +71,15 @@ const History = () => {
                 Phim đã xem
               </div>
        
-              {movies?.map((item, index) => (
-              // <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
+              {/* {movies?.map((item, index) => ( */}
+              {/* // <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
               //   <div className="flex flex-row ">
               //   <img src={item?.image.poster} className="h-[200px]" />
               //   <span className="font-semibold text-[24px] ml-[10px] text-balance w-[500px]">{item?.title}</span>
               //   </div>
-              // </div>
+              // </div> */}
               <HistorySlide movies={movies} title="Phim đã xem" />
-            ))}
+            {/* ))} */}
             </div>
           </div>
         </div>
