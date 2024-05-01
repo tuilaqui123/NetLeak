@@ -41,13 +41,18 @@ const TabPageThumbnail = ({
   const handlePlay = () => {
     // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
     window.scrollTo(0, 0);
+    window.location.href = `/video/6630a66c1a3d60de19e9d1a7/1`
+  }
+  const handleIn4 = () => {
+    // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
+    window.scrollTo(0, 0);
     window.location.href = `/movie/6630a66c1a3d60de19e9d1a7`
   }
 
   useEffect(() => {
     const handleResize = () => {
       // Kiểm tra độ rộng của màn hình và ẩn hiện Film-content dựa trên điều kiện
-      if (window.innerWidth <= 1400) {
+      if (window.innerWidth <= 1100) {
         setShowFilmContent(false);
       } else {
         setShowFilmContent(true);
@@ -87,7 +92,7 @@ const TabPageThumbnail = ({
         }}
       />
 
-      <div className="thumbnail-content w-full">
+      <div className="thumbnail-content w-full ">
         <div className="tab-title-container">
           <p className="tab-title">Anime</p>
           <select
@@ -129,7 +134,7 @@ const TabPageThumbnail = ({
                 <FontAwesomeIcon icon={faPlay} className="icon" />
                 <p>Phát</p>
               </button>
-              <button className="playlist" onClick={handlePlay}>
+              <button className="playlist" onClick={handleIn4}>
                 <FontAwesomeIcon icon={faInfoCircle} className="icon" />
                 <p>Thông tin thêm</p>
               </button>

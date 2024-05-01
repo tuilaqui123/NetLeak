@@ -28,7 +28,7 @@ const myList= []
         <Lottie height={400} width={400} animationData={animationData} className="flex-grow"/>
         <div className="flex-grow items-center justify p-5"> 
             <p className="text-3xl text-bold mb-5">Danh sách yêu thích của bạn đang trống</p>
-            <p className="hover:text-green-500 cursor-pointer" onClick={handleToHome}> Khám phá thêm các phim khác</p>
+            <p className="hover:text-green-500 cursor-pointer" onClick={handleToHome}> Hãy khám phá thêm các phim khác tại Trang chủ nào</p>
         </div>
         
         </div>
