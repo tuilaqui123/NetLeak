@@ -1,21 +1,39 @@
-
 import "./TabPageThumbnail.scss";
-import React, { useEffect, useState } from "react";
-import thumb_vid from "../../assets/video/Violet_trailer.mp4";
+import { useContext, useEffect, useState } from "react";
 import N from "../../assets/images/N-logo.png";
 import top10 from "../../assets/images/top10.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlay,
-  faPlus,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player";
-const TabPageThumbnail = ({ Genre, setGenre }) => {
+import { AppContext } from "../../context/AppContext";
+import axios from "axios";
+const TabPageThumbnail = ({
+  Genre,
+  setGenre,
+  selectedGenre,
+  setSelectedGenre,
+  topMovies,
+}) => {
   const [showFilmContent, setShowFilmContent] = useState(true);
+  const { genres } = useContext(AppContext);
   const handleChange = (e) => {
-    setGenre(e.target.value);
+    const id = e.target.value;
+    console.log(id);
+    if (id == "") {
+      setGenre("");
+      setSelectedGenre(e.target.value);
+
+      return;
+    }
+
+    setSelectedGenre(e.target.value);
+    genres.map((genre) => {
+      if (genre._id == id) {
+        setGenre(genre);
+      }
+    });
   };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,11 +48,12 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
     window.addEventListener("resize", handleResize);
 
     handleResize();
-
+    console.log(topMovies)
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
 
   return (
     <div className="thumbnail-container">
@@ -44,9 +63,8 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
         Your browser does not support the video tag.
       </video> */}
 
-
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=mLW35YMzELE" // đổi thumb-video tại đây
+        url="https://www.youtube.com/watch?v=EoBHRvbKrCQ" // đổi thumb-video tại đây
         className="thumb-pic"
         playing={true}
         loop={true}
@@ -60,25 +78,27 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
         }}
       />
 
-
       <div className="thumbnail-content">
         <div className="tab-title-container">
           <p className="tab-title">Anime</p>
           <select
-            className="genre-selector"
-            value={Genre}
+            className="genre-selector capitalize"
+            value={selectedGenre}
             onChange={handleChange}
           >
             <option value="">Thể loại</option>
-            <option value="Comedy">Hài hước</option>
-            <option value="Shounen">Shounen</option>
-            <option value="Shoujo">Shoujo</option>
-            <option value="Josei">Josei</option>
-            <option value="Isekai">Isekai</option>
-            <option value="SoLife">Slice of Life</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Romance">Romance</option>
-            <option value="Horror">Horror</option>
+            {genres.map((genre) => {
+              return (
+                <option
+                  className=" capitalize"
+                  value={genre._id}
+                  key={genre._id}
+                >
+                  {" "}
+                  {genre.title}{" "}
+                </option>
+              );
+            })}
           </select>
         </div>
 
@@ -89,11 +109,12 @@ const TabPageThumbnail = ({ Genre, setGenre }) => {
                 <img src={N} alt="N-logo" />
                 <p>SERIAL</p>
               </div>
-              <h1>VIOLET EVERGARDEN</h1>
+              {/* <p className= "font-bold text-4xl text-white p-5 pl-0">{topMovies[2].title}</p> */}
+              <p className= "font-bold text-4xl text-white p-5 pl-0">Tensei-shitara Slime datta ken - That Time I Got Reincarnated as a Slime</p>
             </div>
             <div className="ranking">
               <img src={top10} alt="top10" />
-              <p>#1 DANH SÁCH THỊNH HÀNH</p>
+              <p>#3 DANH SÁCH THỊNH HÀNH</p>
             </div>
             <div className="access">
               <button className="play">

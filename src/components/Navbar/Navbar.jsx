@@ -73,9 +73,10 @@ const Navbar = () => {
                   <p>Thể loại</p>
                 </Link>
               </li>
+              
               <li>
-                <Link to="/mylist">
-                  <p>Danh sách</p>
+                <Link to="/mylist" style={linkStyle}>
+                <p>Danh sách</p>
                 </Link>
               </li>
             </ul>

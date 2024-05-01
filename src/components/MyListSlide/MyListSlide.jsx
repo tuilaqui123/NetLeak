@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from "react";
-import "./GenreSlide.scss";
+import "./MyListSlide.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import HoverSlide from "./HoverSlide";
-export default function GenreSlide({ Genre, setGerne }) {
+export default function GenreSlide({ movies, title }) {
 
-  const movies= Genre.movies;
+//   const movies= data;
 
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   let hoverTimeout;
@@ -23,7 +23,7 @@ export default function GenreSlide({ Genre, setGerne }) {
     // alert(numberOfColumns);
     if (numberOfColumns < 5 && hoveredIndex == -1) {
       // chuyển tới phim thẳng luôn
-      setGerne('');
+   
       window.scrollTo(0, 0);
       window.location.href = "/movie/:id";
       return;
@@ -33,7 +33,7 @@ export default function GenreSlide({ Genre, setGerne }) {
       }, 0);
     }
   };
-
+ 
   const handleMouseLeave = () => {
     clearTimeout(hoverTimeout);
     setHoveredIndex(-1);
@@ -58,19 +58,23 @@ export default function GenreSlide({ Genre, setGerne }) {
 
   return (
     <div>
-      <p className="genre-title capitalize "> {Genre.title}</p>
+      <p className="genre-title capitalize "> {title}</p>
 
       <div className="grid-container">
         {/* <div className="image-container"> */}
+
+        
         {movies.map(( movie, index) => {
           
 
+
+
           return(
           <div
-            className={`card ${index === hoveredIndex ? "hovered" : ""} relative`}
+            className={`listcard ${index === hoveredIndex ? "hovered" : ""} relative`}
             onClick={() => handleMouseEnter(index)}
           >
-            <div className="image-container">
+            <div className="image-container ">
               {index === hoveredIndex ? (
                 <FontAwesomeIcon
                   icon={faXmark}
@@ -83,6 +87,7 @@ export default function GenreSlide({ Genre, setGerne }) {
              
               {index !== hoveredIndex ? <img
                 key={index}
+               
                 src={ movie.image.poster}
                 alt={`Ảnh ${index + 1}`}
               /> : <img
@@ -92,10 +97,12 @@ export default function GenreSlide({ Genre, setGerne }) {
             />}
               
             </div>
-            <p className="film-title text-center pt-2 line-clamp-film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
-            {index === hoveredIndex ? <HoverSlide setGenre={setGerne} movie={movie} /> : ""}
+            <p className="film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
+            {index === hoveredIndex ? <HoverSlide  movie={movie} /> : ""}
           </div>
-        )})}
+        )
+        
+        })}
       </div>
     </div>
   );
