@@ -18,6 +18,10 @@ const Navbar = () => {
   const [showNav, setShowNav] = useState(false)
   const [isSearch, setIsSearch] = useState(false)
 
+  const [query,setQuery] = useState("")
+  const handleChange = (event) => {
+    setQuery(event.target.value)
+}
   function toogleNoti() {
     setNoti(!noti)
     setIsSearch(false)
@@ -43,7 +47,7 @@ const Navbar = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      navigate("/search")
+      navigate("/search", {state:query})
     }
   }
 
@@ -95,11 +99,15 @@ const Navbar = () => {
               />
               {isSearch && (
                 <div>
+                  <form onSubmit={e => { e.preventDefault() }}>
                   <input
                     type="text"
-                    className="w-[250px] h-[35px] focus:ring-[#ff0000] focus:outline-[#ff0000] rounded-md pl-2 pr-10"
+                    value={query}
+                    className=" text-black w-[250px] h-[35px] focus:ring-[#ff0000] focus:outline-[#ff0000] rounded-md pl-2 pr-10"
                     onKeyDown={handleKeyDown}
+                    onChange={handleChange}
                   />
+                  </form>
                 </div>
               )}
             </div>
