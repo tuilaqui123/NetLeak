@@ -1,5 +1,5 @@
 import "./User.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import {
   CloseOutlined,
   UserOutlined,
@@ -16,14 +16,17 @@ import { Link, NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import DropDown from "./DropDown";
 import SideBar from "./SideBar";
+import { AppContext } from "../../context/AppContext";
 
 const History = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
-
   const Menu = ["Tài khoản", "Đăng xuất"];
   const menuRef = useRef();
   const avatarRef = useRef();
+  const {movies} = useContext(AppContext);
+  console.log('phim: ', movies);
+
   function toggleUserDropdown() {
     setUserDropdown(!userDropdown);
   }
@@ -61,13 +64,18 @@ const History = () => {
         <div className="w-full">
           <div className="flex-col ">
             <h1 className="p-7 text-2xl font-semibold">Tài Khoản</h1>
-            <div class="flex-col ">
+            <div className="flex-col ">
               <div className="py-3 pl-7 font-semibold text-[20px] ">
                 Phim đã xem
               </div>
+       
+              {movies?.map((item, index) => (
               <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
-                <span className="font-semibold text-[18px]">One Punch Man</span>
-              </div>
+                <div className="flex flex-row ">
+                <img src={item?.image.poster} className="h-[200px]" />
+                <span className="font-semibold text-[24px] ml-[10px] text-balance w-[500px]">{item?.title}</span>
+                </div>
+              </div>))}
             </div>
           </div>
         </div>

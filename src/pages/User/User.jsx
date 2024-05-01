@@ -1,5 +1,5 @@
 import "./User.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import {
   CloseOutlined,
   UserOutlined,
@@ -16,6 +16,8 @@ import { Link, NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import DropDown from "./DropDown";
 import SideBar from "./SideBar";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const User = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -26,9 +28,32 @@ const User = () => {
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
   const [showModal4, setShowModal4] = useState(false);
+  const [user, setUser] = useState([]);
+  const [userId, setUserId] = useState([]);
   const Menu = ["Tài khoản", "Đăng xuất"];
   const menuRef = useRef();
   const avatarRef = useRef();
+
+  
+  
+
+  const fetchUser = async () => {
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTU5MjIzLCJleHAiOjE3MTQ1NzcyMjN9.FtVTFHNdxiKBcoVRUuKURb4CYumqPpS2ScC0P61tjn0";
+  const decoded = jwtDecode(token).id;
+  console.log("decode:", decoded);
+    setUserId(decoded);
+    try {
+      const response = await axios.get(`http://localhost:8081/v1/api/admin/users/${decoded}`);
+      setUser(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+}
+
+useEffect(() => {
+  fetchUser()
+}, [])
+
   function toggleUserDropdown() {
     setUserDropdown(!userDropdown);
   }
@@ -51,6 +76,9 @@ const User = () => {
       setUserDropdown(false);
     }
   });
+
+
+
   return (
     <div className="user-container ">
       <div className="header">
@@ -75,20 +103,20 @@ const User = () => {
         <div className="w-full">
           <div className="flex-col ">
             <h1 className="p-7 text-2xl font-semibold">Tài Khoản</h1>
-            <div class="flex-col ">
+            <div className="flex-col ">
               <div className="py-3 pl-7 font-semibold text-[20px] ">
                 Thông tin cá nhân
               </div>
               <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
                 <div className="flex-col">
                   <span className="font-semibold text-[18px]">
-                    Ngô Võ Quang Minh
+                  {user?.name}
                   </span>
                   {/* md:block */}
                   <div className="flex flex-col mt-5  md:flex-row md:items-center">
                     <div>
                       <span>Giới tính: </span>
-                      <span className="font-semibold">Nam</span>
+                      <span className="font-semibold">{user?.sexuality}</span>
                     </div>
                     {/* <div className="text-gray-300 ml-10 mr-10">|</div> */}
                     <div className="hidden md:block ml-10 pl-10 border-l border-gray-300 h-[20px]"></div>
@@ -97,7 +125,7 @@ const User = () => {
                     <span className="border-l border-gray-200 pl-10 ml-10 "></span> */}
                     <div className="mt-2 md:mt-0">
                       <span>UID: </span>
-                      <span className="font-semibold">123456789</span>
+                      <span className="font-semibold">{user?._id}</span>
                     </div>
                   </div>
                 </div>
@@ -116,7 +144,7 @@ const User = () => {
                   <div>
                     <span className="mr-3">Email </span>
                     <span className="font-semibold">
-                      sleeperminnie@gmail.com
+                    {user?.email}
                     </span>
                   </div>
                   <span
@@ -130,7 +158,7 @@ const User = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="mr-3">Số điện thoại </span>
-                    <span className="font-semibold">0354568446</span>
+                    <span className="font-semibold">{user?.phone}</span>
                   </div>
                   <span
                     className="font-semibold cursor-pointer"
