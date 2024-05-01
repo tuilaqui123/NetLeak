@@ -25,12 +25,13 @@ function SideBar() {
     const Hover = ({isActive})=>
     isActive ? `${active} ${inActive}` : `${active} ${hover}`;
   return (
-    <div>
+    <div className="">
+      
     <div className={`lg:left-[-300px] left-[16px] absolute text-xl top-[7px] `}>
         <MenuOutlined onClick={() => toggleSidebar()} />
     </div>
-    <div className={`${isSidebarOpen ? 'block' : 'hidden'} lg:hidden fixed top-[50px] h-screen inset-0 bg-gray-600 bg-opacity-50`}></div>
-    <div className={`sidebar absolute bg-[#fafafa] ${isSidebarOpen ?'left-[0px]' : 'left-[-300px]'}  lg:relative  h-screen lg:left-0  p-2  w-[300px] overflow-y-auto text-center border-r lg:border-0`}>
+    <div className={`${isSidebarOpen ? 'block' : 'hidden'} z-50 lg:hidden fixed top-[50px] h-full inset-0 bg-gray-600 bg-opacity-50`}></div>
+    <div className={`sidebar z-50 fixed bg-[#fafafa] ${isSidebarOpen ?'left-[0px] overflow-y-hidden' : 'left-[-300px] overflow-auto'}  lg:relative  h-full lg:left-0  p-2  w-[300px]  text-center border-r lg:border-0`}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Link />
             <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
@@ -44,7 +45,7 @@ function SideBar() {
           <div className="text-black text-xl">
             <div className="p-2.5 mt-4 flex items-center cursor-pointer">
               <img
-                src="src\assets\images\actor.jpg"
+                src="src\assets\images\netflix_avatar.png"
                 className=" w-12 h-12 border-2"
               />
               <h1 className="font-semibold text-[15px] ml-3">Quang Minh</h1>

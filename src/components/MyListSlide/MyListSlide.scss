@@ -55,7 +55,7 @@ p {
 .listcard img {
   width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của phần tử cha */
   
-  max-height: 300px;
+  height: 300px;
   object-fit: cover; /* Cắt ảnh nếu dư để đảm bảo đủ kích thước */
   cursor: pointer;
   border-radius: 10px;
@@ -74,7 +74,9 @@ p {
 
   // transition: left ;
   padding-bottom: 5px;
-
+img{
+  max-height: 200px;
+}
   .film-title {
     opacity: 0;
   }

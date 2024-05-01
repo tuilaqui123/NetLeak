@@ -17,6 +17,8 @@ import Modal from "./Modal";
 import DropDown from "./DropDown";
 import SideBar from "./SideBar";
 import { AppContext } from "../../context/AppContext";
+import MyListSlide from "../../components/MyListSlide/MyListSlide";
+import HistorySlide from "./HistorySlide";
 
 const History = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -51,31 +53,33 @@ const History = () => {
             onClick={() => setUserDropdown(!userDropdown)}
           >
             <img
-              src="src\assets\images\actor.jpg"
+              src="src\assets\images\netflix_avatar.png"
               className="rounded-full w-10 h-10 border-2"
             />
-            <CaretDownOutlined className="ml-1" />
+            <CaretDownOutlined className="ml-2" />
           </div>
           <DropDown ref={menuRef} isVisible={userDropdown} object={Menu} />
         </div>
       </div>
       <div className="flex-row flex">
-        <SideBar />
+        <SideBar  className="z-50"/>
         <div className="w-full">
           <div className="flex-col ">
             <h1 className="p-7 text-2xl font-semibold">Tài Khoản</h1>
-            <div className="flex-col ">
+            <div className="flex-col">
               <div className="py-3 pl-7 font-semibold text-[20px] ">
                 Phim đã xem
               </div>
        
               {movies?.map((item, index) => (
-              <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
-                <div className="flex flex-row ">
-                <img src={item?.image.poster} className="h-[200px]" />
-                <span className="font-semibold text-[24px] ml-[10px] text-balance w-[500px]">{item?.title}</span>
-                </div>
-              </div>))}
+              // <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
+              //   <div className="flex flex-row ">
+              //   <img src={item?.image.poster} className="h-[200px]" />
+              //   <span className="font-semibold text-[24px] ml-[10px] text-balance w-[500px]">{item?.title}</span>
+              //   </div>
+              // </div>
+              <HistorySlide movies={movies} title="Phim đã xem" />
+            ))}
             </div>
           </div>
         </div>

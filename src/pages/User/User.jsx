@@ -80,7 +80,7 @@ useEffect(() => {
 
 
   return (
-    <div className="user-container ">
+    <div className="user-container">
       <div className="header">
         <h1>Netflix</h1>
         <div className="relative">
@@ -90,7 +90,7 @@ useEffect(() => {
             onClick={() => setUserDropdown(!userDropdown)}
           >
             <img
-              src="src\assets\images\actor.jpg"
+              src="src\assets\images\netflix_avatar.png"
               className="rounded-full w-10 h-10 border-2"
             />
             <CaretDownOutlined className="ml-2" />
@@ -99,7 +99,7 @@ useEffect(() => {
         </div>
       </div>
       <div className="flex-row flex">
-        <SideBar/>
+        <SideBar className="z-50"/>
         <div className="w-full">
           <div className="flex-col ">
             <h1 className="p-7 text-2xl font-semibold">Tài Khoản</h1>
