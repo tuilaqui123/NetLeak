@@ -15,13 +15,11 @@ export default function GenreSlide({ movies, title }) {
     const gridContainer = document.querySelector(".grid-container");
     const rowElements = gridContainer.children;
     const firstRowElement = rowElements[0];
-    const numberOfColumns = Math.floor(
-      gridContainer.offsetWidth / firstRowElement.offsetWidth
-    );
 
+    console.log(gridContainer.offsetWidth/ firstRowElement.offsetWidth);
     // Kiểm tra số lượng phần tử trong hàng
     // alert(numberOfColumns);
-    if (numberOfColumns < 5 && hoveredIndex == -1) {
+    if (gridContainer.offsetWidth/ firstRowElement.offsetWidth < 5 && hoveredIndex == -1) {
       // chuyển tới phim thẳng luôn
 
       window.scrollTo(0, 0);

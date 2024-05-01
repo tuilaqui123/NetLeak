@@ -44,8 +44,9 @@ const Thumbnail = () => {
     console.log(topMovies)
 
     return (
-        <div >
+        <div className='md:block hidden' >
             <Swiper
+            
                 effect={'fade'}
                 centeredSlides={true}
                 slidesPerView={1}
