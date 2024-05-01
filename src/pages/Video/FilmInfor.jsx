@@ -13,15 +13,15 @@ function FilmInfor({ filmInfor, allGenres, episodeNumber,imdb ,handleAddRating, 
     return (
         <div>
             <div className='flex items-center mt-4'>
-                <div className='text-[#FF4500] font-medium flex items-center'>
+                <div className='text-green-500 font-medium flex items-center'>
                     <p className='text-[17px] md:text-[19px] lg:text-[20px] font-bold'>{imdb.rating.toFixed(2)}</p>
 
-                    <FontAwesomeIcon icon={faStar} size='lg' className='ml-1 text-[#FF4500] hidden md:block' />
-                    <FontAwesomeIcon icon={faStar} size='sm' className='ml-1 text-[#FF4500] md:hidden' />
+                    <FontAwesomeIcon icon={faStar} size='lg' className='ml-1 text-green-500 hidden md:block' />
+                    <FontAwesomeIcon icon={faStar} size='sm' className='ml-1 text-green-500 md:hidden' />
                 </div>
 
                 <div className='text-white/[.5] text-[12px] md:text-[14px] lg:text-[15px]'>
-                    <p>{'('}
+                    <p>{" ("}
                         {
                             imdb.vote < 1000 ?
                                 imdb.vote + ' lượt đánh giá'
@@ -82,12 +82,12 @@ function FilmInfor({ filmInfor, allGenres, episodeNumber,imdb ,handleAddRating, 
                 >
                     <div className='flex justify-center items-center'>
                         <p
-                            className='text-[#FF4500] font-bold text-[14px] lg:text-[15px]'>{isExpand ? 'Thu gọn giới thiệu' : 'Hiển thị thêm'}
+                            className='text-green-500 font-bold text-[14px] lg:text-[15px]'>{isExpand ? 'Thu gọn giới thiệu' : 'Hiển thị thêm'}
                         </p>
                         {isExpand ?
-                            <FontAwesomeIcon icon={faAngleUp} size='lg' className='ml-2 text-[#FF4500]' />
+                            <FontAwesomeIcon icon={faAngleUp} size='lg' className='ml-2 text-green-500' />
                             :
-                            <FontAwesomeIcon icon={faAngleDown} size='lg' className='ml-2 text-[#FF4500]' />
+                            <FontAwesomeIcon icon={faAngleDown} size='lg' className='ml-2 text-green-500' />
                         }
                     </div>
                 </div>

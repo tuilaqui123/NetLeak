@@ -7,7 +7,7 @@ import video1 from '../../assets/video/video.mp4'
 import m1 from '../../assets/movies/1.jpg'
 
 import Navbar from '../../components/Navbar/Navbar'
-import Footer from './Footer'
+
 import SelectEpisode from './SelectEpisode'
 import ActorSlide from './ActorSlide'
 import RecommendedFilm from './RecommendedFilm'
@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp, faBookmark, faHeart, faL, } from '@fortawesome/free-solid-svg-icons';
 
 const SELECT_EPISODE_WIDTH = '300px'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTYzOTYxLCJleHAiOjE3MTQ1ODE5NjF9.PQ4Kw9MF4c7XUN2xFzguwurcr13PyY-4c1mzrgCV6gA'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTg0MjA4LCJleHAiOjE3MTQ2MDIyMDh9.PPCLA9mHxdS_wPyplsIHWh3lGmm9MLwm-MEB8fevS38'
 const userId = jwtDecode(token).id
 
 const Video = () => {

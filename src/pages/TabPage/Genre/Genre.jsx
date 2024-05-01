@@ -11,7 +11,7 @@ export default function Genre({ Genre, setGenre, setSelectedGenre }) {
   const [topMovies, setTopMovies] = useState([]);
 
 
-  const TopMovies = ["662f8e8a4a2e36c18946572b", "662f837cd772d69dd48aeac2", "6630a66c1a3d60de19e9d1a7", "662f8b764a2e36c1894656e6", "6630a4031a3d60de19e9d159"]
+  const TopMovies = ["662fa2a8db4524f20df792c5", "662f837cd772d69dd48aeac2", "6630a66c1a3d60de19e9d1a7", "662f8b764a2e36c1894656e6", "6630a28e1a3d60de19e9d110"]
   useEffect(() => {
 
 

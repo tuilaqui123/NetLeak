@@ -3,17 +3,27 @@ import thumb_pic from '../../assets/images/thumbnail.jpg'
 import N from '../../assets/images/N-logo.png'
 import top10 from '../../assets/images/top10.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPlus,faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from "react-router-dom";
 const ThumbnailContent = ({ data, index }) => {
+    const navigate= useNavigate()
+    const handlePlay=()=>{
+        navigate(`/video/${data._id}/1`)
+        // console.log(data)
+    }
+    const handleIn4=()=>{
+        navigate(`/movie/${data._id}`)
+    }
+
     return (
         <>
-            <div className='w-full h-auto absolute'>
-                <img
-                    src={data.image.banner}
-                    alt="thumb-pic"
-                    className="w-full h-screen brightness-[70%] absolute"
-                />
-            </div>
+             <div className='w-full h-screen absolute flex items-center justify-center'>
+    <img
+      src={data.image.banner}
+      alt="thumb-pic"
+      className="w-full h-auto brightness-[70%] absolute align-center"
+    />
+  </div>
             <div className='relative w-full h-full flex items-center justify-center brightness-110'>
                 <div className='w-[95%] h-4/5 flex flex-col justify-evenly'>
                     <div>
@@ -26,7 +36,7 @@ const ThumbnailContent = ({ data, index }) => {
                                 />
                                 <p>SERIAL</p>
                             </div>
-                            <h1 className='text-5xl font-bold text-white mt-5 mb-10'>{data.title.toUpperCase()}</h1>
+                            <p className="font-bold text-4xl text-white p-5 pl-0 w-1/2"> {data.title.toUpperCase().substring(0,70)} ...</p>
                         </div>
                         <div className='flex flex-row items-center mb-5'>
                             <img
@@ -40,13 +50,13 @@ const ThumbnailContent = ({ data, index }) => {
                         <p className='w-1/2 text-lg'>{data.fullplot.substring(0, 200)}...</p>
                     </div>
                     <div className='access'>
-                        <button className='play'>
+                        <button className='play' onClick={handlePlay}>
                             <FontAwesomeIcon icon={faPlay} className='icon' />
                             <p>Phát</p>
                         </button>
-                        <button className='playlist'>
-                            <FontAwesomeIcon icon={faPlus} className='icon' />
-                            <p>Danh sách</p>
+                        <button className='playlist' onClick={handleIn4}>
+                            <FontAwesomeIcon icon={faInfoCircle} className='icon' />
+                            <p>Thông tin thêm</p>
                         </button>
                     </div>
                 </div>
