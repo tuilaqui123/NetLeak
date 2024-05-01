@@ -10,6 +10,8 @@ export const AppProvider = ({ children }) => {
     const [movies, setMovies] = useState([])
     const [genres, setGenres] = useState([]);
 
+    const [accessToken, setAccessToken] = useState('');
+
     const fetchUser = () => {
         axios.get("http://localhost:8081/v1/api/admin/users")
             .then((res) => {
@@ -73,7 +75,8 @@ export const AppProvider = ({ children }) => {
         casts, setCasts,
         directors, setDirectors,
         movies, setMovies,
-        genres, setGenres
+        genres, setGenres,
+        accessToken, setAccessToken
     }}>
         {children}
     </AppContext.Provider>

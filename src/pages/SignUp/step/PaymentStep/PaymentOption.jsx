@@ -2,7 +2,7 @@ import './pay.css'
 import React from 'react'
 import OptionContent from './OptionContent';
 
-const PaymentOption = ({ bg, name, opt }) => {
+const PaymentOption = ({ bg, name, opt , cost}) => {
 
     const bgStyle = {
         background: bg.bg1,
@@ -16,14 +16,19 @@ const PaymentOption = ({ bg, name, opt }) => {
                 <p className='text-white font-black text-xl antialiased'>{name.titleContent}</p>
                 <p className='text-white font-bold text-lg'>{name.nameContent}</p>
             </div>
+            <OptionContent
+                title={'Giá hàng tháng'}
+                content={cost.toLocaleString() + 'đ'}
+            />
             {opt.map((value, index) => {
-                return (
-                    <OptionContent
-                        key={index}
-                        title={value.title}
-                        content={value.name}
-                    />
-                );
+                if (index != 0)
+                    return (
+                        <OptionContent
+                            key={index}
+                            title={value.title}
+                            content={value.name}
+                        />
+                    );
             })}
         </div>
     );

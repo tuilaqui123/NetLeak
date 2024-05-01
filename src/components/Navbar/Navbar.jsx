@@ -152,7 +152,21 @@ const Navbar = () => {
                   </Link>
                   <div className="group flex items-center">
                     <LogoutOutlined className="text-[#696969] group-hover:text-[green] mr-2  cursor-pointer " />
-                    <p className="text-[#696969] group-hover:text-[white] cursor-pointer">
+                    <p 
+                      onClick={() => {
+                        fetch('http://localhost:8081/v1/api/logout',{
+                          method: 'POST',
+                          headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                          }
+                        })
+                        .then(() => {
+                          localStorage.clear()
+                          navigate('/login')
+                        })
+                      }}
+                    className="text-[#696969] group-hover:text-[white] cursor-pointer">
                       Đăng xuất
                     </p>
                   </div>
