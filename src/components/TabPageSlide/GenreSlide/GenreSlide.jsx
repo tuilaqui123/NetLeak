@@ -67,7 +67,7 @@ export default function GenreSlide({ Genre, setGerne }) {
 
           return(
           <div
-            className={`card ${index === hoveredIndex ? "hovered" : ""}`}
+            className={`card ${index === hoveredIndex ? "hovered" : ""} relative`}
             onClick={() => handleMouseEnter(index)}
           >
             <div className="image-container">
@@ -92,7 +92,7 @@ export default function GenreSlide({ Genre, setGerne }) {
             />}
               
             </div>
-            <p className="film-title text-center pt-2 line-clamp-2"> {movie.title}</p>
+            <p className="film-title text-center pt-2 line-clamp-film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
             {index === hoveredIndex ? <HoverSlide setGenre={setGerne} movie={movie} /> : ""}
           </div>
         )})}

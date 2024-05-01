@@ -93,7 +93,7 @@ const handlePlay = () =>{
             })}
           </ul>
           <p className="text-white text-xs p-2 pt-0 pb-5 bg-black rounded-[10px] text-justify line-clamp-4">
-            {movie.fullplot}
+            {movie.fullplot.substring(0,150)} ...
           </p>
         </div>
       </div>

@@ -33,7 +33,7 @@ export default function GenreSlide({ movies, title }) {
       }, 0);
     }
   };
-
+ 
   const handleMouseLeave = () => {
     clearTimeout(hoverTimeout);
     setHoveredIndex(-1);
@@ -71,10 +71,10 @@ export default function GenreSlide({ movies, title }) {
 
           return(
           <div
-            className={`card ${index === hoveredIndex ? "hovered" : ""}`}
+            className={`listcard ${index === hoveredIndex ? "hovered" : ""} relative`}
             onClick={() => handleMouseEnter(index)}
           >
-            <div className="image-container">
+            <div className="image-container ">
               {index === hoveredIndex ? (
                 <FontAwesomeIcon
                   icon={faXmark}
@@ -87,6 +87,7 @@ export default function GenreSlide({ movies, title }) {
              
               {index !== hoveredIndex ? <img
                 key={index}
+               
                 src={ movie.image.poster}
                 alt={`Ảnh ${index + 1}`}
               /> : <img
@@ -96,7 +97,7 @@ export default function GenreSlide({ movies, title }) {
             />}
               
             </div>
-            <p className="film-title text-center pt-2 line-clamp-2"> {movie.title}</p>
+            <p className="film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
             {index === hoveredIndex ? <HoverSlide  movie={movie} /> : ""}
           </div>
         )
