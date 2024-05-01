@@ -25,7 +25,7 @@ const EpList = () => {
     console.log(video)
 
     return (
-        <div className='w-full flex items-center justify-center'>
+        <div className='w-full flex items-center justify-center relative z-50'>
             <div className='w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                 {video.map((value, index) => {
                     const getVideoIdFromUrl = (url) => {
