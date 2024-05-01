@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Movie from './pages/Movie/Movie'
 import MyList from './pages/MyList/MyList'
 import SignUp from './pages/SignUp/SignUp'
+import Login from './pages/Login/Login'
 import Step1 from './pages/SignUp/step/step1'
 import TabPage from './pages/TabPage/TabPage'
 import User from './pages/User/User'
@@ -24,7 +25,7 @@ function App() {
           <Routes>
             <Route>
               <Route path='/' element={<Welcome />} />
-              <Route path='/login' element={<SignUp />} />
+              <Route path='/signup' element={<SignUp />} />
               <Route path="/home" element={<Home />} />
               <Route path="/movie/:id" element={<Movie />} />
               <Route path='/mylist' element={<MyList />} />
@@ -34,6 +35,7 @@ function App() {
               <Route path="/user" element={<User />} />
               <Route path="/history" element={<History />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/login" element={<Login />} />
             </Route>
           </Routes>
         </BrowserRouter>
