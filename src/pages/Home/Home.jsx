@@ -4,10 +4,17 @@ import Thumbnail from '../../components/Thumbnail/Thumbnail';
 import ThumbnailRes from '../../components/Thumbnail/thumbnailResponsive';
 import { AppContext } from '../../context/AppContext';
 import './home.css'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 const Home = () => {
-    const { genres, movies } = useContext(AppContext)
+    const { genres, movies, accessToken, setAccessToken } = useContext(AppContext)
+
+    let token = localStorage.accessToken
+
+    useEffect(() => {
+        setAccessToken(token)
+    },[])
+
 
     console.log(genres)
     console.log(movies)

@@ -21,7 +21,8 @@ const Step2 = () => {
                 <FontAwesomeIcon icon={faCheck} className='icon' />
                 <p>Không quảng cáo, không phụ phí. Luôn luôn như vậy.</p>
             </div>
-            <Link to="/login/payment" className='btn'>
+            <Link to="/signup/payment" className='btn' onClick={() =>{
+            }}>
                 <p>Tiếp theo</p>
             </Link>
         </div>

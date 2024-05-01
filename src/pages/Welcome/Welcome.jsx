@@ -9,9 +9,11 @@ import ContentVideo from './ContentVideo';
 import video1 from '../../assets/images/video-tv-0819.mp4'
 import video2 from '../../assets/images/video-devices-vn.mp4'
 import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
 
 
 const Welcome = () => {
+    const navigate = useNavigate()
     const linkStyle = {
         textDecoration: "none",
     };
@@ -21,7 +23,9 @@ const Welcome = () => {
             <div className='container'>
                 <div className='header'>
                     <h1>NETFLIX</h1>
-                    <button>
+                    <button
+                        onClick={() =>{navigate('/login')}}
+                    >
                         <p>Đăng nhập</p>
                     </button>
                 </div>

@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import './Video.css'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import video1 from '../../assets/video/video.mp4'
@@ -15,12 +15,18 @@ import FilmInfor from './FilmInfor'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp, faBookmark, faHeart, faL, } from '@fortawesome/free-solid-svg-icons';
+import { AppContext } from "../../context/AppContext";
 
 const SELECT_EPISODE_WIDTH = '300px'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTYzOTYxLCJleHAiOjE3MTQ1ODE5NjF9.PQ4Kw9MF4c7XUN2xFzguwurcr13PyY-4c1mzrgCV6gA'
-const userId = jwtDecode(token).id
+// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTkzNTA2LCJleHAiOjE3MTQ2MTE1MDZ9.uFSw3TdJ4EJQ0eX2KCNxVhk_4N1l4xOKv5pTfi-7-s8'
+// const userId = jwtDecode(token).id
 
 const Video = () => {
+    const {accessToken, setAccessToken} = useContext(AppContext)
+    const userId = localStorage.userID
+
+    const token = accessToken
+
     const { id, chapter } = useParams()
 
     const [invisibleBackToHeadPage, setInvisibleBackToHeadPage] = useState(true)

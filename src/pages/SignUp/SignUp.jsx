@@ -8,23 +8,23 @@ import Step3 from './step/step3';
 import { useParams } from 'react-router-dom';
 
 const SignUp = () => {
-    const params = useParams()
+    const {step} = useParams()
     return (
         <div className='signup-container'>
             <header>
                 <h1>NETFLIX</h1>
                 <p>Đăng nhập</p>
             </header>
-            {params.id == "step1" && (
+            {step == "step1" && (
                 <Step1 />
             )}
-            {params.id == "step2" && (
+            {step == "step2" && (
                 <Step2 />
             )}
-            {params.id == "payment" && (
+            {step == "payment" && (
                 <PayStep />
             )}
-            {params.id == "step3" && (
+            {step == "step3" && (
                 <Step3 />
             )}
         </div>

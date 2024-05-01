@@ -14,6 +14,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import History from './pages/User/History'
 import Search from './components/Search/Search'
 import { AppProvider } from './context/AppContext'
+import Login from './pages/Login/Login'
 
 function App() {
 
@@ -24,12 +25,13 @@ function App() {
           <Routes>
             <Route>
               <Route path='/' element={<Welcome />} />
-              <Route path='/login' element={<SignUp />} />
+              <Route path='/signup/:step' element={<SignUp />} />
+              <Route path='/login' element={<Login />} />
               <Route path="/home" element={<Home />} />
               <Route path="/movie/:id" element={<Movie />} />
               <Route path='/mylist' element={<MyList />} />
               <Route path="/tab/:id" element={<TabPage />} />
-              <Route path="/video/:id" element={<Video />} />
+              <Route path="/video/:id/:chapter" element={<Video />} />
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/user" element={<User />} />
               <Route path="/history" element={<History />} />

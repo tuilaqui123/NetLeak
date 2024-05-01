@@ -16,8 +16,8 @@ function FilmInfor({ filmInfor, allGenres, episodeNumber,imdb ,handleAddRating, 
                 <div className='text-[#FF4500] font-medium flex items-center'>
                     <p className='text-[17px] md:text-[19px] lg:text-[20px] font-bold'>{imdb.rating.toFixed(2)}</p>
 
-                    <FontAwesomeIcon icon={faStar} size='lg' className='ml-1 text-[#FF4500] hidden md:block' />
-                    <FontAwesomeIcon icon={faStar} size='sm' className='ml-1 text-[#FF4500] md:hidden' />
+                    <FontAwesomeIcon icon={faStar} size='lg' className='ml-1 text-green-500 hidden md:block' />
+                    <FontAwesomeIcon icon={faStar} size='sm' className='ml-1 text-green-500 md:hidden' />
                 </div>
 
                 <div className='text-white/[.5] text-[12px] md:text-[14px] lg:text-[15px]'>
