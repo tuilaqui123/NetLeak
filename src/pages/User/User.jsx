@@ -18,6 +18,7 @@ import DropDown from "./DropDown";
 import SideBar from "./SideBar";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { AppContext } from "../../context/AppContext";
 
 const User = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,26 +30,25 @@ const User = () => {
   const [showModal3, setShowModal3] = useState(false);
   const [showModal4, setShowModal4] = useState(false);
   const [user, setUser] = useState([]);
-  const [userId, setUserId] = useState([]);
+  const {userId, setUserId, accessToken} = useContext(AppContext);
   const Menu = ["Tài khoản", "Đăng xuất"];
   const menuRef = useRef();
   const avatarRef = useRef();
 
   
-  
-
   const fetchUser = async () => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTU5MjIzLCJleHAiOjE3MTQ1NzcyMjN9.FtVTFHNdxiKBcoVRUuKURb4CYumqPpS2ScC0P61tjn0";
-  const decoded = jwtDecode(token).id;
-  console.log("decode:", decoded);
-    setUserId(decoded);
-    try {
-      const response = await axios.get(`http://localhost:8081/v1/api/admin/users/${decoded}`);
-      setUser(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-}
+    const decoded = jwtDecode(accessToken).id;
+    console.log("decode:", decoded);
+      setUserId(decoded);
+      console.log("userId:", userId);
+      try {
+        const response = await axios.get(`http://localhost:8081/v1/api/admin/users/${decoded}`);
+        setUser(response.data);
+        console.log("user:", response.data);
+      } catch (err) {
+        console.log(err);
+      }
+  }
 
 useEffect(() => {
   fetchUser()

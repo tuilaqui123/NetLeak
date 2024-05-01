@@ -23,11 +23,40 @@ import HistorySlide from "./HistorySlide";
 const History = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
+  const [movies, setMovies] = useState([]);
   const Menu = ["Tài khoản", "Đăng xuất"];
   const menuRef = useRef();
   const avatarRef = useRef();
-  const {movies} = useContext(AppContext);
-  console.log('phim: ', movies);
+  const {userId,accessToken} = useContext(AppContext);
+  console.log('token: ', accessToken);
+
+  const fetchHistory = async () => {
+      console.log("userId2:", userId);
+      const decoded = jwtDecode(accessToken).id;
+      try {
+        const response = await axios.get(`http://localhost:8081/v1/api/user/historyFilm/${decoded}`);
+        setMovies(response.data);
+        console.log("history:", response.data);
+      } catch (err) {
+        console.log(err);
+      }
+  }
+
+useEffect(() => {
+  const fetchHistory = async () => {
+    console.log("userId2:", userId);
+    const decoded = jwtDecode(accessToken).id;
+    try {
+      const response = await axios.get(`http://localhost:8081/v1/api/user/historyFilm/${decoded}`);
+      setMovies(response.data);
+      console.log("history:", response.data);
+    } catch (err) {
+      console.log(err);
+    }
+}
+fetchHistory();
+}, [])
+
 
   function toggleUserDropdown() {
     setUserDropdown(!userDropdown);

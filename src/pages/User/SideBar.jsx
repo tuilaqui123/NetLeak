@@ -13,8 +13,9 @@ import {
   ArrowLeftOutlined,
 
 } from "@ant-design/icons";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 function SideBar() {
+  const navigate = useNavigate();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
@@ -32,7 +33,7 @@ function SideBar() {
     </div>
     <div className={`${isSidebarOpen ? 'block' : 'hidden'} z-50 lg:hidden fixed top-[50px] h-full inset-0 bg-gray-600 bg-opacity-50`}></div>
     <div className={`sidebar z-50 fixed bg-[#fafafa] ${isSidebarOpen ?'left-[0px] overflow-y-hidden' : 'left-[-300px] overflow-auto'}  lg:relative  h-full lg:left-0  p-2  w-[300px]  text-center border-r lg:border-0`}>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/home" style={{ textDecoration: "none" }}>
             <Link />
             <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
               <ArrowLeftOutlined />
@@ -83,7 +84,19 @@ function SideBar() {
 
           <hr className=" my-5" />
 
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
+          <div onClick={() => {
+                        fetch('http://localhost:8081/v1/api/logout',{
+                          method: 'POST',
+                          headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                          }
+                        })
+                        .then(() => {
+                          localStorage.clear()
+                          navigate('/login')
+                        })
+                      }} className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
             <LogoutOutlined />
             <span className="text-[15px] ml-4 font-semibold">Đăng xuất</span>
           </div>
