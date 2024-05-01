@@ -11,7 +11,7 @@ export default function GenreSlide({ movies, title }) {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   let hoverTimeout;
 
-  const handleMouseEnter = (index) => {
+  const handleMouseEnter = (index, movie) => {
     const gridContainer = document.querySelector(".grid-container");
     const rowElements = gridContainer.children;
     const firstRowElement = rowElements[0];
@@ -25,7 +25,7 @@ export default function GenreSlide({ movies, title }) {
       // chuyển tới phim thẳng luôn
    
       window.scrollTo(0, 0);
-      window.location.href = "/movie/:id";
+      window.location.href = `/movie/${movie._id}`
       return;
     } else {
       hoverTimeout = setTimeout(() => {
@@ -72,7 +72,7 @@ export default function GenreSlide({ movies, title }) {
           return(
           <div
             className={`listcard ${index === hoveredIndex ? "hovered" : ""} relative`}
-            onClick={() => handleMouseEnter(index)}
+            onClick={() => handleMouseEnter(index, movie)}
           >
             <div className="image-container ">
               {index === hoveredIndex ? (

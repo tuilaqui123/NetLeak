@@ -63,7 +63,7 @@ export default function TabPageSlide({ genre, title, setGenre, setSelectedGenre 
             return (
               <SwiperSlide key={movie._id+ genre._id}>
               <Link
-                to="/movie/:id"
+                to={`/movie/${movie._id}`}
                 style={linkStyle}
                 onClick={() => window.scrollTo(0, 0)}
               >

@@ -7,6 +7,7 @@ import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player";
 import { AppContext } from "../../context/AppContext";
 import axios from "axios";
+
 const TabPageThumbnail = ({
   Genre,
   setGenre,
@@ -14,6 +15,7 @@ const TabPageThumbnail = ({
   setSelectedGenre,
   topMovies,
 }) => {
+ 
   const [showFilmContent, setShowFilmContent] = useState(true);
   const { genres } = useContext(AppContext);
   const handleChange = (e) => {
@@ -33,7 +35,11 @@ const TabPageThumbnail = ({
       }
     });
   };
-
+const handlePlay = () =>{
+  // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
+  window.scrollTo(0, 0);
+  window.location.href = `/movie/6630a66c1a3d60de19e9d1a7`
+}
 
   useEffect(() => {
     const handleResize = () => {
@@ -117,11 +123,11 @@ const TabPageThumbnail = ({
               <p>#3 DANH SÁCH THỊNH HÀNH</p>
             </div>
             <div className="access">
-              <button className="play">
+              <button className="play" onClick={handlePlay}>
                 <FontAwesomeIcon icon={faPlay} className="icon" />
                 <p>Phát</p>
               </button>
-              <button className="playlist">
+              <button className="playlist" onClick={handlePlay}>
                 <FontAwesomeIcon icon={faInfoCircle} className="icon" />
                 <p>Thông tin thêm</p>
               </button>

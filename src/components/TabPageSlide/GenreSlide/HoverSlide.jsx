@@ -25,7 +25,7 @@ export default function HoverSlide({ setGenre, movie }) {
       });
   };
 const handlePlay = () =>{
-  navigate('/movie/:id')
+  navigate(`/movie/${movie._id}`)
 }
   const { genres } = useContext(AppContext);
   const findGenreTitle = (id) => {
@@ -45,7 +45,7 @@ const handlePlay = () =>{
     <>
       <div className="flim-description">
         <div className="flex flex-row mb-2 rating-container ml-2 pr-2 ">
-          <Link to="/movie/:id" onClick={handleClick}>
+          <Link to={`/movie/${movie._id}`}onClick={handleClick}>
             <p
               className="font-black text-white text-sm ml-2 mb-2 hover:text-green-500 cursor-pointer line-clamp-2"
               style={{ textShadow: "0 0 3px black" }}

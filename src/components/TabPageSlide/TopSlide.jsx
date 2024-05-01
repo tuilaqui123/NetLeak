@@ -78,7 +78,7 @@ export default function TopSlide({ topMovies }) {
                 )}
                 <SwiperSlide className="swiper-Slide">
                   <Link
-                    to="/movie/:id"
+                   to={`/movie/${movie._id}`}
                     style={linkStyle}
                     onClick={() => window.scrollTo(0, 0)}
                   >
