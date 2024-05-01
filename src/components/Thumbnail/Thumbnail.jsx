@@ -21,7 +21,7 @@ const Thumbnail = () => {
     const [topMovies, setTopMovies] = useState([]);
 
 
-    const TopMovies = ["662f8e8a4a2e36c18946572b", "662f837cd772d69dd48aeac2", "6630a66c1a3d60de19e9d1a7", "662f8b764a2e36c1894656e6", "6630a4031a3d60de19e9d159"]
+    const TopMovies = ["662fa2a8db4524f20df792c5", "662f837cd772d69dd48aeac2", "6630a66c1a3d60de19e9d1a7", "662f8b764a2e36c1894656e6", "6630a28e1a3d60de19e9d110"]
     useEffect(() => {
         const fetchMovieDetail = async () => {
             try {
@@ -44,8 +44,9 @@ const Thumbnail = () => {
     console.log(topMovies)
 
     return (
-        <div >
+        <div className='md:block hidden' >
             <Swiper
+
                 effect={'fade'}
                 centeredSlides={true}
                 slidesPerView={1}
@@ -55,6 +56,16 @@ const Thumbnail = () => {
                 loop={true}
                 modules={[EffectFade, Autoplay, Navigation, Pagination]}
                 className='w-full h-screen relative md:block hidden mb-10'
+                onSlideChangeTransitionStart={(swiper) => {
+                    const slides = swiper.slides;
+                    slides.forEach((slide) => {
+                        if (slide !== swiper.slides[swiper.realIndex]) {
+                            slide.style.opacity = 0;
+                        } else {
+                            slide.style.opacity = 1;
+                        }
+                    });
+                }}
             >
                 {topMovies.map((value, index) => {
                     return (

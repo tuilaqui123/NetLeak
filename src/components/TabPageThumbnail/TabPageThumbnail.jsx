@@ -7,6 +7,7 @@ import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player";
 import { AppContext } from "../../context/AppContext";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const TabPageThumbnail = ({
   Genre,
@@ -15,7 +16,9 @@ const TabPageThumbnail = ({
   setSelectedGenre,
   topMovies,
 }) => {
- 
+
+  const navigate = useNavigate()
+
   const [showFilmContent, setShowFilmContent] = useState(true);
   const { genres } = useContext(AppContext);
   const handleChange = (e) => {
@@ -35,16 +38,21 @@ const TabPageThumbnail = ({
       }
     });
   };
-const handlePlay = () =>{
-  // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
-  window.scrollTo(0, 0);
-  window.location.href = `/movie/6630a66c1a3d60de19e9d1a7`
-}
+  const handlePlay = () => {
+    // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
+    window.scrollTo(0, 0);
+    window.location.href = `/video/6630a66c1a3d60de19e9d1a7/1`
+  }
+  const handleIn4 = () => {
+    // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
+    window.scrollTo(0, 0);
+    window.location.href = `/movie/6630a66c1a3d60de19e9d1a7`
+  }
 
   useEffect(() => {
     const handleResize = () => {
       // Kiểm tra độ rộng của màn hình và ẩn hiện Film-content dựa trên điều kiện
-      if (window.innerWidth <= 1400) {
+      if (window.innerWidth <= 1100) {
         setShowFilmContent(false);
       } else {
         setShowFilmContent(true);
@@ -84,7 +92,7 @@ const handlePlay = () =>{
         }}
       />
 
-      <div className="thumbnail-content">
+      <div className="thumbnail-content w-full ">
         <div className="tab-title-container">
           <p className="tab-title">Anime</p>
           <select
@@ -100,8 +108,7 @@ const handlePlay = () =>{
                   value={genre._id}
                   key={genre._id}
                 >
-                  {" "}
-                  {genre.title}{" "}
+                  {genre.title}
                 </option>
               );
             })}
@@ -116,7 +123,7 @@ const handlePlay = () =>{
                 <p>SERIAL</p>
               </div>
               {/* <p className= "font-bold text-4xl text-white p-5 pl-0">{topMovies[2].title}</p> */}
-              <p className= "font-bold text-4xl text-white p-5 pl-0">Tensei-shitara Slime datta ken - That Time I Got Reincarnated as a Slime</p>
+              <p className="font-bold text-4xl text-white p-5 pl-0">Tensei-shitara Slime datta ken - That Time I Got Reincarnated as a Slime</p>
             </div>
             <div className="ranking">
               <img src={top10} alt="top10" />
@@ -127,7 +134,7 @@ const handlePlay = () =>{
                 <FontAwesomeIcon icon={faPlay} className="icon" />
                 <p>Phát</p>
               </button>
-              <button className="playlist" onClick={handlePlay}>
+              <button className="playlist" onClick={handleIn4}>
                 <FontAwesomeIcon icon={faInfoCircle} className="icon" />
                 <p>Thông tin thêm</p>
               </button>

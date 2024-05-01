@@ -43,6 +43,7 @@ const Slide = ({ title, movies }) => {
             <Swiper
                 slidesPerView={windowWidth}
                 spaceBetween={30}
+                loop={true}
                 autoplay={{
                     delay: 3000,
                 }}

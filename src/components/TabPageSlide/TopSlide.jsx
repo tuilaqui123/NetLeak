@@ -84,7 +84,7 @@ export default function TopSlide({ topMovies }) {
                   >
                     <img src={movie.image.poster} alt="movie" />
                   </Link>
-                  <p className="film-name pt-2 line-clamp-2">{movie.title}</p>
+                  <p className="film-name pt-2 line-clamp-2 cursor-pointer">{movie.title}</p>
                 </SwiperSlide>
               </React.Fragment>
             );
