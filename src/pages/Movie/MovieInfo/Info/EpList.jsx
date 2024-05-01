@@ -1,14 +1,21 @@
 import './info.css'
 import React, { useState, useEffect } from "react";
 import ep from '../../../../assets/images/ep1.jpg'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const EpList = () => {
-
+    const navigate= useNavigate()
     const params = useParams()
     const [video, setVideo] = useState([])
-
+    const hanldePlay = (e) =>{
+        if(e.chapter == 0)
+            {
+                navigate(`/video/${params.id}/1`)
+                return
+            }
+        navigate(`/video/${params.id}/${e.chapter}`)
+    }
     useEffect(() => {
         const fetchVideo = () => {
             axios.get("http://localhost:8081/v1/api/admin/videos/" + params.id)
@@ -35,8 +42,9 @@ const EpList = () => {
                     };
                     const videoId = getVideoIdFromUrl(value.videoLink);
                     const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                    
                     return (
-                        <div className='w-full flex flex-col items-center justify-center group cursor-pointer hover:scale-105 duration-150'>
+                        <div className='w-full flex flex-col items-center justify-center group cursor-pointer hover:scale-105 duration-150' onClick={() =>hanldePlay(value)}>
                             <img
                                 src={thumbnail}
                                 alt='movie'

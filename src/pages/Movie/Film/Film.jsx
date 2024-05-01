@@ -23,7 +23,7 @@ const Film = ({ film }) => {
                     <li className='text-white font-medium'>{film.released.substring(0, 4)}</li>
                     <li className='ml-3 mr-3 text-white'>|</li>
                     <li className='text-green-500 font-medium rating'>
-                        9.6
+                        {film.imdb.rating== null? "10": film.imdb.rating.toFixed(1)}
                         <FontAwesomeIcon icon={faStar} className='ml-1 text-green-500' />
                     </li>
                     <div className='w-[150px] relative ml-3'>
@@ -48,7 +48,7 @@ const Film = ({ film }) => {
                 </ul>
                 <div className='flex flex-row flex-wrap gap-3 mb-5 movie-tag'>
                     {film.genres.map((value, index) =>
-                        <div className='text-white font-medium bg-gray-700 p-1 pl-3 pr-3 cursor-pointer rounded-md' key={index}>
+                        <div className='text-white font-medium bg-gray-700 p-1 pl-3 pr-3 cursor-pointer rounded-md capitalize' key={index}>
                             {value?.title}
                         </div>
                     )}
@@ -57,7 +57,7 @@ const Film = ({ film }) => {
                     {film.fullplot}
                 </p>
                 <div className='access mb-12'>
-                    <button className='play' onClick={() => navigate(`/video/video`)}>
+                    <button className='play' onClick={() => navigate(`/video/${film._id}/1`)}>
                         <FontAwesomeIcon icon={faPlay} className='icon' />
                         <p>Phát</p>
                     </button>
