@@ -18,7 +18,7 @@ const ResponsiveNav = ({ onclick }) => {
                         <p className="text-black">Thể loại</p>
                     </Link>
                     <Link to="/mylist">
-                        <p className="text-black">Danh sách</p>
+                        <p className="text-black">Danh sách yêu thích</p>
                     </Link>
 
                 </div>

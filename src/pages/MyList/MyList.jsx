@@ -6,24 +6,76 @@ import { AppContext } from "../../context/AppContext";
 import Lottie from "lottie-react";
 import animationData from "../../assets/Lottie/Nothing.json";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const TabPage = () => {
-  const { genres } = useContext(AppContext);
-  const navigate= useNavigate()
+  const {  accessToken, movies } = useContext(AppContext);
+  const token= accessToken;
+  const navigate= useNavigate() 
+  const [allFavoriteFilms, setAllFavoriteFilms] = useState([])
+  const [isLoadingAllFavoriteFilm,setIsLoadingAllFavoriteFilm] = useState(true)
+  const [recommendFilms, setRecommendFilms] = useState([])
+  const userId= jwtDecode(accessToken).id
 //   const [myList, setMyList] = useState(genres[0].movies); // list
-const myList= []
-  const [recommend, setRecommend] = useState(genres[1].movies); // đề xuất
 
+
+
+  const getAllFavoriteFilms = () => {
+    setIsLoadingAllFavoriteFilm(true)
+    fetch(`http://localhost:8081/v1/api/user/favorite/${userId}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        },
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.success != false)
+                setAllFavoriteFilms( data)
+          console.log("favour", data)
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+        .finally(() => {
+        
+            setIsLoadingAllFavoriteFilm(false)
+        })
+}
+const getRecommendFilms = () => {
+  // setIsLoadingRecommendFilm(true)
+  fetch(`http://localhost:8081/v1/api/user/recommendFavorite/${userId}`, {
+      method: 'GET',
+      headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+      },
+  })
+      .then((res) => res.json())
+      .then((data) => {
+          if (data.success != false)
+              setRecommendFilms(movies.filter(movie => data.includes(movie._id)))
+      })
+      .catch((e) => {
+          console.log(e)
+      })
+      .finally(() => {
+          // setIsLoadingRecommendFilm(false)
+      })
+}
  const handleToHome=()=>{
     navigate(`/home`);
  }
   useEffect(() => {
-    console.log("genre", genres[0]);
+    getAllFavoriteFilms()
+    getRecommendFilms()
+    
   }, []);
   return (
     <div className="mylist-container">
       <Navbar />
-      {myList.length == 0 ? (
+      {isLoadingAllFavoriteFilm == true || allFavoriteFilms.length==0 ? (
         <div className="flex mt-20 justify-center items-center">
         <Lottie height={400} width={400} animationData={animationData} className="flex-grow"/>
         <div className="flex-grow items-center justify p-5"> 
@@ -35,10 +87,10 @@ const myList= []
       ) : (
         <>
           <div className="movies-slide">
-            <MyListSlide movies={myList} title="Danh sách phim của tôi" />
+            <MyListSlide movies={allFavoriteFilms} title="Danh sách phim yêu thích của tôi" setAllFavoriteFilms={setAllFavoriteFilms} allFavoriteFilms={allFavoriteFilms} />
           </div>
           <div className="movies-slide">
-            <MyListSlide movies={recommend} title="Đề xuất" />
+            <MyListSlide movies={recommendFilms} title="Đề xuất" setAllFavoriteFilms={setAllFavoriteFilms} allFavoriteFilms={allFavoriteFilms} />
           </div>
         </>
       )}

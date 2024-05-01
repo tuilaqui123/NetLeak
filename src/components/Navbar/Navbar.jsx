@@ -80,7 +80,7 @@ const Navbar = () => {
 
               <li>
                 <Link to="/mylist" style={linkStyle}>
-                  <p>Danh sách</p>
+                  <p>Danh sách yêu thích</p>
                 </Link>
               </li>
             </ul>

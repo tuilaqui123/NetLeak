@@ -14,7 +14,7 @@ const Suggest = ({ data, setInfo }) => {
     <div className="info-container">
       <ul className="w-[90%] h-full grid-cols-2 grid sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 suggest-container">
         {data.map((movie, index) => {
-          if (index < 7)
+          
             return (
               <li key={index} onClick={()=>handleIn4(movie)} className="hover:scale-105 duration-200 group">
                 <img src={movie.image.poster} alt="movie" className="h-[300px] rounded-lg"/>
