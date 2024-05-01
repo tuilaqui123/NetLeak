@@ -134,15 +134,13 @@
   }
   .suggest-container {
     li {
-      background-color: #333333;
-      border: 1px solid transparent;
+      
       height: auto;
       color: white;
       cursor: pointer;
       transition: 0.2s;
       &:hover {
-        filter: brightness(110%);
-        border: 1px solid gray;
+        filter: brightness(120%);
       }
       p {
         color: white;

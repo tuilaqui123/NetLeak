@@ -18,6 +18,7 @@ const userId = jwtDecode(token).id
 
     const [allRatingFilms, setAllRatingFilms] = useState([])
     const [allFavoriteFilms, setAllFavoriteFilms] = useState([])
+    
     const [isRating, setIsRating] = useState(false)
     const handleAddRating = (filmId, rate) => {
         fetch(`http://localhost:8081/v1/api/user/rating`, {
@@ -140,20 +141,22 @@ const userId = jwtDecode(token).id
                 console.log(e)
             })
     }
+    
+    
     useEffect(() => {
         // getFilmInfo()
         // getFilmVideo()
         // getAllGenres()
         // getAllFilms()
-        // getRecommendFilms()
+      
         getAllFavoriteFilms()
         // getRankingFilms()
         getAllRatingFilm()
     }, [])
 
     return (
-        <div className='w-full h-3/4 relative flex flex-col-reverse justify-between lg:flex-row mt-20 '>
-            <div className='movie-detail w-full lg:w-1/2 pl-10 pr-5 pt-0 lg:pt-8 absolute '>
+        <div className='w-full h-auto relative flex flex-col-reverse justify-between xl:flex-row mt-20 '>
+            <div className='movie-detail w-full xl:w-1/2 pl-10 pr-5 pt-0 lg:pt-8 absolute'>
                 <p className='font-black text-white text-4xl mb-2 '>{film.title}</p>
                 <ul className='flex flex-row items-center mb-12 rating-container'>
                     <li className='text-white font-medium'>{film.released.substring(0, 4)}</li>
@@ -176,7 +179,7 @@ const userId = jwtDecode(token).id
                         </div>
                     )}
                 </div>
-                <p className='w-full lg:w-4/5 text-white mb-10 font-normal'>
+                <p className='w-full xl:w-4/5 text-white mb-10 font-normal'>
                     {film.fullplot}
                 </p>
                 <div className='access mb-12'>
@@ -205,9 +208,10 @@ const userId = jwtDecode(token).id
                                     </button>
                 </div>
             </div>
-            <div className='movie-detail w-full lg:w-1/2 pl-10 pr-5 pt-8 border invisible'>
-                <p className='font-black text-white text-4xl mb-2 '>{film.title}</p>
-                <ul className='flex flex-row items-center mb-12 rating-container'>
+
+            <div className='movie-detail h-auto w-full lg:w-1/2 pl-10 pr-5 pt-8 border border-red-500 invisible'>
+                <p className='font-black text-white text-4xl '>{film.title}</p>
+                <ul className='flex flex-row items-center rating-container'>
                     <li className='text-white font-medium'>{film.released.substring(0, 4)}</li>
                     <li className='ml-3 mr-3 text-white'>|</li>
                     <li className='text-green-500 font-medium rating'>
@@ -241,7 +245,7 @@ const userId = jwtDecode(token).id
                         </div>
                     )}
                 </div>
-                <p className='w-3/4 text-white mb-10 font-normal'>
+                <p className='w-3/4 text-white font-normal'>
                     {film.fullplot}
                 </p>
                 <div className='access mb-12'>
@@ -250,17 +254,18 @@ const userId = jwtDecode(token).id
                         <p>Phát</p>
                     </button>
                     <button className='playlist'>
-                        <FontAwesomeIcon icon={faHeart} className='icon text-red-500'  />
-                        <p>Yêu thích</p>
+                        <FontAwesomeIcon icon={faHeart} className=' text-red-500'  />
+                        <p >Yêu thích</p>
                     </button>
                 </div>
             </div>
-            <div className='w-full lg:w-4/5 flex justify-start items-end flex-col right-0 z-0'>
-                <div className='w-full lg:w-5/6 flex flex-col relative '>
+
+            <div className='w-full flex justify-start items-end lg:items-center xl:items-end flex-col right-0 z-0'>
+                <div className='w-full lg:w-4/5 flex flex-col relative '>
                     <div className='image-overlay1'></div>
                     <div className='image-overlay2'></div>
                     <div className='image-overlay3'></div>
-                    <div className='image-overlay4 lg:hidden'></div>
+                    <div className='image-overlay4 xl:hidden'></div>
                     <img
                         src={film.image.banner}
                         className='w-full brightness-90'

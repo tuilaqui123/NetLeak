@@ -70,6 +70,7 @@ const Movie = () => {
             {film && (
 
                 <MovieInfo
+                    setInfo={setInfo}
                     info={info}
                     film={film}
                 />
