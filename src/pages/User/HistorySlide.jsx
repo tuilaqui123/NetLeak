@@ -15,7 +15,7 @@ export default function HistorySlide({ movies }) {
 
   return (
     <div>
-      <div className="z-10 grid-container">
+      <div className="z-10 grid-container mb-10">
         {/* <div className="image-container"> */}
 
         {movies.map((movie, index) => {

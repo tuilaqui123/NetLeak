@@ -139,7 +139,7 @@ useEffect(() => {
               <div className="py-3 pl-7 font-semibold text-[20px] mt-3 ">
                 Tài khoản và bảo mật
               </div>
-              <div className="mt-3 flex flex-col rounded-md outline outline-1 outline-gray-300 px-7 py-7 bg-white mr-20 ml-7">
+              <div className="mt-3 mb-10 flex flex-col rounded-md outline outline-1 outline-gray-300 px-7 py-7 bg-white mr-20 ml-7">
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="mr-3">Email </span>
