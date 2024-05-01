@@ -3,7 +3,7 @@ import './Video.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function IWantEvaluate({ }) {
+function IWantEvaluate({ handleAddRating, handleDeleteRating, allRatingFilms, filmId}) {
     const [invisibleEvaluateBlock, setInvisibleEvaluateBlock] = useState(true)
     const [numberStar, setNumberStar] = useState(0)
 
@@ -32,6 +32,7 @@ function IWantEvaluate({ }) {
                                     className=' hover:cursor-pointer p-1'
                                     onMouseEnter={() => {
                                         setNumberStar(1);
+                                        handleDeleteRating(filmId)
                                     }}
 
                                     onMouseLeave={() => {
@@ -39,6 +40,7 @@ function IWantEvaluate({ }) {
                                     }}
                                     onClick={() =>{
                                         setInvisibleEvaluateBlock(true)
+                                        handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -50,6 +52,7 @@ function IWantEvaluate({ }) {
                                     className=' hover:cursor-pointer p-1'
                                     onMouseEnter={() => {
                                         setNumberStar(2);
+                                        handleDeleteRating(filmId)
                                     }}
 
                                     onMouseLeave={() => {
@@ -57,6 +60,7 @@ function IWantEvaluate({ }) {
                                     }}
                                     onClick={() =>{
                                         setInvisibleEvaluateBlock(true)
+                                        handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -68,6 +72,7 @@ function IWantEvaluate({ }) {
                                     className=' hover:cursor-pointer p-1'
                                     onMouseEnter={() => {
                                         setNumberStar(3);
+                                        handleDeleteRating(filmId)
                                     }}
 
                                     onMouseLeave={() => {
@@ -75,6 +80,7 @@ function IWantEvaluate({ }) {
                                     }}
                                     onClick={() =>{
                                         setInvisibleEvaluateBlock(true)
+                                        handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -86,6 +92,7 @@ function IWantEvaluate({ }) {
                                     className=' hover:cursor-pointer p-1'
                                     onMouseEnter={() => {
                                         setNumberStar(4);
+                                        handleDeleteRating(filmId)
                                     }}
 
                                     onMouseLeave={() => {
@@ -93,6 +100,7 @@ function IWantEvaluate({ }) {
                                     }}
                                     onClick={() =>{
                                         setInvisibleEvaluateBlock(true)
+                                        handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -104,6 +112,7 @@ function IWantEvaluate({ }) {
                                     className=' hover:cursor-pointer p-1'
                                     onMouseEnter={() => {
                                         setNumberStar(5);
+                                        handleDeleteRating(filmId)
                                     }}
 
                                     onMouseLeave={() => {
@@ -111,6 +120,7 @@ function IWantEvaluate({ }) {
                                     }}
                                     onClick={() =>{
                                         setInvisibleEvaluateBlock(true)
+                                        handleAddRating(filmId, numberStar*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-[red]' : 'text-[#999999]'} `}
@@ -169,6 +179,8 @@ function IWantEvaluate({ }) {
                                     onClick={() => {
                                         setNumberStar(1)
                                         setInvisibleEvaluateBlock(true)
+                                        handleDeleteRating(filmId)
+                                        handleAddRating(filmId,1*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 1 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -181,6 +193,8 @@ function IWantEvaluate({ }) {
                                     onClick={() => {
                                         setNumberStar(2)
                                         setInvisibleEvaluateBlock(true)
+                                        handleDeleteRating(filmId)
+                                        handleAddRating(filmId,2*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 2 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -193,6 +207,8 @@ function IWantEvaluate({ }) {
                                     onClick={() => {
                                         setNumberStar(3)
                                         setInvisibleEvaluateBlock(true)
+                                        handleDeleteRating(filmId)
+                                        handleAddRating(filmId,3*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 3 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -205,6 +221,8 @@ function IWantEvaluate({ }) {
                                     onClick={() => {
                                         setNumberStar(4)
                                         setInvisibleEvaluateBlock(true)
+                                        handleDeleteRating(filmId)
+                                        handleAddRating(filmId,4*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 4 ? 'text-[red]' : 'text-[#999999]'} transition-colors`}
@@ -217,6 +235,8 @@ function IWantEvaluate({ }) {
                                     onClick={() => {
                                         setNumberStar(5)
                                         setInvisibleEvaluateBlock(true)
+                                        handleDeleteRating(filmId)
+                                        handleAddRating(filmId,5*2)
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faStar} size='xl' className={` ${numberStar >= 5 ? 'text-[red]' : 'text-[#999999]'} `}

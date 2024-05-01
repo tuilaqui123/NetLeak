@@ -31,7 +31,7 @@ function App() {
               <Route path='/mylist' element={<MyList />} />
               <Route path="/genre" element={<TabPage />} />
               <Route path="/genre/:id" element={<TabPage />} />
-              <Route path="/video/:id" element={<Video />} />
+              <Route path="/video/:id/:chapter" element={<Video />} />
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/user" element={<User />} />
               <Route path="/history" element={<History />} />
