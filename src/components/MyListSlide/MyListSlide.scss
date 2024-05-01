@@ -31,16 +31,16 @@ p {
 }
 
 
-.card {
+.listcard {
   position: relative;
   margin: 5px;
 
-  /* Đặt vị trí tương đối cho card */
+  /* Đặt vị trí tương đối cho listcard */
  
   &:hover {
     .film-title {
       // transform: translateY(100px);
-  
+     
       color: rgb(34, 197, 94);
     }
   }
@@ -52,16 +52,17 @@ p {
 
 
 
-.card img {
+.listcard img {
   width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của phần tử cha */
- max-height: 300px;
+  
+  max-height: 300px;
   object-fit: cover; /* Cắt ảnh nếu dư để đảm bảo đủ kích thước */
   cursor: pointer;
   border-radius: 10px;
   filter: brightness(95%);
 }
 
-.card.hovered {
+.listcard.hovered {
   z-index: 3;
   width: 170%;
   height: auto;
@@ -122,6 +123,7 @@ p {
   position: relative;
   overflow: hidden;
   padding-bottom: 25px;
+
 }
 .cancel-icon {
   z-index: 2;
