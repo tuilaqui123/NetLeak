@@ -1,21 +1,29 @@
 import Navbar from '../../components/Navbar/Navbar';
 import Slide from '../../components/Slide/Slide';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
+import ThumbnailRes from '../../components/Thumbnail/thumbnailResponsive';
+import { AppContext } from '../../context/AppContext';
 import './home.css'
-import React from 'react'
+import React, { useContext } from 'react'
 
 const Home = () => {
+    const { genres, movies } = useContext(AppContext)
+
+    console.log(genres)
+    console.log(movies)
     return (
-        <div className='home-container'>
+        <div className='w-full bg-[#3e3e3e]'>
             <Navbar />
             <Thumbnail />
-            <div className='movies-slide'>
-                <Slide title={'Thịnh hành'} />
-                <Slide title={'Anime'} />
-                <Slide title={'TV Shows'} />
-                <Slide title={'Giật gân'} />
-                <Slide title={'Hành động'} />
-                <Slide title={'Hài hước'} />
+            <ThumbnailRes />
+            <div className='w-full relative flex flex-col gap-5'>
+                {genres.map((value, index) =>
+                    <Slide
+                        key={index}
+                        title={value.title.toUpperCase()}
+                        movies={value.movies}
+                    />
+                )}
             </div>
         </div>
     );

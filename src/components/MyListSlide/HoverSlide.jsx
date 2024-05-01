@@ -1,14 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./GenreSlide.scss";
+import "./MyListSlide.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { AppContext } from "../../../context/AppContext";
+
 import axios from "axios";
-export default function HoverSlide({ setGenre, movie }) {
+import { AppContext } from "../../context/AppContext";
+export default function HoverSlide({  movie }) {
   const navigate= useNavigate();
   const handleClick = () => {
-    setGenre("");
+   
     window.scrollTo(0, 0);
   };
   const handleAddFavor = () => {
@@ -41,11 +42,12 @@ const handlePlay = () =>{
 
     return foundGenreTitle; 
   };
+  console.log(typeof movie.imdb.rating)
   return (
     <>
       <div className="flim-description">
         <div className="flex flex-row mb-2 rating-container ml-2 pr-2 ">
-          <Link to={`/movie/${movie._id}`}onClick={handleClick}>
+          <Link to={`/movie/${movie._id}`} onClick={handleClick}>
             <p
               className="font-black text-white text-sm ml-2 mb-2 hover:text-green-500 cursor-pointer line-clamp-2"
               style={{ textShadow: "0 0 3px black" }}

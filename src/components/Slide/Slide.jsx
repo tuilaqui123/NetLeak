@@ -1,5 +1,4 @@
-import './slide.css'
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import m1 from '../../assets/movies/1.jpg'
@@ -14,53 +13,55 @@ import 'swiper/css/pagination';
 
 
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+import { FreeMode, Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import HoverSlide from './HoverSlide/HoverSlide';
+import PrevButton from './PrevButton,';
 
-const Slide = ({ title }) => {
-    var windowWidth = window.innerWidth / 260;
+const Slide = ({ title, movies }) => {
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth / 260)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth / 260);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const linkStyle = {
         textDecoration: "none",
     };
 
     return (
-        <div className='slide-containerr'>
-            <p>{title}</p>
+        <div className='w-full px-5 mb-5'>
+            <p className='text-xl mb-3 font-bold'>{title}</p>
             <Swiper
                 slidesPerView={windowWidth}
                 spaceBetween={30}
+                autoplay={{
+                    delay: 3000,
+                }}
                 freeMode={true}
-
-                modules={[FreeMode, Pagination]}
-                className="mySwiper"
+                modules={[FreeMode, EffectFade, Autoplay, Navigation, Pagination]}
+                className='relative px-1'
             >
-                <SwiperSlide>
-                    <Link to="/movie/:id" style={linkStyle}>
-                        <img
-                            src={m1}
-                            alt='movie'
-                        />
-                    </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m1}
-                        alt='movie'
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m1}
-                        alt='movie'
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={m1}
-                        alt='movie'
-                    />
-                </SwiperSlide>
+                {movies.map((value, index) =>
+                    <SwiperSlide key={index}>
+                        <Link to={`/movie/${value._id}`}>
+                            <img
+                                src={value.image.poster}
+                                alt='movie'
+                                className='w-full h-[300px] rounded-xl hover:brightness-110 duration-200'
+                            />
+                            <p className='text-center w-full truncate text-lg pt-3'>{value.title}</p>
+                        </Link>
+                    </SwiperSlide>
+                )}
             </Swiper>
         </div>
     );
