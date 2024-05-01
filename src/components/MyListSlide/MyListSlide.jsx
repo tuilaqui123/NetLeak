@@ -4,7 +4,7 @@ import "./MyListSlide.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import HoverSlide from "./HoverSlide";
-export default function GenreSlide({ movies, title }) {
+export default function GenreSlide({ allFavoriteFilms, movies, title, setAllFavoriteFilms }) {
 
   //   const movies= data;
 
@@ -92,7 +92,7 @@ export default function GenreSlide({ movies, title }) {
 
               </div>
               <p className="film-title text-center absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
-              {index === hoveredIndex ? <HoverSlide movie={movie} /> : ""}
+              {index === hoveredIndex ? <HoverSlide movie={movie}  setAllFavoriteFilms={setAllFavoriteFilms} allFavoriteFilms={allFavoriteFilms} setHoveredIndex={setHoveredIndex}/> : ""}
             </div>
           )
 

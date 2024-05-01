@@ -8,26 +8,26 @@ import { jwtDecode } from 'jwt-decode';
 import { AppContext } from '../../../context/AppContext';
 
 const MovieInfo = ({ setInfo,info, film }) => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTg0MjA4LCJleHAiOjE3MTQ2MDIyMDh9.PPCLA9mHxdS_wPyplsIHWh3lGmm9MLwm-MEB8fevS38'
-    const userId = jwtDecode(token).id
-    const {movies}= useContext(AppContext)
+    const {accessToken}= useContext(AppContext)
+    
+    
     const [isLoadingRecommendFilm, setIsLoadingRecommendFilm] = useState(true)
     const [recommendFilms, setRecommendFilms] = useState([])
-    
+    // console.log("recom",film._id)
     const getRecommendFilms = () => {
         setIsLoadingRecommendFilm(true)
-        fetch(`http://localhost:8081/v1/api/user/recommendFavorite/${userId}`, {
+        fetch(`http://localhost:8081/v1/api/user/recommend/genre/${film._id}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${accessToken}`
             },
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.success != false)
-                    setRecommendFilms( movies.filter(movie => data.includes(movie._id)))
-
+                    setRecommendFilms( data)
+               
             })
             .catch((e) => {
                 console.log(e)
@@ -40,7 +40,7 @@ const MovieInfo = ({ setInfo,info, film }) => {
 getRecommendFilms()
         
 
-    },[])
+    },[film._id])
     return (
         <div className='movieinfo-container'>
             {info == 1 && (
