@@ -100,14 +100,6 @@
   //   }
   // }
   .direct-container {
-    list-style-type: none;
-    padding: 0;
-    width: 95%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    gap: 20px;
     .infobox {
       background-color: #333333;
     }
@@ -141,14 +133,6 @@
     }
   }
   .suggest-container {
-    list-style-type: none;
-    padding: 0;
-    width: 90%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    align-items: center;
-    gap: 20px;
     li {
       background-color: #333333;
       border: 1px solid transparent;
@@ -184,7 +168,8 @@
           }
         }
         p {
-          height: 150px;
+          height: auto;
+          margin-bottom: 10px;
         }
       }
     }

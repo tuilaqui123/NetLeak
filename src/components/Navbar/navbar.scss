@@ -1,12 +1,12 @@
 .navbar-container {
-  width: 90%;
+  width: 95%;
   height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  z-index: 9999;
+  z-index: 40;
   height: 100px;
   ul {
     list-style-type: none;
@@ -19,7 +19,7 @@
       margin-right: 30px;
       font-size: 25px;
       font-weight: 900;
-      color: red;
+      color: #ff0000;
     }
     p {
       cursor: pointer;
@@ -28,136 +28,129 @@
       font-weight: 500;
     }
   }
-  .access {
-    width: 10%;
+  .search-button {
     display: flex;
-    flex-direction: column;
-    position: relative;
-    .search-button {
-      display: flex;
-      flex-direction: row;
+    flex-direction: row;
+  }
+  .icon-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .icon {
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+      &:hover {
+        color: red;
+      }
     }
-    .icon-button {
-      width: 100%;
+  }
+  .noti-container {
+    position: absolute;
+    width: 300%;
+    left: -240%;
+    top: 30px;
+    background-color: black;
+    border-radius: 5px;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    p {
+      color: white;
+      margin: 0;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+    .noti-access {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      .icon {
-        font-size: 20px;
-        cursor: pointer;
+      padding-top: 10px;
+      padding-left: 10px;
+      margin-bottom: 15px;
+      padding-right: 10px;
+      h3 {
         color: white;
+        margin: 0;
+        font-weight: 900;
+      }
+      p {
+        cursor: pointer;
         &:hover {
           color: red;
         }
       }
     }
-    .noti-container {
-      position: absolute;
-      width: 300%;
-      left: -240%;
-      top: 30px;
-      background-color: black;
-      border-radius: 5px;
-      max-height: 500px;
-      overflow-y: scroll;
-      padding: 10px;
-      &::-webkit-scrollbar {
-        display: none;
+    .noti {
+      display: flex;
+      flex-direction: row;
+      padding-left: 20px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      &:hover {
+        background-color: rgb(39, 39, 39);
       }
       p {
-        color: white;
-        margin: 0;
-        margin-left: 20px;
-        font-weight: 500;
+        margin-bottom: 0;
+        margin-left: 0px;
       }
-      .noti-access {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 10px;
-        padding-left: 10px;
-        margin-bottom: 15px;
-        padding-right: 10px;
-        h3 {
-          color: white;
-          margin: 0;
-          font-weight: 900;
-        }
-        p {
-          cursor: pointer;
-          &:hover {
-            color: red;
-          }
-        }
+      img {
+        width: 105px;
+        height: 70px;
+        margin-right: 10px;
+        border-radius: 5px;
       }
-      .noti {
-        display: flex;
-        flex-direction: row;
-        padding-left: 20px;
-        cursor: pointer;
-        margin-bottom: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        &:hover {
-          background-color: rgb(39, 39, 39);
+      .noti-content {
+        .title {
+          font-size: 17px;
+          font-weight: 700;
+          color: red;
         }
-        p {
-          margin-bottom: 0;
-          margin-left: 0px;
+        .update {
+          font-size: 14px;
+          font-weight: 500;
         }
-        img {
-          width: 105px;
-          height: 70px;
-          margin-right: 10px;
-          border-radius: 5px;
-        }
-        .noti-content {
-          .title {
-            font-size: 17px;
-            font-weight: 700;
-            color: red;
-          }
-          .update {
-            font-size: 14px;
-            font-weight: 500;
-          }
-          .time {
-            font-size: 12px;
-            font-weight: 500;
-            color: rgb(77, 103, 247);
-          }
+        .time {
+          font-size: 12px;
+          font-weight: 500;
+          color: rgb(77, 103, 247);
         }
       }
     }
-    .userDropdown-container{
-      position: absolute;
-      width: 150%;
-      left: -20%;
-      top: 30px;
-      background-color: #232323;
-      border-radius: 5px;
-      max-height: 500px;
-      overflow-y: scroll;
-      padding: 10px;
-      .userDropdown-access {
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-        align-items: center;
-        padding-top: 10px;
-        padding-left: 0px;
-        margin-bottom: 15px;
-        padding-right: 0px;
-        h3 {
-          color: white;
-          margin: 0;
-          margin-bottom: 10px;
-          font-weight: 900;
-        }
+  }
+  .userDropdown-container {
+    position: absolute;
+    width: 150%;
+    left: -20%;
+    top: 30px;
+    background-color: #232323;
+    border-radius: 5px;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
+    .userDropdown-access {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;
+      padding-top: 10px;
+      padding-left: 0px;
+      margin-bottom: 15px;
+      padding-right: 0px;
+      h3 {
+        color: white;
+        margin: 0;
+        margin-bottom: 10px;
+        font-weight: 900;
       }
-      
     }
   }
 }

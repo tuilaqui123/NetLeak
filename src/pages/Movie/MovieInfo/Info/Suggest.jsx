@@ -5,7 +5,7 @@ import image from '../../../../assets/images/ep1.jpg'
 const Suggest = () => {
     return (
         <div className='info-container'>
-            <ul className='suggest-container'>
+            <ul className='w-[90%] h-full grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4 gap-5 suggest-container'>
                 <li>
                     <img
                         src={image}
