@@ -185,9 +185,9 @@ const handleSubmitModal3 = () => {
 
 const handleSubmitModal4 = () => {
   const data = {
-    newPassword: password,
-    oldPassword: oldPassword,
     id: userId,
+    oldPassword: oldPassword,
+    newPassword: password,
   };
   axios
     .patch(`http://localhost:8081/v1/api/user/updatePassword`, data, {

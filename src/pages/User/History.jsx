@@ -50,7 +50,7 @@ useEffect(() => {
                
             })
             .then((data) => {
-              if(data.success===true)
+              // if(data.success===true)
               setMovies(data.filmId);
               
 
