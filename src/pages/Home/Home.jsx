@@ -19,7 +19,7 @@ const Home = () => {
     console.log(genres)
     console.log(movies)
     return (
-        <div className='w-full bg-[#3e3e3e]'>
+        <div className='w-full bg-[#3e3e3e] pb-20'>
             <Navbar />
             <Thumbnail />
             <ThumbnailRes />

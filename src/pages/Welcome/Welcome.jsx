@@ -19,23 +19,26 @@ const Welcome = () => {
     };
 
     return (
-        <div className='welcome-container flex flex-col gap-5 mb-5'>
+
+        <div className='welcome-container flex flex-col '>
             <div className='container1 '>
                 <div className='header'>
-                    <h1>NETFLIX</h1>
+                    <h1>NETLEAK</h1>
                     <button
                         onClick={() =>{navigate('/login')}}
+                        className='px-3'
                     >
-                        <p>Đăng nhập</p>
+                        <p >Đăng nhập</p>
                     </button>
                 </div>
                 <div className='main'>
                     <h1>Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác</h1>
                     <p className='mt-2'>Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>
-                    <p className='mt-2'>Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.</p>
+
+                    
                     <div className='user-start'>
                         <button>
-                            <Link to="/" style={linkStyle}><Link />
+                            <Link to="/signup/step1" style={linkStyle}><Link />
                                 <p>Bắt đầu</p>
                             </Link>
                         </button>

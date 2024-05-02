@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import thumb_pic from '../../../assets/images/thumbnail.jpg'
 import './film.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,10 +10,15 @@ import clsx from 'clsx';
 import IWantEvaluate from '../../Video/IWantEvaluate';
 import { jwtDecode } from 'jwt-decode';
 
-const Film = ({ film }) => {
+import { AppContext } from '../../../context/AppContext';
 
+
+const Film = ({ film }) => {
+    const {accessToken}= useContext(AppContext)
     const navigate = useNavigate()
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTg0MjA4LCJleHAiOjE3MTQ2MDIyMDh9.PPCLA9mHxdS_wPyplsIHWh3lGmm9MLwm-MEB8fevS38'
+
+    const token= accessToken
+
 const userId = jwtDecode(token).id
 
     const [allRatingFilms, setAllRatingFilms] = useState([])

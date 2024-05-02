@@ -1,30 +1,84 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./MyListSlide.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
+import { faPlay, faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { useContext, useEffect, useState } from "react";
+
+import { jwtDecode } from "jwt-decode";
 
 import axios from "axios";
 import { AppContext } from "../../context/AppContext";
-export default function HoverSlide({  movie }) {
+export default function HoverSlide({  allFavoriteFilms,movie, setAllFavoriteFilms,setHoveredIndex }) {
   const navigate= useNavigate();
+  const {accessToken} = useContext(AppContext) 
+
+  const userId= jwtDecode(accessToken).id
   const handleClick = () => {
-   
+ 
     window.scrollTo(0, 0);
   };
-  const handleAddFavor = () => {
-    axios
-      .post("http://localhost:8081/v1/api/user/save", {
-        userId: "6623712bdbc84c76fb901b89", // lấy userID
-        filmId: movie._id
+  const handleDeleteFavoriteFilm = (filmId) => {
+    fetch(`http://localhost:8081/v1/api/user/favorite`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+            filmId: filmId,
+            userId: userId
+        })
+    })
+        .then(() => {
+            getAllFavoriteFilms()
+            setHoveredIndex(-1)
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+}
+  const handleAddFavoriteFilm = () => {
+    fetch(`http://localhost:8081/v1/api/user/favorite`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+            filmId: movie._id,
+            userId: userId
+        })
+    })
+        .then(() => {
+            getAllFavoriteFilms()
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+}
+const getAllFavoriteFilms = () => {
+  // setIsLoadingAllFavoriteFilm(true)
+  fetch(`http://localhost:8081/v1/api/user/favorite/${userId}`, {
+      method: 'GET',
+      headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${accessToken}`
+      },
+  })
+      .then((res) => res.json())
+      .then((data) => {
+          if (data.success != false)
+              setAllFavoriteFilms(data)
+            console.log(data)
       })
-      .then((res) => {
-        alert("Bạn thêm phim vào danh sách lưu thành công");
+      .catch((e) => {
+          console.log(e)
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+      .finally(() => {
+        console.log(movie)
+          // setIsLoadingAllFavoriteFilm(false)
+      })
+}
 const handlePlay = () =>{
   navigate(`/movie/${movie._id}`)
 }
@@ -42,7 +96,9 @@ const handlePlay = () =>{
 
     return foundGenreTitle; 
   };
-  console.log(typeof movie.imdb.rating)
+  useEffect(()=>{
+    getAllFavoriteFilms()
+  },[])
   return (
     <>
       <div className="flim-description">
@@ -64,11 +120,19 @@ const handlePlay = () =>{
             />
             {/* <p className='text-white  text-xs'>Phát</p> */}
           </button>
-          <button className="rounded-full bg-gray-500 text-white px-4 py-2 ml-2 hover:filter hover:brightness-110 transition duration-300">
-            <FontAwesomeIcon
-              icon={faPlus}
-              onClick={handleAddFavor}
-              className="icon"
+          <button className="rounded-full bg-gray-500 text-white px-4 py-2 ml-2 hover:filter hover:brightness-110 transition duration-300"
+          onClick={() => {
+                                            if (allFavoriteFilms.some((favorfilm) => favorfilm._id == movie._id)) {
+                                                handleDeleteFavoriteFilm(movie._id)
+                                            }
+                                            else {
+                                                handleAddFavoriteFilm(movie._id)
+                                            }
+                                        }}
+                                    >            <FontAwesomeIcon
+              icon={faHeart}
+              className={` icon ${allFavoriteFilms.some((favorfilm) => favorfilm._id == movie._id) ? 'text-[red] brightness-[1.2]' : ''}`}              onClick={handleAddFavoriteFilm}
+              
             />
             {/* <p className='text-white  text-xs'>Danh sách</p> */}
           </button>

@@ -425,6 +425,7 @@ const Video = () => {
                         <div className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
                             <div ref={videoContainer} className=' w-full'>
                                 <div className='w-full relative'>
+
                                     <iframe
                                         ref={video}
                                         className='w-full max-h-[556px] object-cover aspect-video'

@@ -1,6 +1,7 @@
 
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MovieCard from './MovieCard.jsx';
@@ -13,9 +14,11 @@ import "../../hideScrollbar.css"
 // import required modules
 import MyListSlide from '../MyListSlide/MyListSlide.jsx'
 
+import { jwtDecode } from 'jwt-decode';
+
+
 
 const Search = () => {
-
     const location = useLocation();
     const [dataTest, setDataTest] = useState(location.state);
     const { movies, genres } = useContext(AppContext);
@@ -23,7 +26,70 @@ const Search = () => {
     const [query, setQuery] = useState(dataTest)
     const [genresOptions, setGenresOptions] = useState([])
     
-
+    const {  accessToken } = useContext(AppContext);
+    const token= accessToken;
+    const navigate= useNavigate() 
+    const [allFavoriteFilms, setAllFavoriteFilms] = useState([])
+    const [isLoadingAllFavoriteFilm,setIsLoadingAllFavoriteFilm] = useState(true)
+    const [recommendFilms, setRecommendFilms] = useState([])
+    const userId= jwtDecode(accessToken).id
+    
+  //   const [myList, setMyList] = useState(genres[0].movies); // list
+  
+  
+  
+    const getAllFavoriteFilms = () => {
+      setIsLoadingAllFavoriteFilm(true)
+      fetch(`http://localhost:8081/v1/api/user/favorite/${userId}`, {
+          method: 'GET',
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${accessToken}`
+          },
+      })
+          .then((res) => res.json())
+          .then((data) => {
+              if (data.success != false)
+                  setAllFavoriteFilms( data)
+            console.log("favour", data)
+          })
+          .catch((e) => {
+              console.log(e)
+          })
+          .finally(() => {
+          
+              setIsLoadingAllFavoriteFilm(false)
+          })
+  }
+  const getRecommendFilms = () => {
+    // setIsLoadingRecommendFilm(true)
+    fetch(`http://localhost:8081/v1/api/user/recommendFavorite/${userId}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.success != false)
+                setRecommendFilms(movies.filter(movie => data.includes(movie._id)))
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+        .finally(() => {
+            // setIsLoadingRecommendFilm(false)
+        })
+  }
+   const handleToHome=()=>{
+      navigate(`/home`);
+   }
+    useEffect(() => {
+      getAllFavoriteFilms()
+      getRecommendFilms()
+      
+    }, []);
     const [searchMovie2, setSearchMovie2] = useState([]);
 
     useEffect(() => {
@@ -68,6 +134,7 @@ const Search = () => {
             setQuery(event.target.value)
         }
       }
+
 
 
     return (
@@ -150,7 +217,9 @@ const Search = () => {
                         <div className='md:w-4/5 w-full  flex flex-col'>
                             {searchMovie != 0?
                             (
-                            <MyListSlide movies ={searchMovie}
+
+                            <MyListSlide movies ={searchMovie} allFavoriteFilms={allFavoriteFilms} setAllFavoriteFilms={setAllFavoriteFilms}
+
                             title = ""/>
                         ) : (
                             <div>

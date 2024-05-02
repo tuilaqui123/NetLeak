@@ -12,7 +12,7 @@ const SignUp = () => {
     return (
         <div className='signup-container'>
             <header>
-                <h1>NETFLIX</h1>
+                <h1>NETLEAK</h1>
                 <p>Đăng nhập</p>
             </header>
             {step == "step1" && (
