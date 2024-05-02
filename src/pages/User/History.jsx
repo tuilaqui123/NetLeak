@@ -19,6 +19,7 @@ import SideBar from "./SideBar";
 import { AppContext } from "../../context/AppContext";
 import MyListSlide from "../../components/MyListSlide/MyListSlide";
 import HistorySlide from "./HistorySlide";
+import axios from "axios";
 
 const History = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -30,29 +31,33 @@ const History = () => {
   const {userId,accessToken} = useContext(AppContext);
   console.log('token: ', accessToken);
 
-  const fetchHistory = async () => {
-      console.log("userId2:", userId);
-      const decoded = jwtDecode(accessToken).id;
-      try {
-        const response = await axios.get(`http://localhost:8081/v1/api/user/historyFilm/${decoded}`);
-        setMovies(response.data);
-        console.log("history:", response.data);
-      } catch (err) {
-        console.log(err);
-      }
-  }
+  
 
 useEffect(() => {
   const fetchHistory = async () => {
-    console.log("userId2:", userId);
-    const decoded = jwtDecode(accessToken).id;
-    try {
-      const response = await axios.get(`http://localhost:8081/v1/api/user/historyFilm/${decoded}`);
-      setMovies(response.data);
-      console.log("history:", response.data);
-    } catch (err) {
-      console.log(err);
-    }
+
+
+            fetch(`http://localhost:8081/v1/api/user/historyFilm/${userId}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
+            },
+            
+        })
+            .then((res) => {
+              return res.json();
+               
+            })
+            .then((data) => {
+              if(data.success===true)
+              setMovies(data.filmId);
+              
+
+            })
+            .catch((e) => {
+                console.log(e)
+            })
 }
 fetchHistory();
 }, [])
@@ -85,7 +90,7 @@ fetchHistory();
               src="src\assets\images\netflix_avatar.png"
               className="rounded-full w-10 h-10 border-2"
             />
-            <CaretDownOutlined className="ml-2" />
+            {/* <CaretDownOutlined className="ml-2" /> */}
           </div>
           <DropDown ref={menuRef} isVisible={userDropdown} object={Menu} />
         </div>
@@ -100,15 +105,9 @@ fetchHistory();
                 Phim đã xem
               </div>
        
-              {/* {movies?.map((item, index) => ( */}
-              {/* // <div className="mt-3 flex rounded-md px-7 py-7 bg-white outline outline-1 outline-gray-300 justify-between items-center mr-20 ml-7">
-              //   <div className="flex flex-row ">
-              //   <img src={item?.image.poster} className="h-[200px]" />
-              //   <span className="font-semibold text-[24px] ml-[10px] text-balance w-[500px]">{item?.title}</span>
-              //   </div>
-              // </div> */}
+              
               <HistorySlide movies={movies} title="Phim đã xem" />
-            {/* ))} */}
+           
             </div>
           </div>
         </div>

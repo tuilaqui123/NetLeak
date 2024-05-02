@@ -16,12 +16,15 @@ export default function HistorySlide({ movies }) {
 
   };
 
+  console.log("history:", movies );
+
   return (
     <div>
       <div className="z-10 grid-container mb-10">
         {/* <div className="image-container"> */}
 
-        {movies.map((movie, index) => {
+        {movies.length > 0 ? (
+        movies.map((movie, index) => {
           return (
             <div className="hover:scale-110 hover:border hover:p-1 hover:bg-[#fafafa] duration-300 ease-in-out relative hover:z-50"
             //   className={`listcard ${
@@ -82,7 +85,10 @@ export default function HistorySlide({ movies }) {
               )} */}
             </div>
           );
-        })}
+        })):
+        (<div className="py-3 pl-[19px] w-[500px] font-semibold text-[18px] ">
+        Hiện chưa có phim nào, mời bạn xem phim nhé
+      </div>)}
       </div>
       {shownModal && (
         <div className="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
