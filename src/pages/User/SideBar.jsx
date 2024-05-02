@@ -32,7 +32,7 @@ function SideBar() {
     </div>
     <div className={`${isSidebarOpen ? 'block' : 'hidden'} z-50 lg:hidden fixed top-[50px] h-full inset-0 bg-gray-600 bg-opacity-50`}></div>
     <div className={`sidebar z-50 fixed bg-[#fafafa] ${isSidebarOpen ?'left-[0px] overflow-y-hidden' : 'left-[-300px] overflow-auto'}  lg:relative  h-full lg:left-0  p-2  w-[300px]  text-center border-r lg:border-0`}>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/home" style={{ textDecoration: "none" }}>
             <Link />
             <div className="m-2.5 flex items-center cursor-pointer mt-6 w-[150px]">
               <ArrowLeftOutlined />
@@ -67,14 +67,9 @@ function SideBar() {
             <span className="text-[15px] ml-4 font-semibold">Lịch sử xem</span>
           </NavLink>
 
-          <NavLink className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
-            <WalletOutlined />
-            <span className="text-[15px] ml-4 font-semibold">
-              Phương thức thanh toán
-            </span>
-          </NavLink>
+         
 
-          <NavLink className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
+          <NavLink to="/signup/payment" className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#bbbbbb] text-black">
             <CalendarOutlined />
             <span className="text-[15px] ml-4 font-semibold">
               Gia hạn dịch vụ

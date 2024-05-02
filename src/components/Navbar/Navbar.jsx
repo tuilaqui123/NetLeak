@@ -113,38 +113,14 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            <FontAwesomeIcon
-              icon={faBell}
-              className="text-white text-2xl cursor-pointer"
-              onClick={toogleNoti}
-            />
+            
             <FontAwesomeIcon
               icon={faUser}
               className="text-white text-2xl cursor-pointer"
               onClick={toogleUserDropdown}
             />
           </div>
-          {noti && (
-            <div className="noti-container">
-              <div className="noti-access">
-                <h3>THÔNG BÁO</h3>
-                <p>Đánh dấu tất cả</p>
-              </div>
-              <p>Mới cập nhật</p>
-              <Noti />
-              <Noti />
-              <Noti />
-              <p>Trước đó</p>
-              <Noti />
-              <Noti />
-              <Noti />
-              <Noti />
-              <Noti />
-              <Noti />
-              <Noti />
-              <Noti />
-            </div>
-          )}
+         
           {userDropdown && (
             <div className="userDropdown-container">
               <div className="userDropdown-access">
