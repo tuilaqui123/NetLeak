@@ -6,6 +6,7 @@ import { AppContext } from "../../context/AppContext";
 import Lottie from "lottie-react";
 import animationData from "../../assets/Lottie/Nothing.json";
 import { useNavigate } from "react-router-dom";
+
 import { jwtDecode } from "jwt-decode";
 
 const TabPage = () => {
@@ -75,6 +76,7 @@ const getRecommendFilms = () => {
   return (
     <div className="mylist-container">
       <Navbar />
+
       {isLoadingAllFavoriteFilm == true || allFavoriteFilms.length==0 ? (
         <div className="flex mt-20 justify-center items-center">
         <Lottie height={400} width={400} animationData={animationData} className="flex-grow"/>
@@ -87,6 +89,7 @@ const getRecommendFilms = () => {
       ) : (
         <>
           <div className="movies-slide">
+
             <MyListSlide movies={allFavoriteFilms} title="Danh sách phim yêu thích của tôi" setAllFavoriteFilms={setAllFavoriteFilms} allFavoriteFilms={allFavoriteFilms} />
           </div>
           <div className="movies-slide">

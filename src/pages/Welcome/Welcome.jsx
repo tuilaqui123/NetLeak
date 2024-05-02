@@ -19,6 +19,7 @@ const Welcome = () => {
     };
 
     return (
+
         <div className='welcome-container flex flex-col '>
             <div className='container1 '>
                 <div className='header'>
@@ -33,6 +34,7 @@ const Welcome = () => {
                 <div className='main'>
                     <h1>Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác</h1>
                     <p className='mt-2'>Xem ở mọi nơi. Hủy bất kỳ lúc nào.</p>
+
                     
                     <div className='user-start'>
                         <button>

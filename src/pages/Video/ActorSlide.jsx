@@ -90,13 +90,15 @@ function ActorSlide({ filmCast }) {
                 {showPrevSlideBtn && <FontAwesomeIcon
                     onClick={handleSlidePrev}
                     icon={faChevronLeft}
-                    className={` size-11 lg:size-9 text- z-10 absolute left-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}//25
+                    className={` size-11 lg:size-9 text- z-10 absolute left-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1 text-[#B22222]`}//25
+
                 />
                 }
                 {showNextSlideBtn && <FontAwesomeIcon
                     onClick={handleSlideNext}
                     icon={faChevronRight}
-                    className={` size-11 lg:size-9 text- z-10 absolute right-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1`}
+                    className={` size-11 lg:size-9 text- z-10 absolute right-[0] top-[25%] lg:top-[30%] bottom-[50%] hover:cursor-pointer p-1 text-[#B22222]`}
+
                 />
                 }
             </div>

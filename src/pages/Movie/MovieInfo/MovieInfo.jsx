@@ -8,6 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 import { AppContext } from '../../../context/AppContext';
 
 const MovieInfo = ({ setInfo,info, film }) => {
+
     const {accessToken}= useContext(AppContext)
     
     
@@ -26,6 +27,7 @@ const MovieInfo = ({ setInfo,info, film }) => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.success != false)
+
                     setRecommendFilms( data)
                
             })

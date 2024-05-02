@@ -92,6 +92,7 @@ export default function GenreSlide({ allFavoriteFilms, movies, title, setAllFavo
 
               </div>
               <p className="film-title text-center absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
+
               {index === hoveredIndex ? <HoverSlide movie={movie}  setAllFavoriteFilms={setAllFavoriteFilms} allFavoriteFilms={allFavoriteFilms} setHoveredIndex={setHoveredIndex}/> : ""}
             </div>
           )

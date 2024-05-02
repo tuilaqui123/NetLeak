@@ -9,12 +9,16 @@ import Rating from './rating';
 import clsx from 'clsx';
 import IWantEvaluate from '../../Video/IWantEvaluate';
 import { jwtDecode } from 'jwt-decode';
+
 import { AppContext } from '../../../context/AppContext';
+
 
 const Film = ({ film }) => {
     const {accessToken}= useContext(AppContext)
     const navigate = useNavigate()
+
     const token= accessToken
+
 const userId = jwtDecode(token).id
 
     const [allRatingFilms, setAllRatingFilms] = useState([])

@@ -1,5 +1,6 @@
 
 import React, { useRef, useState, useEffect, useContext } from 'react';
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +13,9 @@ import { faBell, faUser } from '@fortawesome/free-regular-svg-icons';
 import "../../hideScrollbar.css"
 // import required modules
 import MyListSlide from '../MyListSlide/MyListSlide.jsx'
+
 import { jwtDecode } from 'jwt-decode';
+
 
 
 const Search = () => {
@@ -133,6 +136,7 @@ const Search = () => {
       }
 
 
+
     return (
         <div className="bg-[#3e3e3e] w-full h-auto flex justify-center pb-[10vh]">
             <div className='w-11/12'>
@@ -213,7 +217,9 @@ const Search = () => {
                         <div className='md:w-4/5 w-full  flex flex-col'>
                             {searchMovie != 0?
                             (
+
                             <MyListSlide movies ={searchMovie} allFavoriteFilms={allFavoriteFilms} setAllFavoriteFilms={setAllFavoriteFilms}
+
                             title = ""/>
                         ) : (
                             <div>

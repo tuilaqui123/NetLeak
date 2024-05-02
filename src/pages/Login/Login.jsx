@@ -8,40 +8,40 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState({})
-  const {accessToken, setAccessToken} = useContext(AppContext)
+  const { accessToken, setAccessToken } = useContext(AppContext)
 
   useEffect(() => {
     var query = window.location.search.substring(1);
-    if(query){
+    if (query) {
       var vars = query.split("&");
 
       var arr = vars.filter(data => {
-          if(data.split("=")[0] == 'amount' || data.split("=")[0] == 'payType'){
-              return data.split("=")[1]
-          }
+        if (data.split("=")[0] == 'amount' || data.split("=")[0] == 'payType') {
+          return data.split("=")[1]
+        }
       })
 
       let amount = 0
       let payType = ''
-      arr.forEach((data) =>{
-        if(data.split('=')[0] == 'amount'){
+      arr.forEach((data) => {
+        if (data.split('=')[0] == 'amount') {
           amount = data.split('=')[1]
         }
-        if(data.split('=')[0] == 'payType'){
+        if (data.split('=')[0] == 'payType') {
           payType = data.split('=')[1]
         }
       })
 
 
-      axios.post('http://localhost:8081/v1/api/user/payment/add',{
-          email: localStorage.userID,
-          package_id: localStorage.pakageId,
-          method: payType,
-          total: amount
+      axios.post('http://localhost:8081/v1/api/user/payment/add', {
+        email: localStorage.userID,
+        package_id: localStorage.pakageId,
+        method: payType,
+        total: amount
       })
-      .then(() =>{
-        // navigate('/login')
-      })
+        .then(() => {
+          // navigate('/login')
+        })
 
     }
   }, [])
@@ -69,10 +69,17 @@ function Login() {
         <img className="w-[167px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/440px-Netflix_2015...vg.png" alt="logo" />
       </nav>
       <div className="absolute rounded w-[450px] -translate-x-2/4 -translate-y-2/4 p-[70px] left-2/4 top-2/4 bg-black bg-opacity-75">
-        <h2 className="text-white text-[2rem] font-bold">Đăng nhập</h2>
+        <h2
+
+          className="text-white text-[2rem] font-bold">Đăng nhập</h2>
         <div className='mt-[25px] mb-[65px] mx-0'>
           <div className="h-[60px] relative mb-2">
             <input
+              onKeyDown={(e) => {
+                if (e.key == 'Enter') {
+                  handleClick()
+                }
+              }}
               className={`h-full w-full rounded text-white px-5 py-0 bg-gray-800 outline-none focus:bg-gray-900 focus:valid:bg-gray-900 focus:valid:pt-4 border ${password ? 'border-gray-500' : 'border-red-500'} border-solid border-1`}
               type="text"
               required
@@ -96,6 +103,11 @@ function Login() {
           {email === '' && <small className='text-red-500'>Vui lòng nhập email hoặc số điện thoại hợp lệ.</small>}
           <div className="h-[60px] relative mt-4">
             <input
+              onKeyDown={(e) => {
+                if (e.key == 'Enter') {
+                  handleClick()
+                }
+              }}
               className={`h-full w-full rounded text-white px-5 py-0 bg-gray-800 outline-none focus:bg-gray-900 focus:valid:bg-gray-900 focus:valid:pt-4 border ${password ? 'border-gray-500' : 'border-red-500'}  border-solid border-1`}
               type="password"
               required

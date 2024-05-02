@@ -23,9 +23,9 @@ const SELECT_EPISODE_WIDTH = '300px'
 
 const Video = () => {
     const {accessToken, setAccessToken} = useContext(AppContext)
-    const userId = localStorage.userID
-
-    const token = accessToken
+    const token = localStorage.accessToken
+    
+    const userId = jwtDecode(token).id
 
     const { id, chapter } = useParams()
 
@@ -424,12 +424,8 @@ const Video = () => {
 
                         <div className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
                             <div ref={videoContainer} className=' w-full'>
-                                <div className='w-full relative'
-                                // onClick={(e) => {
-                                //     e.stopPropagation()
-                                //     console.log('phat van mau')
-                                // }}
-                                >
+                                <div className='w-full relative'>
+
                                     <iframe
                                         ref={video}
                                         className='w-full max-h-[556px] object-cover aspect-video'
@@ -589,7 +585,7 @@ const Video = () => {
                                 }}
                                 className='hover:cursor-pointer hover:brightness-[1.25] transition-all justify-center items-center 
                     fixed bottom-[100px] right-[100px] bg-[#24262B] 
-                    rounded-[50%] w-[50px] h-[50px] hidden lg:flex'>
+                    rounded-[50%] w-[50px] h-[50px] hidden lg:flex z-10'>
                                 <FontAwesomeIcon icon={faAngleUp} size='xl' className=' text-[#FF4500]' />
                             </div>
                         }
