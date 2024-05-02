@@ -66,7 +66,7 @@ function Login() {
       <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('https://assets.nflxext.com/ffe/siteui/vlv3/dc1cf82d-97c9-409f-b7c8-6ac1718946d6/14a8fe85-b6f4-4c06-8eaf-eccf3276d557/IN-en-20230911-popsignuptwoweeks-perspective_alpha_website_small.jpg')" }}>
       </div>
       <nav className='fixed z-[1] px-[60px] py-[25px]'>
-        <img className="w-[167px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/440px-Netflix_2015...vg.png" alt="logo" />
+      <h1  className="m-0 text-red-500 text-5xl font-extrabold">NETLEAK</h1>
       </nav>
       <div className="absolute rounded w-[450px] -translate-x-2/4 -translate-y-2/4 p-[70px] left-2/4 top-2/4 bg-black bg-opacity-75">
         <h2
@@ -136,7 +136,7 @@ function Login() {
             </div>
           </div>
         </div>
-        <p className="text-gray-400">Bạn mới tham gia Netflix?
+        <p className="text-gray-400">Bạn mới tham gia Netleak?
           <Link
             to={'/signup/step1'}
             className="text-white" href="#">
