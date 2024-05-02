@@ -7,13 +7,16 @@ import './home.css'
 import React, { useContext, useEffect } from 'react'
 
 const Home = () => {
-    const { genres, movies, accessToken, setAccessToken } = useContext(AppContext)
+    const { genres, movies, accessToken, setAccessToken, userId, setUserId } = useContext(AppContext)
 
     let token = localStorage.accessToken
 
     useEffect(() => {
-        setAccessToken(token)
+        setAccessToken(token);
+      
+        console.log('token: ', token);
     },[])
+      
 
 
     console.log(genres)

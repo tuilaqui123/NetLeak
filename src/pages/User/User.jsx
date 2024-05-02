@@ -12,12 +12,13 @@ import {
   CaretUpOutlined,
   ArrowLeftOutlined,
 } from "@ant-design/icons";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import DropDown from "./DropDown";
 import SideBar from "./SideBar";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { AppContext } from "../../context/AppContext";
 
 const User = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,26 +30,34 @@ const User = () => {
   const [showModal3, setShowModal3] = useState(false);
   const [showModal4, setShowModal4] = useState(false);
   const [user, setUser] = useState([]);
-  const [userId, setUserId] = useState([]);
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const {userId, setUserId, accessToken} = useContext(AppContext);
   const Menu = ["Tài khoản", "Đăng xuất"];
+  const navigate = useNavigate();
   const menuRef = useRef();
   const avatarRef = useRef();
-
   
-  
-
   const fetchUser = async () => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjM3MTJiZGJjODRjNzZmYjkwMWI4OSIsImVtYWlsIjoidHJhbm5odXRwaGF0dHZAZ21haWwuY29tIiwiaWF0IjoxNzE0NTU5MjIzLCJleHAiOjE3MTQ1NzcyMjN9.FtVTFHNdxiKBcoVRUuKURb4CYumqPpS2ScC0P61tjn0";
-  const decoded = jwtDecode(token).id;
-  console.log("decode:", decoded);
-    setUserId(decoded);
-    try {
-      const response = await axios.get(`http://localhost:8081/v1/api/admin/users/${decoded}`);
-      setUser(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-}
+    const decoded = jwtDecode(accessToken).id;
+    console.log("decode:", decoded);
+      setUserId(decoded);
+      console.log("userId:", userId);
+      try {
+        const response = await axios.get(`http://localhost:8081/v1/api/admin/users/${decoded}`);
+        setUser(response.data);
+        setEmail(response.data.email);
+        setPhone(response.data.phone);
+        setName(response.data.name);
+        setSexSelected(response.data.sexuality);
+        console.log("user:", response.data);
+      } catch (err) {
+        console.log(err);
+      }
+  }
 
 useEffect(() => {
   fetchUser()
@@ -67,9 +76,20 @@ useEffect(() => {
     if (!showModal1) {
       // Đặt lại giá trị của isDropDownOpened thành false
       setIsDropdownOpen(false);
-      setSexSelected("");
+      fetchUser();
     }
-  }, [showModal1]);
+    if (!showModal2) {
+      fetchUser();
+    }
+    if (!showModal3) {
+      fetchUser();
+    }
+    if (!showModal4) {
+      fetchUser();
+      setPassword("");
+      setOldPassword("");
+    }
+  }, [showModal1, showModal2, showModal3, showModal4 ]);
 
   window.addEventListener("click", (e) => {
     if (e.target !== menuRef.current && e.target !== avatarRef.current) {
@@ -77,6 +97,117 @@ useEffect(() => {
     }
   });
 
+const handleSubmitModal1 = () => {
+  const data = {
+    name: name,
+    sexuality: sexSelected,
+    phone: phone,
+    email:email,
+  };
+  axios
+    .patch(`http://localhost:8081/v1/api/user/update/account/${userId}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+       
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      fetchUser();
+      setShowModal1(false);
+   
+      alert("Cập nhật thông tin thành công");
+
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Cập nhật thông tin thất bại");
+    });
+}
+
+const handleSubmitModal2 = () => {
+  const data = {
+    name: name,
+    sexuality: sexSelected,
+    phone: phone,
+    email:email,
+  };
+  axios
+    .patch(`http://localhost:8081/v1/api/user/update/account/${userId}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+       
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      fetchUser();
+      
+      setShowModal2(false);
+      
+      alert("Cập nhật thông tin thành công");
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Cập nhật thông tin thất bại");
+    });
+}
+
+const handleSubmitModal3 = () => {
+  const data = {
+    name: name,
+    sexuality: sexSelected,
+    phone: phone,
+    email:email,
+  };
+  axios
+    .patch(`http://localhost:8081/v1/api/user/update/account/${userId}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+       
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      fetchUser();
+      setShowModal3(false);
+      alert("Cập nhật thông tin thành công");
+      // navigate('/user');
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Cập nhật thông tin thất bại");
+    });
+}
+
+const handleSubmitModal4 = () => {
+  const data = {
+    id: userId,
+    oldPassword: oldPassword,
+    newPassword: password,
+  };
+  axios
+    .patch(`http://localhost:8081/v1/api/user/updatePassword`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+       
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      fetchUser();
+      setShowModal4(false);
+      alert("Cập nhật thông tin thành công");
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Cập nhật thông tin thất bại");
+    });
+}
 
 
   return (
@@ -93,7 +224,7 @@ useEffect(() => {
               src="src\assets\images\netflix_avatar.png"
               className="rounded-full w-10 h-10 border-2"
             />
-            <CaretDownOutlined className="ml-2" />
+            {/* <CaretDownOutlined className="ml-2" /> */}
           </div>
           <DropDown ref={menuRef} isVisible={userDropdown} object={Menu} />
         </div>
@@ -112,17 +243,15 @@ useEffect(() => {
                   <span className="font-semibold text-[18px]">
                   {user?.name}
                   </span>
-                  {/* md:block */}
+   
                   <div className="flex flex-col mt-5  md:flex-row md:items-center">
                     <div>
                       <span>Giới tính: </span>
-                      <span className="font-semibold">{user?.sexuality}</span>
+                      <span className="font-semibold">{user?.sexuality === "male" ? "Nam" : "Nữ"}</span>
                     </div>
-                    {/* <div className="text-gray-300 ml-10 mr-10">|</div> */}
+              
                     <div className="hidden md:block ml-10 pl-10 border-l border-gray-300 h-[20px]"></div>
-                    {/* <span>Ngày Sinh: </span>
-                    <span className="font-semibold">03/01/2003</span>
-                    <span className="border-l border-gray-200 pl-10 ml-10 "></span> */}
+                    
                     <div className="mt-2 md:mt-0">
                       <span>UID: </span>
                       <span className="font-semibold">{user?._id}</span>
@@ -185,7 +314,8 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <Modal isVisible={showModal1} onClose={() => setShowModal1(false)}>
+      <Modal isVisible={showModal1} onClose={() => setShowModal1(false) 
+       }>
         <div className="py-6 px-6 lg:px-8 text-left">
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Chỉnh sửa thông tin cá nhân
@@ -203,6 +333,8 @@ useEffect(() => {
                 name="email"
                 id="email"
                 placeholder="Nhập tên của bạn"
+                onInput={(e) => setName(e.target.value)}
+                value={name}
                 className="bg-gray-200 border-gray-300 text-gray-900 text-sm rounded-lg   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
 
@@ -219,7 +351,7 @@ useEffect(() => {
                   } hover:border-blue-500 rounded-lg flex justify-between items-center cursor-pointer`}
                   onClick={() => setIsDropdownOpen((prev) => !prev)}
                 >
-                  {sexSelected ? sexSelected : "Giới tính"}
+                  {sexSelected === 'male' ? 'Nam'  : 'Nữ'}
                   {isDropdownOpen ? <CaretUpOutlined /> : <CaretDownOutlined />}
                 </div>
                 {isDropdownOpen && (
@@ -227,16 +359,17 @@ useEffect(() => {
                     <li
                       className="hover:text-blue-500 cursor-pointer"
                       onClick={() => {
-                        setSexSelected("Nam");
+                        setSexSelected("male");
                         setIsDropdownOpen(false);
                       }}
                     >
                       Nam
+                      {/* {sexSelected === `${user?.sexuality}` && sexSelected === 'Nam' ? ("Nam"): ("Nữ")} */}
                     </li>
                     <li
                       className="hover:text-blue-500 cursor-pointer mt-2"
                       onClick={() => {
-                        setSexSelected("Nữ");
+                        setSexSelected("female");
                         setIsDropdownOpen(false);
                       }}
                     >
@@ -246,6 +379,7 @@ useEffect(() => {
                 )}
               </div>
               <button
+              onClick={()=>handleSubmitModal1()}
                 type="submit"
                 className="w-full text-white bg-blue-700 hover:bg-blue-800 rounded-lg p-2.5 mt-7 focus:ring-blue-500 focus:border-blue-500"
               >
@@ -254,7 +388,10 @@ useEffect(() => {
               <button
                 type="button"
                 className="w-full text-blue-700 bg-white border-blue-700 border-[1px] hover:bg-blue-100  rounded-lg p-2.5 mt-4 focus:ring-blue-500 focus:border-blue-700"
-                onClick={() => setShowModal1(false)}
+                onClick={() => 
+                  setShowModal1(false) 
+                  
+                }
               >
                 Hủy
               </button>
@@ -280,9 +417,12 @@ useEffect(() => {
                 name="email"
                 id="email"
                 placeholder="Nhập email của bạn"
+                value={email}
+                onInput={(e) => setEmail(e.target.value)}
                 className="bg-gray-200 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
               <button
+              onClick={()=>handleSubmitModal2()}
                 type="submit"
                 className="w-full text-white bg-blue-700 hover:bg-blue-800 rounded-lg p-2.5 mt-7 focus:ring-blue-500 focus:border-blue-500"
               >
@@ -291,7 +431,9 @@ useEffect(() => {
               <button
                 type="button"
                 className="w-full text-blue-700 bg-white border-blue-700 border-[1px] hover:bg-blue-100  rounded-lg p-2.5 mt-4 focus:ring-blue-500 focus:border-blue-700"
-                onClick={() => setShowModal2(false)}
+                onClick={() => setShowModal2(false)
+                
+                }
               >
                 Hủy
               </button>
@@ -317,9 +459,12 @@ useEffect(() => {
                 name="email"
                 id="email"
                 placeholder="Nhập số điện thoại"
+                value={phone}
+                onInput={(e) => setPhone(e.target.value)}
                 className="bg-gray-200 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
               <button
+              onClick={()=>handleSubmitModal3()}
                 type="submit"
                 className="w-full text-white bg-blue-700 hover:bg-blue-800 rounded-lg p-2.5 mt-7 focus:ring-blue-500 focus:border-blue-500"
               >
@@ -328,7 +473,9 @@ useEffect(() => {
               <button
                 type="button"
                 className="w-full text-blue-700 bg-white border-blue-700 border-[1px] hover:bg-blue-100  rounded-lg p-2.5 mt-4 focus:ring-blue-500 focus:border-blue-700"
-                onClick={() => setShowModal3(false)}
+                onClick={() => setShowModal3(false)
+                
+                }
               >
                 Hủy
               </button>
@@ -354,6 +501,8 @@ useEffect(() => {
                 name="email"
                 id="email"
                 placeholder="Nhập mật khẩu cũ"
+                value={oldPassword}
+                onInput={(e) => setOldPassword(e.target.value)}
                 className="bg-gray-200 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
               <label
@@ -367,9 +516,12 @@ useEffect(() => {
                 name="email"
                 id="email"
                 placeholder="Nhập mật khẩu mới"
+                value={password}
+                onInput={(e) => setPassword(e.target.value)}
                 className="bg-gray-200 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
               <button
+              onClick={()=>handleSubmitModal4()}
                 type="submit"
                 className="w-full text-white bg-blue-700 hover:bg-blue-800 rounded-lg p-2.5 mt-7 focus:ring-blue-500 focus:border-blue-500"
               >
