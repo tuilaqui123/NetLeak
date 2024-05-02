@@ -34,9 +34,20 @@
     rgba(35, 35, 35, 1) 100%
   );
 }
+.image-overlay4 {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  width: 15%;
+  height: 100%; /* Adjust the height of the overlay as needed */
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(35, 35, 35, 1) 100%
+  );
+}
 .movie-detail {
   z-index: 5;
-  min-height: 70vh;
   height: auto;
 }
 .rating-container {

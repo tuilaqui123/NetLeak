@@ -55,13 +55,12 @@ function RecommendedFilm({ allFilms, recommendFilms, allFavoriteFilms, handleAdd
     }
 
     return (
-        <div className=' mt-8 '>
+        <div className=' mt-8'>
             <p className=' text-white text-[18px] lg:text-[24px] font-bold mb-4'>Đề xuất cho bạn</p>
-
-            <div className=' mb-11 w-[95%] relative px-12 lg:px-12'>
+            <div className='mb-11 w-[100%] relative px-12 lg:px-12'>
                 <Swiper
                     className=' text-white !px-2'
-                    spaceBetween={20}
+                    spaceBetween={10}
                     slidesPerView={3}
                     slidesPerGroup={3}
                     onInit={(ev) => {
@@ -73,8 +72,8 @@ function RecommendedFilm({ allFilms, recommendFilms, allFavoriteFilms, handleAdd
                             slidesPerGroup: 4,
                         },
                         1024: {
-                            slidesPerView: 6,
-                            slidesPerGroup: 6,
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
                         },
                     }}
                 >
@@ -90,9 +89,9 @@ function RecommendedFilm({ allFilms, recommendFilms, allFavoriteFilms, handleAdd
                                                 <div className='relative hover:cursor-pointer transition-all'>
                                                     <a href={`/video/${id}/1`}>
 
-                                                        <img loading='lazy' className=' w-[100%] rounded-[7px] object-cover mb-2' src={film.image.poster} alt="Ảnh phim" />
+                                                        <img loading='lazy' className=' w-[100%] h-[200px] rounded-[7px] object-cover mb-2' src={film.image.poster} alt="Ảnh phim" />
 
-                                                        <div className='flex flex-col absolute top-0 right-0 bottom-0 left-0 items-center justify-center 
+                                                        {/* <div className='flex flex-col absolute top-0 right-0 bottom-0 left-0 items-center justify-center 
                                                 bg-gradient-to-b from-transparent from-60% via-[black]/[.0] via-80% to-[black]/[1] to-100%
                                                 group-hover:from-transparent group-hover:from-60% group-hover:via-[black]/[.6] group-hover:via-80% group-hover:to-[black]/[1] group-hover:to-100%
                                                 '
@@ -101,23 +100,23 @@ function RecommendedFilm({ allFilms, recommendFilms, allFavoriteFilms, handleAdd
                                                                 <FontAwesomeIcon icon={faPlay} size='lg' className=' text-[#fff]' />
                                                             </div>
 
-                                                        </div>
+                                                        </div> */}
                                                     </a>
 
                                                     <div
                                                         className=' flex lg:hidden group-hover:flex absolute bottom-[15px] left-[10px] right-[10px] justify-between items-center'>
                                                         {/* <p>{currentFilm.episodes.length} tập</p> */}
                                                         <div
-                                                            onClick={() => { 
-                                                                if(allFavoriteFilms.some((film) => film._id == id)){
-                                                                    handleDeleteFavoriteFilm(id) 
+                                                            onClick={() => {
+                                                                if (allFavoriteFilms.some((film) => film._id == id)) {
+                                                                    handleDeleteFavoriteFilm(id)
                                                                 }
-                                                                else{
+                                                                else {
                                                                     handleAddFavoriteFilm(id)
                                                                 }
-                                                                }}
+                                                            }}
                                                             className='opacity-90 hover:opacity-100 bg-[white] rounded-[50%] w-8 h-8 flex items-center justify-center'>
-                                                            <FontAwesomeIcon icon={faHeart} size='sm' className={` opacity-[0.5] ${allFavoriteFilms.some((film) => film._id == id)?' text-[red] opacity-[1]':'text-[black]'}`}/>
+                                                            <FontAwesomeIcon icon={faHeart} size='sm' className={` opacity-[0.5] ${allFavoriteFilms.some((film) => film._id == id) ? ' text-[red] opacity-[1]' : 'text-[black]'}`} />
                                                         </div>
 
                                                         {/* <div className='opacity-90 hover:opacity-100 bg-[white] rounded-[50%] w-8 h-8 flex items-center justify-center'>

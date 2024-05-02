@@ -6,7 +6,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import HoverSlide from "./HoverSlide";
 export default function GenreSlide({ Genre, setGerne }) {
 
-  const movies= Genre.movies;
+  const movies = Genre.movies;
 
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   let hoverTimeout;
@@ -45,11 +45,11 @@ export default function GenreSlide({ Genre, setGerne }) {
 
   document.addEventListener("click", (e) => {
     if (hoveredIndex != -1) {
-    
+
       const hoveredCard = document.querySelector(".card.hovered");
 
       if (!hoveredCard.contains(e.target)) {
-       
+
         e.stopPropagation();
         handleMouseLeave();
       }
@@ -62,40 +62,41 @@ export default function GenreSlide({ Genre, setGerne }) {
 
       <div className="grid-container">
         {/* <div className="image-container"> */}
-        {movies.map(( movie, index) => {
-          
+        {movies.map((movie, index) => {
 
-          return(
-          <div
-            className={`card ${index === hoveredIndex ? "hovered" : ""} relative`}
-            onClick={() => handleMouseEnter(index, movie)}
-          >
-            <div className="image-container">
-              {index === hoveredIndex ? (
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  className="cancel-icon"
-                  onClick={handleIconClick}
-                />
-              ) : (
-                ""
-              )}
-             
-              {index !== hoveredIndex ? <img
-                key={index}
-                src={ movie.image.poster}
-                alt={`Ảnh ${index + 1}`}
-              /> : <img
-              key={index}
-              src={movie.image.banner}
-              alt={`Ảnh ${index + 1}`}
-            />}
-              
+
+          return (
+            <div
+              className={`card ${index === hoveredIndex ? "hovered" : ""} relative`}
+              onClick={() => handleMouseEnter(index, movie)}
+            >
+              <div className="image-container">
+                {index === hoveredIndex ? (
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    className="cancel-icon"
+                    onClick={handleIconClick}
+                  />
+                ) : (
+                  ""
+                )}
+
+                {index !== hoveredIndex ? <img
+                  key={index}
+                  src={movie.image.poster}
+                  alt={`Ảnh ${index + 1}`}
+                /> : <img
+                  key={index}
+                  src={movie.image.banner}
+                  alt={`Ảnh ${index + 1}`}
+                />}
+
+              </div>
+              <p className="film-title text-center pt-2 line-clamp-film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
+              {index === hoveredIndex ? <HoverSlide setGenre={setGerne} movie={movie} /> : ""}
             </div>
-            <p className="film-title text-center pt-2 line-clamp-film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
-            {index === hoveredIndex ? <HoverSlide setGenre={setGerne} movie={movie} /> : ""}
-          </div>
-        )})}
+          )
+        })}
       </div>
     </div>
   );

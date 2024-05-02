@@ -7,7 +7,7 @@ import video1 from '../../assets/video/video.mp4'
 import m1 from '../../assets/movies/1.jpg'
 
 import Navbar from '../../components/Navbar/Navbar'
-import Footer from './Footer'
+
 import SelectEpisode from './SelectEpisode'
 import ActorSlide from './ActorSlide'
 import RecommendedFilm from './RecommendedFilm'
@@ -23,9 +23,9 @@ const SELECT_EPISODE_WIDTH = '300px'
 
 const Video = () => {
     const {accessToken, setAccessToken} = useContext(AppContext)
-    const userId = localStorage.userID
-
-    const token = accessToken
+    const token = localStorage.accessToken
+    
+    const userId = jwtDecode(token).id
 
     const { id, chapter } = useParams()
 
@@ -66,7 +66,7 @@ const Video = () => {
     }
 
     const handleAddHistoty = () => {
-        fetch('http://localhost:8081/v1/api/user/history',{
+        fetch('http://localhost:8081/v1/api/user/history', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -80,10 +80,10 @@ const Video = () => {
     }
 
     useEffect(() => {
-        setTimeout(()=>{
+        setTimeout(() => {
             handleAddHistoty()
         }, 30000)
-    },[])
+    }, [])
 
     const handleAddRating = (filmId, rate) => {
         fetch(`http://localhost:8081/v1/api/user/rating`, {
@@ -166,7 +166,7 @@ const Video = () => {
             })
     }
 
-    const getAllRatingFilm = () =>{
+    const getAllRatingFilm = () => {
         // setIsLoadingAllRatingFilm(true)
         fetch(`http://localhost:8081/v1/api/user/ratings`, {
             method: 'GET',
@@ -177,7 +177,7 @@ const Video = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                setAllRatingFilms(data)                    
+                setAllRatingFilms(data)
             })
             .catch((e) => {
                 console.log(e)
@@ -185,7 +185,7 @@ const Video = () => {
             .finally(() => {
                 // setIsLoadingAllRatingFilm(false)
             })
-    } 
+    }
 
     const getRankingFilms = () => {
         setIsLoadingRankingFilm(true)
@@ -339,8 +339,8 @@ const Video = () => {
     useEffect(() => {
         const handleIsLoanding = () => {
             if (isLoadingFilmInfo || isLoadingFilmInfo || isLoadingAllGenres
-                || isLoadingAllFilms || isLoadingRecommendFilm || isLoadingAllFavoriteFilm 
-                || isLoadingRankingFilm ||isLoadingAllRatingFilm) {
+                || isLoadingAllFilms || isLoadingRecommendFilm || isLoadingAllFavoriteFilm
+                || isLoadingRankingFilm || isLoadingAllRatingFilm) {
                 setIsLoading(true)
             } else {
                 setIsLoading(false)
@@ -424,12 +424,7 @@ const Video = () => {
 
                         <div className={`flex justify-center max-h-[600px] w-full mt-24 items-start bg-[#1A1C22]`}>
                             <div ref={videoContainer} className=' w-full'>
-                                <div className='w-full relative'
-                                    // onClick={(e) => {
-                                    //     e.stopPropagation()
-                                    //     console.log('phat van mau')
-                                    // }}
-                                >
+                                <div className='w-full relative'>
                                     <iframe
                                         ref={video}
                                         className='w-full max-h-[556px] object-cover aspect-video'
@@ -577,7 +572,6 @@ const Video = () => {
 
                         <div className=' w-full h-[1px] bg-white/[.2]'></div>
 
-                        <Footer />
 
                         {invisibleBackToHeadPage == false &&
                             <div
@@ -590,7 +584,7 @@ const Video = () => {
                                 }}
                                 className='hover:cursor-pointer hover:brightness-[1.25] transition-all justify-center items-center 
                     fixed bottom-[100px] right-[100px] bg-[#24262B] 
-                    rounded-[50%] w-[50px] h-[50px] hidden lg:flex'>
+                    rounded-[50%] w-[50px] h-[50px] hidden lg:flex z-10'>
                                 <FontAwesomeIcon icon={faAngleUp} size='xl' className=' text-[#FF4500]' />
                             </div>
                         }

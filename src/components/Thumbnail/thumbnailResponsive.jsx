@@ -1,8 +1,18 @@
 import React from "react";
-import thumb_pic from '../../assets/images/thumbnail.jpg'
+import thumb_pic from '../../assets/images/thumbResponsive.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPlus , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 const ThumbnailRes = () => {
+    const handlePlay = () => {
+        // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
+        window.scrollTo(0, 0);
+        window.location.href = `/video/6630a66c1a3d60de19e9d1a7/1`
+      }
+      const handleIn4 = () => {
+        // navigate(`/movie/6630a66c1a3d60de19e9d1a7`)
+        window.scrollTo(0, 0);
+        window.location.href = `/movie/6630a66c1a3d60de19e9d1a7`
+      }
     return (
         <div className=" md:hidden block  w-full mt-[100px] mb-10 relative">
             <img
@@ -10,16 +20,17 @@ const ThumbnailRes = () => {
                 className="h-auto w-full brightness-90"
             />
             <div className="w-full h-full absolute top-0 flex flex-col justify-end pb-5 pl-3">
-                <h1 className='text-2xl md:text-5xl font-bold text-white mt-5 mb-10'>VIOLET EVERGARDEN</h1>
-                <div className='w-full flex flex-row gap-5'>
-                    <button className='w-1/4 h-[50px] flex flex-row items-center justify-center gap-3 rounded-md bg-white group hover:bg-[#ff0000] duration-150'>
-                        <FontAwesomeIcon icon={faPlay} className='text-black group-hover:text-white duration-150' />
-                        <p className="text-black font-bold group-hover:text-white duration-150">Phát</p>
-                    </button>
-                    <button className='w-1/4 h-[50px] flex flex-row items-center justify-center gap-3 rounded-md bg-white group hover:bg-[#ff0000] duration-150'>
-                        <FontAwesomeIcon icon={faPlus} className='text-black group-hover:text-white duration-150' />
-                        <p className="text-black font-bold group-hover:text-white duration-150">Danh sách</p>
-                    </button>
+            <p className="font-bold text-4xl text-white p-5 pl-0 w-1/2">Tensei-shitara Slime datta ken</p>
+                
+                <div className='access'>
+                        <button className='play' onClick={handlePlay}>
+                            <FontAwesomeIcon icon={faPlay} className='icon' />
+                            <p>Phát</p>
+                        </button>
+                        <button className='playlist' onClick={handleIn4}>
+                            <FontAwesomeIcon icon={faInfoCircle} className='icon' />
+                            <p>Thông tin thêm</p>
+                        </button>
                 </div>
             </div>
         </div>

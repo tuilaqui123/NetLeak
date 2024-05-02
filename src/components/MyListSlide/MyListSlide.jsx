@@ -6,7 +6,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import HoverSlide from "./HoverSlide";
 export default function GenreSlide({ movies, title }) {
 
-//   const movies= data;
+  //   const movies= data;
 
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   let hoverTimeout;
@@ -15,15 +15,13 @@ export default function GenreSlide({ movies, title }) {
     const gridContainer = document.querySelector(".grid-container");
     const rowElements = gridContainer.children;
     const firstRowElement = rowElements[0];
-    const numberOfColumns = Math.floor(
-      gridContainer.offsetWidth / firstRowElement.offsetWidth
-    );
 
+    console.log(gridContainer.offsetWidth/ firstRowElement.offsetWidth);
     // Kiểm tra số lượng phần tử trong hàng
     // alert(numberOfColumns);
-    if (numberOfColumns < 5 && hoveredIndex == -1) {
+    if (gridContainer.offsetWidth/ firstRowElement.offsetWidth < 5 && hoveredIndex == -1) {
       // chuyển tới phim thẳng luôn
-   
+
       window.scrollTo(0, 0);
       window.location.href = `/movie/${movie._id}`
       return;
@@ -33,7 +31,7 @@ export default function GenreSlide({ movies, title }) {
       }, 0);
     }
   };
- 
+
   const handleMouseLeave = () => {
     clearTimeout(hoverTimeout);
     setHoveredIndex(-1);
@@ -45,11 +43,11 @@ export default function GenreSlide({ movies, title }) {
 
   document.addEventListener("click", (e) => {
     if (hoveredIndex != -1) {
-    
+
       const hoveredCard = document.querySelector(".card.hovered");
 
       if (!hoveredCard.contains(e.target)) {
-       
+
         e.stopPropagation();
         handleMouseLeave();
       }
@@ -58,50 +56,46 @@ export default function GenreSlide({ movies, title }) {
 
   return (
     <div>
+      {title == ""? "" :
       <p className="genre-title capitalize "> {title}</p>
+      }
 
       <div className="grid-container">
         {/* <div className="image-container"> */}
+        {movies.map((movie, index) => {
+          return (
+            <div
+              className={`listcard ${index === hoveredIndex ? "hovered" : ""} relative`}
+              onClick={() => handleMouseEnter(index, movie)}
+            >
+              <div className="image-container ">
+                {index === hoveredIndex ? (
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    className="cancel-icon"
+                    onClick={handleIconClick}
+                  />
+                ) : (
+                  ""
+                )}
 
-        
-        {movies.map(( movie, index) => {
-          
+                {index !== hoveredIndex ? <img
+                  key={index}
 
+                  src={movie.image.poster}
+                  alt={`Ảnh ${index + 1}`}
+                /> : <img
+                  key={index}
+                  src={movie.image.banner}
+                  alt={`Ảnh ${index + 1}`}
+                />}
 
-
-          return(
-          <div
-            className={`listcard ${index === hoveredIndex ? "hovered" : ""} relative`}
-            onClick={() => handleMouseEnter(index, movie)}
-          >
-            <div className="image-container ">
-              {index === hoveredIndex ? (
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  className="cancel-icon"
-                  onClick={handleIconClick}
-                />
-              ) : (
-                ""
-              )}
-             
-              {index !== hoveredIndex ? <img
-                key={index}
-               
-                src={ movie.image.poster}
-                alt={`Ảnh ${index + 1}`}
-              /> : <img
-              key={index}
-              src={movie.image.banner}
-              alt={`Ảnh ${index + 1}`}
-            />}
-              
+              </div>
+              <p className="film-title text-center absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
+              {index === hoveredIndex ? <HoverSlide movie={movie} /> : ""}
             </div>
-            <p className="film-title text- absolute bottom-0 left-0 w-full mt-10 line-clamp-2 truncate"> {movie.title}</p>
-            {index === hoveredIndex ? <HoverSlide  movie={movie} /> : ""}
-          </div>
-        )
-        
+          )
+
         })}
       </div>
     </div>

@@ -28,7 +28,7 @@ const TabPage = () => {
         setGenre={setGenre}
         selectedGenre={selectedGenre}
         setSelectedGenre={setSelectedGenre}
-        
+
       />
 
       <div className="movies-slide">
@@ -36,7 +36,7 @@ const TabPage = () => {
           Genre={genre}
           setGenre={setGenre}
           setSelectedGenre={setSelectedGenre}
-          
+
         />
       </div>
     </div>

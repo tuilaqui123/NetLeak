@@ -15,7 +15,7 @@ import History from './pages/User/History'
 import Search from './components/Search/Search'
 import { AppProvider } from './context/AppContext'
 import Login from './pages/Login/Login'
-
+import Footer from './pages/Video/Footer'
 function App() {
 
   return (
@@ -32,12 +32,15 @@ function App() {
               <Route path='/mylist' element={<MyList />} />
               <Route path="/tab/:id" element={<TabPage />} />
               <Route path="/video/:id/:chapter" element={<Video />} />
+              <Route path="/genre" element={<TabPage />} />
+             
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/user" element={<User />} />
               <Route path="/history" element={<History />} />
               <Route path="/search" element={<Search />} />
             </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AppProvider>
     </div>
