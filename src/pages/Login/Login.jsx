@@ -46,6 +46,7 @@ function Login() {
     }
   }, [])
   const handleClick = () => {
+    // console.log("Click")
     var user = axios.post("http://localhost:8081/v1/api/login", {
       email: email,
       password: password
@@ -56,17 +57,22 @@ function Login() {
           localStorage.setItem('accessToken', res.data.accessToken)
           navigate('/home')
         } else {
-          localStorage.clear()
+          alert("Đăng nhập không thành công! Mời đăng nhập lại")
         }
       })
-      .catch(err => console(err))
+      .catch(err => {console.log(err)
+      alert(err)
+      })
   }
   return (
     <div className="h-screen bg-black">
       <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('https://assets.nflxext.com/ffe/siteui/vlv3/dc1cf82d-97c9-409f-b7c8-6ac1718946d6/14a8fe85-b6f4-4c06-8eaf-eccf3276d557/IN-en-20230911-popsignuptwoweeks-perspective_alpha_website_small.jpg')" }}>
       </div>
       <nav className='fixed z-[1] px-[60px] py-[25px]'>
-      <h1  className="m-0 text-red-500 text-5xl font-extrabold">NETLEAK</h1>
+        <Link to='/'>
+        <h1  className="m-0 text-[red] text-5xl font-extrabold">NETLEAK</h1>
+        </Link>
+      
       </nav>
       <div className="absolute rounded w-[450px] -translate-x-2/4 -translate-y-2/4 p-[70px] left-2/4 top-2/4 bg-black bg-opacity-75">
         <h2
@@ -80,7 +86,7 @@ function Login() {
                   handleClick()
                 }
               }}
-              className={`h-full w-full rounded text-white px-5 py-0 bg-gray-800 outline-none focus:bg-gray-900 focus:valid:bg-gray-900 focus:valid:pt-4 border ${password ? 'border-gray-500' : 'border-red-500'} border-solid border-1`}
+              className={`h-full w-full rounded text-white pt-3 px-5 py-0 bg-gray-800 outline-none focus:bg-gray-900 focus:valid:bg-gray-900 focus:valid:pt-4 border ${password ? 'border-gray-500' : 'border-red-500'} border-solid border-1`}
               type="text"
               required
               onFocus={(e) => {
@@ -139,7 +145,7 @@ function Login() {
         <p className="text-gray-400">Bạn mới tham gia Netleak?
           <Link
             to={'/signup/step1'}
-            className="text-white" href="#">
+            className="text-white hover:text-red-500 ml-2" href="#">
             Đăng ký ngay.
           </Link></p>
       </div>

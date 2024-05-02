@@ -213,7 +213,7 @@ const handleSubmitModal4 = () => {
   return (
     <div className="user-container">
       <div className="header">
-        <h1>Netflix</h1>
+        <h1>Netleak</h1>
         <div className="relative">
           <div
             ref={avatarRef}
@@ -404,7 +404,7 @@ const handleSubmitModal4 = () => {
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Chỉnh sửa Email
           </h3>
-          <form className="space-y-6" action="#">
+          <div className="space-y-6" >
             <div>
               <label
                 for="email"
@@ -438,7 +438,7 @@ const handleSubmitModal4 = () => {
                 Hủy
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
       <Modal isVisible={showModal3} onClose={() => setShowModal3(false)}>
@@ -446,7 +446,7 @@ const handleSubmitModal4 = () => {
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Chỉnh sửa số điện thoại
           </h3>
-          <form className="space-y-6" action="#">
+          <div className="space-y-6" >
             <div>
               <label
                 for="email"
@@ -480,7 +480,7 @@ const handleSubmitModal4 = () => {
                 Hủy
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
       <Modal isVisible={showModal4} onClose={() => setShowModal4(false)}>
@@ -488,7 +488,7 @@ const handleSubmitModal4 = () => {
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Đổi mật khẩu
           </h3>
-          <form className="space-y-6" action="#">
+          <div className="space-y-6">
             <div>
               <label
                 for="password"
@@ -535,7 +535,7 @@ const handleSubmitModal4 = () => {
                 Hủy
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
     </div>

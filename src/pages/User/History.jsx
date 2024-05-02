@@ -79,7 +79,7 @@ fetchHistory();
   return (
     <div className="user-container ">
       <div className="header">
-        <h1>Netflix</h1>
+        <h1>Netleak</h1>
         <div className="relative">
           <div
             ref={avatarRef}

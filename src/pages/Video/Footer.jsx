@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <ul className=' z-0 list-none bg-black flex justify-evenly h-[300px] pt-[30px] w-full'>
             <li>
-                <h3 className=' text-[#800000] brightness-[1.6] mb-[20px] font-bold text-[20px]'>Về Netflix</h3>
+                <h3 className=' text-[#800000] brightness-[1.6] mb-[20px] font-bold text-[20px]'>Về NetLeak</h3>
                 <ul className='list-none *:text-white/[.7] *:cursor-pointer *:mb-1 *:transition-all *:font-semibold'>
                     <li className='hover:text-[red] hover:scale-[1.1] '>
                         Câu hỏi thường gặp

@@ -4,6 +4,8 @@ import OPT from '../../../../JSON/PaymentOption';
 import './pay.css'
 import React, { useEffect, useState } from 'react'
 import { useNavigate,redirect } from 'react-router-dom';
+import Lottie from "lottie-react";
+import animationData from "../../../../assets/Lottie/Find.json";
 
 const PayStep = () => {
     const navigate = useNavigate()
@@ -46,11 +48,15 @@ const PayStep = () => {
                 window.open(data.payUrl, "_self")
                 window.close()
             })
+            .finally(()=>{
+                setIsLoading(false)
+            })
+            
     }
 
     return (
         <>
-            {isLoading == false &&
+            {isLoading == false ? 
                 <div className='paystep-container'>
                     <p className='steps'>BƯỚC 2/3</p>
                     <h2 className='step2-h2'>Chọn gói dịch vụ của bạn.</h2>
@@ -86,6 +92,13 @@ const PayStep = () => {
                         <p>Thanh toán</p>
                     </div>
                 </div>
+                
+                :
+                <>
+                <Lottie height={400} width={400} animationData={animationData} className="flex-grow"/>
+                <p className='text-xl text-black '> Đang Loading, bạn chờ chút nhé!</p>
+                </>
+
             }
         </>
     );

@@ -64,7 +64,9 @@ const Navbar = () => {
             onClick={() => setShowNav(!showNav)}
             className="fa-solid fa-bars text-2xl text-white cursor-pointer block md:hidden"
           ></i>
-          <h2 className="text-2xl font-black text-[#ff0000]">NETFLIX</h2>
+          <Link to='/home'>
+          <h2  className="m-0 text-[red] text-3xl font-extrabold">NETLEAK</h2>
+          </Link>
           <div className="hidden md:block ml-5">
             <ul>
               <li>
@@ -136,7 +138,7 @@ const Navbar = () => {
                       </p>
                     </div>
                   </Link>
-                  <div className="group flex items-center">
+                  <div className="group flex items-center mt-4">
                     <LogoutOutlined className="text-[#696969] group-hover:text-[green] mr-2  cursor-pointer " />
                     <p 
                       onClick={() => {

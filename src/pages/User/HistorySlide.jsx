@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./Modal";
+import { Link } from "react-router-dom";
 export default function HistorySlide({ movies }) {
   //   const movies= data;
   const [shownModal, setShownModal] = useState(false);
@@ -27,6 +28,7 @@ export default function HistorySlide({ movies }) {
         {movies.length > 0 ? (
         movies.map((movie, index) => {
           return (
+            <Link to={`/movie/${movie._id}`}>
             <div className="hover:scale-110 hover:border hover:p-1 hover:bg-[#fafafa] duration-300 ease-in-out relative hover:z-50"
             //   className={`listcard ${
             //     index === hoveredIndex ? "hovered" : ""
@@ -74,9 +76,9 @@ export default function HistorySlide({ movies }) {
                   </p>
                 </div>
                 <div className="w-1/5 flex items-center justify-end">
-                  <div onClick={()=>setShownModal(true)} className="w-[30px] h-[30px] cursor-pointer flex items-center justify-center rounded-md hover:bg-red-600 duration-150 east-out group">
+                  {/* <div onClick={()=>setShownModal(true)} className="w-[30px] h-[30px] cursor-pointer flex items-center justify-center rounded-md hover:bg-red-600 duration-150 east-out group">
                     <i className="fa-solid fa-trash text-[20px]  text-gray-600 group-hover:text-white duration-150 ease-out"></i>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               {/* {index === hoveredIndex ? (
@@ -84,7 +86,7 @@ export default function HistorySlide({ movies }) {
               ) : (
                 ""
               )} */}
-            </div>
+            </div></Link>
           );
         })):
         (<div className="py-3 pl-[19px] w-[500px] font-semibold text-[18px] ">

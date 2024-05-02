@@ -14,6 +14,7 @@ const Step1 = () => {
     const [sex, setSex] = useState('')
 
     const handleCheck = () => {
+        console.log("Checking")
         if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
             alert('Vui lòng nhập đúng cú pháp email')
             return
@@ -54,9 +55,19 @@ const Step1 = () => {
         })
             .then(res => res.json())
             .then((data) => {
+                if(data.statusCode ==201)
+                {
+                    alert("Email đã được đăng ký, vui lòng nhập Email khác")
+                    return;
+                }
+                else
+                {
+
                 localStorage.setItem('userID', data.user._id)
-                console.log(data.user._id)
+                
                 navigate('/signup/step2')
+            }
+
             })
             .catch((e) => { console.log(e) })
     }

@@ -10,7 +10,7 @@ const ResponsiveNav = ({ onclick }) => {
             <div className=" top-0 h-screen w-2/5 bg-white z-30 p-3 flex flex-row-reverse gap-5">
                 <i class="fa-solid fa-square-xmark h-auto text-4xl text-[#3e3e3e]  cursor-pointer hover:text-[#ff0000] duration-200"></i>
                 <div className="w-full flex flex-col gap-5">
-                    <h2 className="text-2xl font-black text-[#ff0000]">NETFLIX</h2>
+                    <h2 className="text-2xl font-black text-[#ff0000]">NETLEAK</h2>
                     <Link to="/home" >
                         <p className="text-black">Trang chủ</p>
                     </Link>

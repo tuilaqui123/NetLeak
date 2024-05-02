@@ -128,14 +128,16 @@
   }
   .userDropdown-container {
     position: absolute;
-    width: 150%;
-    left: -20%;
+    width: 200%;
+    left: -70%;
     top: 30px;
     background-color: #232323;
     border-radius: 5px;
     max-height: 500px;
     overflow-y: scroll;
     padding: 10px;
+    padding-left:20px;
+    padding-right:20px;
     .userDropdown-access {
       display: flex;
       flex-direction: column;
