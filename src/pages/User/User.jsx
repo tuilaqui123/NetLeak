@@ -172,15 +172,18 @@ const handleSubmitModal3 = () => {
     })
     .then((response) => {
       console.log(response.data);
-      fetchUser();
-      setShowModal3(false);
+      
       alert("Cập nhật thông tin thành công");
       // navigate('/user');
     })
     .catch((error) => {
       console.log(error);
       alert("Cập nhật thông tin thất bại");
-    });
+    })
+    .finally(async ()=>{
+      fetchUser();
+      setShowModal3(false);
+    })
 }
 
 const handleSubmitModal4 = () => {
@@ -199,14 +202,12 @@ const handleSubmitModal4 = () => {
     })
     .then((response) => {
       console.log(response.data);
-      fetchUser();
-      setShowModal4(false);
-      alert("Cập nhật thông tin thành công");
+      
     })
     .catch((error) => {
       console.log(error);
       alert("Cập nhật thông tin thất bại");
-    });
+    }).finally(()=> { setShowModal4(false); alert("Cập nhật thông tin thành công"); fetchUser();});
 }
 
 
@@ -330,8 +331,8 @@ const handleSubmitModal4 = () => {
               </label>
               <input
                 type="text"
-                name="email"
-                id="email"
+                // name="email"
+                // id="email"
                 placeholder="Nhập tên của bạn"
                 onInput={(e) => setName(e.target.value)}
                 value={name}
@@ -404,7 +405,7 @@ const handleSubmitModal4 = () => {
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Chỉnh sửa Email
           </h3>
-          <form className="space-y-6" action="#">
+          <div className="space-y-6">
             <div>
               <label
                 for="email"
@@ -414,8 +415,8 @@ const handleSubmitModal4 = () => {
               </label>
               <input
                 type="text"
-                name="email"
-                id="email"
+                // name="email"
+                // id="email"
                 placeholder="Nhập email của bạn"
                 value={email}
                 onInput={(e) => setEmail(e.target.value)}
@@ -438,7 +439,7 @@ const handleSubmitModal4 = () => {
                 Hủy
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
       <Modal isVisible={showModal3} onClose={() => setShowModal3(false)}>
@@ -446,18 +447,18 @@ const handleSubmitModal4 = () => {
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Chỉnh sửa số điện thoại
           </h3>
-          <form className="space-y-6" action="#">
+          <div className="space-y-6">
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-s font-medium text-gray-900"
               >
                 Số điện thoại
               </label>
               <input
                 type="text"
-                name="email"
-                id="email"
+                // name="email"
+                // id="email"
                 placeholder="Nhập số điện thoại"
                 value={phone}
                 onInput={(e) => setPhone(e.target.value)}
@@ -480,7 +481,7 @@ const handleSubmitModal4 = () => {
                 Hủy
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
       <Modal isVisible={showModal4} onClose={() => setShowModal4(false)}>
@@ -488,7 +489,7 @@ const handleSubmitModal4 = () => {
           <h3 className="mb-4 text-xl font-medium text-gray-900">
             Đổi mật khẩu
           </h3>
-          <form className="space-y-6" action="#">
+          <div className="space-y-6" >
             <div>
               <label
                 for="password"
@@ -498,8 +499,8 @@ const handleSubmitModal4 = () => {
               </label>
               <input
                 type="password"
-                name="email"
-                id="email"
+                // name="email"
+                // id="email"
                 placeholder="Nhập mật khẩu cũ"
                 value={oldPassword}
                 onInput={(e) => setOldPassword(e.target.value)}
@@ -513,8 +514,8 @@ const handleSubmitModal4 = () => {
               </label>
               <input
                 type="password"
-                name="email"
-                id="email"
+                // name="email"
+                // id="email"
                 placeholder="Nhập mật khẩu mới"
                 value={password}
                 onInput={(e) => setPassword(e.target.value)}
@@ -535,7 +536,7 @@ const handleSubmitModal4 = () => {
                 Hủy
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
     </div>
